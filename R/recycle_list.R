@@ -1,3 +1,15 @@
+#' Recycle list elements to equal length
+#'
+#' @param lst A named or unnamed list where each element is a vector. Elements may vary in length.
+#'
+#' @returns A list where each element has length equal to the maximum length of the original list elements. Shorter elements are repeated to match this length.
+#' @export
+#'
+#' @examples
+#' recycle_list(list(a = 1:3, b = 5))
+#'
+#' recycle_list(list(a = 1:7, b = c("Pigeon", "Pigeon", "Rat")))
+#'
 recycle_list <- function(lst) {
   max_len <- max(lengths(lst))
   lapply(lst, function(x) rep_len(x, max_len))

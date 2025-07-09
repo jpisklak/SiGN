@@ -2,18 +2,18 @@
 % Please edit documentation in R/recycle_list.R
 \name{recycle_list}
 \alias{recycle_list}
-\title{Recycle list elements to equal length}
+\title{List Recycle}
 \usage{
-recycle_list(lst)
+recycle_list(x)
 }
 \arguments{
-\item{lst}{A named or unnamed list where each element is a vector. Elements may vary in length.}
+\item{x}{A named or unnamed list where each element is a vector. Elements may vary in length.}
 }
 \value{
 A list where each element has length equal to the maximum length of the original list elements. Shorter elements are repeated to match this length.
 }
 \description{
-Recycle list elements to equal length
+Recycle list elements to equal length.
 }
 \examples{
 recycle_list(list(a = 1:3, b = 5))

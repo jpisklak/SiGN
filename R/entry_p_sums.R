@@ -1,4 +1,4 @@
-#' Sum entry probabilities across four terminal links
+#' Sum Entry Probabilities Across Four Terminal Links
 #'
 #' This function takes a list of 4 numeric vectors (each representing entry
 #' probabilities for a terminal link) and returns the sum of the probabilities

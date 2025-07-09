@@ -25,8 +25,6 @@ test_that("recycle_list handles single-element list", {
 })
 
 test_that("recycle_list handles empty list", {
-  expect_warning(
-    result <- recycle_list(list())
-    )
-  expect_equal(recycle_list(list()), list())
+  expect_warning(recycle_list(list()))
+  expect_equal(suppressWarnings(recycle_list(list())), list())
 })

@@ -67,37 +67,71 @@ predefined profile or specify custom values. The function includes built-in
 validation and recycling of arguments when lengths differ.
 }
 \details{
-\itemize{
-\item Three default profiles are available to streamline argument selection:
+\emph{Default Profiles:}
+
+Three default profiles are available to streamline argument selection:
 \code{"zentall"} (based on Stagner & Zentall, 2010), \code{"kendall"} (based on
 Kendall, 1985), and \code{"fantino"} (based on Fantino, 1969). Notably, the "
 fantino" profile reflects a single terminal link procedure, consistent with
 the design used in Fantino’s original study.
-\item Default profile values can be overridden by specifying the corresponding
+
+Default profile values can be overridden by specifying the corresponding
 arguments directly.
-\item If argument lengths differ, values are recycled to the maximum length,
+
+If argument lengths differ, values are recycled to the maximum length,
 with a message.
-\item The SiGN model is temporally relative, meaning it allows initial and
+
+\emph{Temporal Units:}
+
+The SiGN model is temporally relative, meaning it allows initial and
 terminal link durations to be treated as any unit of time (e.g., seconds,
 minutes, hours, etc.). However, units need to be
 consistent across all link durations.
-\item Conventionally, concurrent-chain paradigms have measured time in seconds.
+
+Conventionally, concurrent-chain paradigms have measured time in seconds.
 The default value of \code{s_delta} is chosen on the basis of that convention.
 However, given the temporal relatively of the SiGN model, if other units are
 used, it may be prudent to adjust \code{s_delta} accordingly.
-\item Setting the initial link schedules as \code{"FR"} is most suitable for cases
-involving an FR 1 schedule or when a single timer is employed in the initial
-links of long VI schedules. This is because the \code{"FR"} setting does not take
-into account the switching behaviour present with concurrent schedules using
-independent timers. For example, if a single timer is used for two
-concurrent VI 30 schedules, setting the Initial Link Schedule as an FR is
-preferable because the time spent in the initial links is controlled by one
-timer, not two independent timers operating concurrently. However, if
-independent timers are used for each initial link, the model requires this
-setting to be VI . Note that the SiGN model does not directly compute
-predictions for ratio schedules. Instead, it represents the ratio as a
-duration with an individual reinforcement rate, rather than a common/shared one.
-}
+
+\emph{Signal Discrimination:}
+
+The \code{SiGN()} function assumes that terminal links which consistently lead to
+extinction (i.e., no terminal reinforcement) are fully discriminable by the
+organism. In other words, the model treats terminal links that do and do not
+lead to terminal reinforcement as completely distinct stimuli.
+
+For example, suppose selecting alternative A results in two equally probable
+terminal links, both lasting 10 seconds—one always leads to reinforcement,
+the other never does. The \code{SiGN()} function assumes these two links are
+completely discriminable (e.g., by colour or some other cue).
+
+If the organism cannot discriminate between them, this should be reflected
+in how the parameters are specified. In such a case, rather than setting
+\code{tr_p_a1 = 1} and \code{tr_p_a2 = 0}, you would model the ambiguity by setting
+\code{tr_p_a1 = 0.5} and \code{tr_p_a2 = 0.5}.
+
+The \code{SiGN} model assumes that the (behavioural) function of terminal link
+stimuli remains fixed across the entire duration of the terminal
+link—that is, the probability of terminal reinforcement does not change
+partway through the terminal link. Procedures that depart from this
+assumption may not be appropriately handled by the model.
+
+\emph{Schedule Selection:}
+
+Setting the initial link schedules as \code{"FR"} is most suitable for cases
+involving an FR 1 schedule or when a single timer is employed in the
+initial links of long VI schedules. This is because the \code{"FR"} setting does
+not take into account the switching behaviour present with concurrent
+schedules using independent timers. For example, if a single timer is used
+for two concurrent VI 30 schedules, setting the Initial Link Schedule as
+an FR is preferable because the time spent in the initial links is
+controlled by one timer, not two independent timers operating concurrently.
+However, if independent timers are used for each initial link, the model
+requires this setting to be VI .
+
+Note that the SiGN model does not directly compute predictions for ratio
+schedules. Instead, it represents the ratio as a duration with an individual
+reinforcement rate, rather than a common/shared one.
 }
 \examples{
 # Use default Zentall profile
@@ -129,5 +163,5 @@ pigeons. \emph{Psychonomic Bulletin & Review}, \emph{17}(3), 412–416.
 \url{https://doi.org/10.3758/PBR.17.3.412}
 }
 \seealso{
-\code{\link[=dur_entry_conflict]{dur_entry_conflict()}}, \code{\link[=entry_p_sums]{entry_p_sums()}}, \code{\link[=valid_sched_input]{valid_sched_input()}}, \code{\link[=recycle_list]{recycle_list()}}, \code{\link[=eq_arg_n]{eq_arg_n()}}
+\code{\link[=dur_entry_conflict]{dur_entry_conflict()}}, \code{\link[=entry_p_sums]{entry_p_sums()}}, \code{\link[=valid_sched_input]{valid_sched_input()}}, \code{\link[=recycle_list]{recycle_list()}}, \code{\link[=eq_arg_n]{eq_arg_n()}}, \code{\link[=s_delta]{s_delta()}}
 }

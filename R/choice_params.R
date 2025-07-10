@@ -49,44 +49,75 @@
 #' @returns A named list of validated and possibly recycled parameters suitable
 #' for input into the `SiGN()` function.
 #' @export
-#' @seealso [dur_entry_conflict()], [entry_p_sums()], [valid_sched_input()], [recycle_list()], [eq_arg_n()]
+#' @seealso [dur_entry_conflict()], [entry_p_sums()], [valid_sched_input()], [recycle_list()], [eq_arg_n()], [s_delta()]
 
 #'
 #' @details
-#' - Three default profiles are available to streamline argument selection:
+#' *Default Profiles:*
+#'
+#' Three default profiles are available to streamline argument selection:
 #' `"zentall"` (based on Stagner & Zentall, 2010), `"kendall"` (based on
 #' Kendall, 1985), and `"fantino"` (based on Fantino, 1969). Notably, the "
 #' fantino" profile reflects a single terminal link procedure, consistent with
 #' the design used in Fantino’s original study.
 #'
-#' - Default profile values can be overridden by specifying the corresponding
+#' Default profile values can be overridden by specifying the corresponding
 #' arguments directly.
 #'
-#' - If argument lengths differ, values are recycled to the maximum length,
+#' If argument lengths differ, values are recycled to the maximum length,
 #' with a message.
 #'
-#' - The SiGN model is temporally relative, meaning it allows initial and
+#' *Temporal Units:*
+#'
+#' The SiGN model is temporally relative, meaning it allows initial and
 #' terminal link durations to be treated as any unit of time (e.g., seconds,
 #' minutes, hours, etc.). However, units need to be
 #' consistent across all link durations.
 #'
-#' - Conventionally, concurrent-chain paradigms have measured time in seconds.
+#' Conventionally, concurrent-chain paradigms have measured time in seconds.
 #' The default value of `s_delta` is chosen on the basis of that convention.
 #' However, given the temporal relatively of the SiGN model, if other units are
 #' used, it may be prudent to adjust `s_delta` accordingly.
 #'
-#' - Setting the initial link schedules as `"FR"` is most suitable for cases
-#'  involving an FR 1 schedule or when a single timer is employed in the initial
-#'  links of long VI schedules. This is because the `"FR"` setting does not take
-#'  into account the switching behaviour present with concurrent schedules using
-#'  independent timers. For example, if a single timer is used for two
-#'  concurrent VI 30 schedules, setting the Initial Link Schedule as an FR is
-#'  preferable because the time spent in the initial links is controlled by one
-#'  timer, not two independent timers operating concurrently. However, if
-#'  independent timers are used for each initial link, the model requires this
-#'  setting to be VI . Note that the SiGN model does not directly compute
-#'  predictions for ratio schedules. Instead, it represents the ratio as a
-#'  duration with an individual reinforcement rate, rather than a common/shared one.
+#' *Signal Discrimination:*
+#'
+#' The `SiGN()` function assumes that terminal links which consistently lead to
+#' extinction (i.e., no terminal reinforcement) are fully discriminable by the
+#' organism. In other words, the model treats terminal links that do and do not
+#' lead to terminal reinforcement as completely distinct stimuli.
+#'
+#' For example, suppose selecting alternative A results in two equally probable
+#' terminal links, both lasting 10 seconds—one always leads to reinforcement,
+#' the other never does. The `SiGN()` function assumes these two links are
+#' completely discriminable (e.g., by colour or some other cue).
+#'
+#' If the organism cannot discriminate between them, this should be reflected
+#' in how the parameters are specified. In such a case, rather than setting
+#' `tr_p_a1 = 1` and `tr_p_a2 = 0`, you would model the ambiguity by setting
+#' `tr_p_a1 = 0.5` and `tr_p_a2 = 0.5`.
+#'
+#' The `SiGN` model assumes that the (behavioural) function of terminal link
+#' stimuli remains fixed across the entire duration of the terminal
+#' link—that is, the probability of terminal reinforcement does not change
+#' partway through the terminal link. Procedures that depart from this
+#'  assumption may not be appropriately handled by the model.
+#'
+#' *Schedule Selection:*
+#'
+#' Setting the initial link schedules as `"FR"` is most suitable for cases
+#' involving an FR 1 schedule or when a single timer is employed in the
+#' initial links of long VI schedules. This is because the `"FR"` setting does
+#' not take into account the switching behaviour present with concurrent
+#' schedules using independent timers. For example, if a single timer is used
+#' for two concurrent VI 30 schedules, setting the Initial Link Schedule as
+#' an FR is preferable because the time spent in the initial links is
+#' controlled by one timer, not two independent timers operating concurrently.
+#' However, if independent timers are used for each initial link, the model
+#' requires this setting to be VI .
+#'
+#' Note that the SiGN model does not directly compute predictions for ratio
+#' schedules. Instead, it represents the ratio as a duration with an individual
+#' reinforcement rate, rather than a common/shared one.
 #'
 #' @references
 #' Dunn, R. M., Pisklak, J. M., McDevitt, M. A., & Spetch, M. L. (2023).

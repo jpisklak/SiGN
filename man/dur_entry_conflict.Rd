@@ -26,9 +26,9 @@ a logical inconsistency in the parameters for a choice alternative.
 \examples{
 durs <- list(
 tl1 = c(10, 15, 30, 0),
-tl2 = c(10, 15, 0, 0),
+tl2 = c(10, 15, 0,  0),
 tl3 = c(10, 15, 90, 0),
-tl4 = c(10, 15, 0, 0)
+tl4 = c(10, 15, 0,  0)
 )
 # List of probabilities with no duration conflict
 probs_nc <- list(
@@ -39,8 +39,8 @@ tl4 = c(0.8, 0.5, 0, 0)
 )
 # List of probabilities with duration conflict
 probs_c <- list(
-tl1 = c(1, 0.5, 1, 0),
-tl2 = c(0, 0.5, 0, 0),
+tl1 = c(1, 0.5,   1, 0),
+tl2 = c(0, 0.5,   0, 0),
 tl3 = c(0.2, 0.5, 1, 0),
 tl4 = c(0.8, 0.5, 0, 0)
 )

@@ -114,19 +114,19 @@ k <- choice_params(
 Dunn, R. M., Pisklak, J. M., McDevitt, M. A., & Spetch, M. L. (2023).
 Suboptimal choice: A review and quantification of the signal for good news
 (SiGN) model. \emph{Psychological Review}. \emph{131}(1), 58-78.
-https://doi.org/10.1037/rev0000416
+\url{https://doi.org/10.1037/rev0000416}
 
 Fantino, E. (1969). Choice and rate of reinforcement. \emph{Journal of the
 Experimental Analysis of Behavior}, \emph{12}(5), 723–730.
-https://doi.org/10.1901/jeab.1969.12-723
+\url{https://doi.org/10.1901/jeab.1969.12-723}
 
 Kendall, S. B. (1985). A further study of choice and percentage
 reinforcement. \emph{Behavioural Processes}, \emph{10}(4), 399–413.
-https://doi.org/10.1016/0376-6357(85)90040-3
+\url{https://doi.org/10.1016/0376-6357(85)90040-3}
 
 Stagner, J. P., & Zentall, T. R. (2010). Suboptimal choice behavior by
 pigeons. \emph{Psychonomic Bulletin & Review}, \emph{17}(3), 412–416.
-https://doi.org/10.3758/PBR.17.3.412
+\url{https://doi.org/10.3758/PBR.17.3.412}
 }
 \seealso{
 \code{\link[=dur_entry_conflict]{dur_entry_conflict()}}, \code{\link[=entry_p_sums]{entry_p_sums()}}, \code{\link[=valid_sched_input]{valid_sched_input()}}, \code{\link[=recycle_list]{recycle_list()}}, \code{\link[=eq_arg_n]{eq_arg_n()}}

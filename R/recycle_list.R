@@ -2,9 +2,12 @@
 #'
 #' Recycle list elements to equal length.
 #'
-#' @param x A named or unnamed list where each element is a vector. Elements may vary in length.
+#' @param x A named or unnamed list where each element is a vector. Elements
+#' may vary in length.
 #'
-#' @returns A list where each element has length equal to the maximum length of the original list elements. Shorter elements are repeated to match this length.
+#' @returns A list where each element has length equal to the maximum length
+#' of the original list elements. Shorter elements are repeated to match this
+#' length.
 #' @export
 #'
 #' @examples

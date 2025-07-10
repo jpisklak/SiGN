@@ -6,8 +6,8 @@
 #'
 #' @param x A list of vectors.
 #'
-#' @returns A logical scalar: \code{TRUE} if all elements have the same length,
-#'   \code{FALSE} otherwise.
+#' @returns A logical scalar: `TRUE` if all elements have the same length,
+#'   `FALSE` otherwise.
 #' @export
 #'
 #' @examples

@@ -7,10 +7,13 @@
 recycle_list(x)
 }
 \arguments{
-\item{x}{A named or unnamed list where each element is a vector. Elements may vary in length.}
+\item{x}{A named or unnamed list where each element is a vector. Elements
+may vary in length.}
 }
 \value{
-A list where each element has length equal to the maximum length of the original list elements. Shorter elements are repeated to match this length.
+A list where each element has length equal to the maximum length
+of the original list elements. Shorter elements are repeated to match this
+length.
 }
 \description{
 Recycle list elements to equal length.

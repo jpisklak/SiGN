@@ -22,5 +22,4 @@ Recycle list elements to equal length.
 recycle_list(list(a = 1:3, b = 5))
 
 recycle_list(list(a = 1:7, b = c("Pigeon", "Pigeon", "Rat")))
-
 }

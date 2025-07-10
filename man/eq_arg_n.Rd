@@ -22,5 +22,4 @@ recycling or vectorised operations depend on uniform lengths.
 eq_arg_n(list(1:3, 4:6))      # TRUE
 eq_arg_n(list(1:3, 4:5))      # FALSE
 eq_arg_n(list("a", "b", "c")) # TRUE
-
 }

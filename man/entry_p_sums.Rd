@@ -2,7 +2,7 @@
 % Please edit documentation in R/entry_p_sums.R
 \name{entry_p_sums}
 \alias{entry_p_sums}
-\title{Sum entry probabilities across four terminal links}
+\title{Sum Entry Probabilities Across Four Terminal Links}
 \usage{
 entry_p_sums(x)
 }

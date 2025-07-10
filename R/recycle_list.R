@@ -14,5 +14,5 @@
 #'
 recycle_list <- function(x) {
   max_len <- max(lengths(x))
-  lapply(x, function(x) rep_len(x, max_len))
+  lapply(x, function(el) if (length(el) == max_len) el else rep_len(el, max_len))
 }

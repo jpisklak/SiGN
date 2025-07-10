@@ -14,5 +14,4 @@
 #' eq_arg_n(list(1:3, 4:6))      # TRUE
 #' eq_arg_n(list(1:3, 4:5))      # FALSE
 #' eq_arg_n(list("a", "b", "c")) # TRUE
-#'
 eq_arg_n <- function(x) {all(lengths(x) == lengths(x)[1])}

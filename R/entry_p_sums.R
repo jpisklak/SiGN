@@ -18,7 +18,6 @@
 #'   c = c(0.2, 0.5, 1),
 #'   d = c(0.8, 0.5, 1)
 #' ))
-#'
 entry_p_sums <- function(x) {
   p_grid <- matrix(unlist(x), ncol = 4, byrow = FALSE)
   rowSums(p_grid)

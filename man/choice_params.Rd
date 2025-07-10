@@ -79,7 +79,7 @@ arguments directly.
 with a message.
 \item The SiGN model is temporally relative, meaning it allows initial and
 terminal link durations to be treated as any unit of time (e.g., seconds,
-minutes, hours, etc.). However, whatever units are used, they need to be
+minutes, hours, etc.). However, units need to be
 consistent across all link durations.
 \item Conventionally, concurrent-chain paradigms have measured time in seconds.
 The default value of \code{s_delta} is chosen on the basis of that convention.

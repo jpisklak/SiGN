@@ -5,7 +5,21 @@
 #' predefined profile or specify custom values. The function includes built-in
 #' validation and recycling of arguments when lengths differ.
 #'
-#' @usage choice_params(profile, il_dur_a = NULL, il_dur_b = NULL, ...)
+#' @usage
+#' choice_params(
+#'  profile = c("zentall", "kendall", "fantino"),
+#'  il_dur_a = NULL, il_dur_b = NULL,
+#'  tl_dur_a1 = NULL, tl_dur_a2 = NULL,
+#'  tl_dur_b1 = NULL, tl_dur_b2 = NULL,
+#'  tl_p_a1 = NULL, tl_p_a2 = NULL,
+#'  tl_p_b1 = NULL, tl_p_b2 = NULL,
+#'  tr_p_a1 = NULL, tr_p_a2 = NULL,
+#'  tr_p_b1 = NULL, tr_p_b2 = NULL,
+#'  il_sched_a = NULL, il_sched_b = NULL,
+#'  s_delta = 1,
+#'  beta_toggle = TRUE,
+#'  display_params = FALSE
+#'  )
 #'
 #' @param profile A character string specifying a default parameter profile. Must be one of
 #'   `"zentall"`, `"kendall"`, or `"fantino"`. See details.
@@ -178,7 +192,7 @@ choice_params <- function(
   supplied <- mget(arg_names, inherits = FALSE)
 
   # Apply defaults where needed
-  arg_list <- modifyList(defaults, Filter(Negate(is.null), supplied))
+  arg_list <- utils::modifyList(defaults, Filter(Negate(is.null), supplied))
 
   # Misc.
   arg_list$il_sched_a <- toupper(arg_list$il_sched_a)

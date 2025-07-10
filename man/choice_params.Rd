@@ -4,7 +4,20 @@
 \alias{choice_params}
 \title{Generate SiGN Model Parameter List}
 \usage{
-choice_params(profile, il_dur_a = NULL, il_dur_b = NULL, ...)
+choice_params(
+ profile = c("zentall", "kendall", "fantino"),
+ il_dur_a = NULL, il_dur_b = NULL,
+ tl_dur_a1 = NULL, tl_dur_a2 = NULL,
+ tl_dur_b1 = NULL, tl_dur_b2 = NULL,
+ tl_p_a1 = NULL, tl_p_a2 = NULL,
+ tl_p_b1 = NULL, tl_p_b2 = NULL,
+ tr_p_a1 = NULL, tr_p_a2 = NULL,
+ tr_p_b1 = NULL, tr_p_b2 = NULL,
+ il_sched_a = NULL, il_sched_b = NULL,
+ s_delta = 1,
+ beta_toggle = TRUE,
+ display_params = FALSE
+ )
 }
 \arguments{
 \item{profile}{A character string specifying a default parameter profile. Must be one of

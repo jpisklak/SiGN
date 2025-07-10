@@ -49,7 +49,11 @@ However, given the temporal relatively of the SiGN model, if other units are
 used, it may be prudent to adjust \code{s_delta} accordingly.
 }
 \examples{
-s_delta(tl_dur = c(10, 10, 10, 0), tr_p = c(0, 1, 0.5, 1), s_delta = 1)
+s_delta(
+  tl_dur = c(10, 10, 10, 0),
+  tr_p = c(0, 1, 0.5, 1),
+  s_delta = 1
+  )
 }
 \references{
 Dunn, R. M., Pisklak, J. M., McDevitt, M. A., & Spetch, M. L. (2023).

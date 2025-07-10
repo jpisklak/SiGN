@@ -46,7 +46,11 @@
 #' @seealso [choice_params()]
 #'
 #' @examples
-#' s_delta(tl_dur = c(10, 10, 10, 0), tr_p = c(0, 1, 0.5, 1), s_delta = 1)
+#' s_delta(
+#'   tl_dur = c(10, 10, 10, 0),
+#'   tr_p = c(0, 1, 0.5, 1),
+#'   s_delta = 1
+#'   )
 s_delta <- function(tl_dur, tr_p, s_delta){
   ifelse(tl_dur != 0 & tr_p == 0, s_delta, tl_dur)
 }

@@ -29,6 +29,13 @@
 #' @returns A numeric value (or vector) giving the computed terminal
 #' reinforcement rate.
 #'
+#' @details
+#' When using vectorised inputs, arguments of differing lengths will be
+#' recycled according to R's standard vector recycling rules. If lengths are
+#' not compatible (i.e., not clean multiples), a warning may be issued.
+#' See [base::Arithmetic()] for details.
+#'
+#'
 #' @seealso [choice_params()]
 #'
 #' @examples

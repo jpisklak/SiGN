@@ -41,15 +41,18 @@ durations, terminal link (TL) duration, terminal reinforcement probability,
 and schedule types. Optionally computes a common effective IL
 duration when both schedules are variable interval (VI).
 }
+\details{
+When using vectorised inputs, arguments of differing lengths will be
+recycled according to R's standard vector recycling rules. If lengths are
+not compatible (i.e., not clean multiples), a warning may be issued.
+See \code{\link[base:Arithmetic]{base::Arithmetic()}} for details.
+}
 \examples{
 r(il_dur1 = 90, il_dur2 = 30, tl_dur1 = 30, tr_p = 1.0,
   il_sched1 = "VI", il_sched2 = "VI", common_il_dur = TRUE)
 
 r(il_dur1 = 90, il_dur2 = NULL, tl_dur1 = 30, tr_p = 1.0,
   il_sched1 = "VI", il_sched2 = "VI", common_il_dur = FALSE)
-
-r(il_dur1 = c(90, 10), il_dur2 = NULL, tl_dur1 = c(30, 30), tr_p = c(1, 1.1),
-  il_sched1 = "VI", il_sched2 = "VI", common_il_dur = TRUE)
 }
 \seealso{
 \code{\link[=choice_params]{choice_params()}}

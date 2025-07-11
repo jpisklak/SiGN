@@ -8,7 +8,8 @@ valid_sched_input(x)
 }
 \arguments{
 \item{x}{A list of 2 character vectors, where each vector contains schedule
-labels.}
+labels. See \code{\link[=choice_params]{choice_params()}} for additional details about inputting
+schedule types.}
 }
 \value{
 A logical value: \code{TRUE} if all pairs contain valid and matching

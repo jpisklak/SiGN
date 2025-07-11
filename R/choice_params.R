@@ -46,12 +46,6 @@
 #' @param display_params Logical. If `TRUE`, prints the parameter list as a
 #' data frame.
 #'
-#' @returns A named list of validated and possibly recycled parameters suitable
-#' for input into the `SiGN()` function.
-#' @export
-#' @seealso [dur_entry_conflict()], [entry_p_sums()], [valid_sched_input()], [recycle_list()], [eq_arg_n()], [s_delta()]
-
-#'
 #' @details
 #' *Default Profiles:*
 #'
@@ -119,6 +113,9 @@
 #' schedules. Instead, it represents the ratio as a duration with an individual
 #' reinforcement rate, rather than a common/shared one.
 #'
+#' @returns A named list of validated and possibly recycled parameters suitable
+#' for input into the `SiGN()` function.
+#'
 #' @references
 #' Dunn, R. M., Pisklak, J. M., McDevitt, M. A., & Spetch, M. L. (2023).
 #' Suboptimal choice: A review and quantification of the signal for good news
@@ -136,6 +133,9 @@
 #' Stagner, J. P., & Zentall, T. R. (2010). Suboptimal choice behavior by
 #' pigeons. *Psychonomic Bulletin & Review*, *17*(3), 412–416.
 #' \url{https://doi.org/10.3758/PBR.17.3.412}
+#'
+#' @seealso [dur_entry_conflict()], [entry_p_sums()], [valid_sched_input()], [recycle_list()], [eq_arg_n()], [s_delta()]
+#'
 #' @examples
 #' # Use default Zentall profile
 #' z <- choice_params("zentall", display_params = TRUE)
@@ -146,6 +146,8 @@
 #'   tr_p_b1 = c(1, 0.5), tr_p_b2 = c(1, 0.5),
 #'   display_params = TRUE
 #' )
+#' @export
+#-------------------------------------------------------------------------------
 choice_params <- function(
     profile = c("zentall", "kendall", "fantino"),
     # Initial link (il) duration (dur)

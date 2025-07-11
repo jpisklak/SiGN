@@ -37,9 +37,6 @@
 #'
 #' r(il_dur1 = 90, il_dur2 = NULL, tl_dur1 = 30, tr_p = 1.0,
 #'   il_sched1 = "VI", il_sched2 = "VI", common_il_dur = FALSE)
-#'
-#' r(il_dur1 = c(90, 10), il_dur2 = NULL, tl_dur1 = c(30, 30), tr_p = c(1, 1.1),
-#'   il_sched1 = "VI", il_sched2 = "VI", common_il_dur = TRUE)
 #' @export
 #-------------------------------------------------------------------------------
 r <- function(il_dur1, il_dur2, tl_dur1, tr_p,

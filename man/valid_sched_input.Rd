@@ -24,3 +24,6 @@ valid_sched_input(list(c("VI", "VI", "FR"), c("VI", "VI", "FR")))
 # Invalid
 valid_sched_input(list(c("FR", "VI", "FR"), c("VI", "VI", "FR")))
 }
+\seealso{
+\code{\link[=choice_params]{choice_params()}}
+}

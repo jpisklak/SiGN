@@ -15,8 +15,8 @@ A logical scalar: \code{TRUE} if all elements have the same length,
 }
 \description{
 This function checks whether all elements in a list have and equal length.
-It is useful when validating argument consistency in list-based input, especially when
-recycling or vectorised operations depend on uniform lengths.
+It is useful when validating argument consistency in list-based input,
+especially when recycling or vectorised operations depend on uniform lengths.
 }
 \examples{
 eq_arg_n(list(1:3, 4:6))      # TRUE

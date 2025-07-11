@@ -12,7 +12,6 @@
 #'
 #' @returns A logical value: `TRUE` if any duration > 0 is paired with an entry
 #'  probability of 0 and `FALSE` otherwise.
-#' @export
 #'
 #' @examples
 #' durs <- list(
@@ -38,6 +37,8 @@
 #'
 #' dur_entry_conflict(durs, probs_nc)
 #' dur_entry_conflict(durs, probs_c)
+#' @export
+#-------------------------------------------------------------------------------
 dur_entry_conflict <- function(durs, probs){
   d <- matrix(unlist(durs), ncol = 4, byrow = FALSE)
   p <- matrix(unlist(probs), ncol = 4, byrow = FALSE)

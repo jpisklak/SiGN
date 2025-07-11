@@ -9,7 +9,6 @@
 #' @returns A numeric vector of sums, where each element corresponds to
 #' the sum of the four probabilities.
 #'
-#' @export
 #'
 #' @examples
 #' entry_p_sums(list(
@@ -18,6 +17,8 @@
 #'   c = c(0.2, 0.5, 1),
 #'   d = c(0.8, 0.5, 1)
 #' ))
+#' @export
+#-------------------------------------------------------------------------------
 entry_p_sums <- function(x) {
   p_grid <- matrix(unlist(x), ncol = 4, byrow = FALSE)
   rowSums(p_grid)

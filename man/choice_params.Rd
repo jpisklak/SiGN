@@ -114,7 +114,8 @@ The \code{SiGN} model assumes that the (behavioural) function of terminal link
 stimuli remains fixed across the entire duration of the terminal
 link—that is, the probability of terminal reinforcement does not change
 partway through the terminal link. Procedures that depart from this
-assumption may not be appropriately handled by the model.
+assumption may not be appropriately handled by the model. See \code{\link[=sig_check]{sig_check()}}
+for additional clarification on this point.
 
 \emph{Schedule Selection:}
 
@@ -163,5 +164,5 @@ pigeons. \emph{Psychonomic Bulletin & Review}, \emph{17}(3), 412–416.
 \url{https://doi.org/10.3758/PBR.17.3.412}
 }
 \seealso{
-\code{\link[=dur_entry_conflict]{dur_entry_conflict()}}, \code{\link[=entry_p_sums]{entry_p_sums()}}, \code{\link[=valid_sched_input]{valid_sched_input()}}, \code{\link[=recycle_list]{recycle_list()}}, \code{\link[=eq_arg_n]{eq_arg_n()}}, \code{\link[=s_delta]{s_delta()}}
+\code{\link[=dur_entry_conflict]{dur_entry_conflict()}}, \code{\link[=entry_p_sums]{entry_p_sums()}}, \code{\link[=valid_sched_input]{valid_sched_input()}}, \code{\link[=recycle_list]{recycle_list()}}, \code{\link[=eq_arg_n]{eq_arg_n()}}]
 }

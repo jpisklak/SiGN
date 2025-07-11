@@ -94,7 +94,8 @@
 #' stimuli remains fixed across the entire duration of the terminal
 #' link—that is, the probability of terminal reinforcement does not change
 #' partway through the terminal link. Procedures that depart from this
-#'  assumption may not be appropriately handled by the model.
+#'  assumption may not be appropriately handled by the model. See [sig_check()]
+#'  for additional clarification on this point.
 #'
 #' *Schedule Selection:*
 #'
@@ -134,7 +135,7 @@
 #' pigeons. *Psychonomic Bulletin & Review*, *17*(3), 412–416.
 #' \url{https://doi.org/10.3758/PBR.17.3.412}
 #'
-#' @seealso [dur_entry_conflict()], [entry_p_sums()], [valid_sched_input()], [recycle_list()], [eq_arg_n()], [s_delta()]
+#' @seealso [dur_entry_conflict()], [entry_p_sums()], [valid_sched_input()], [recycle_list()], [eq_arg_n()]]
 #'
 #' @examples
 #' # Use default Zentall profile

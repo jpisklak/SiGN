@@ -65,5 +65,5 @@ See also \code{\link[=choice_params]{choice_params()}}.
 sig_check(10, 10, 0.5, 0.5)  # FALSE — same duration and probability
 sig_check(10, 10, 0.5, 0.0)  # TRUE  — same duration, different probability
 sig_check(10, 5, 0.5, 0.5)   # TRUE  — different durations
-sig_check(0, 10, 0.5, 0.5)   # FALSE — one duration is zero#'
+sig_check(0, 10, 0.5, 0.5)   # FALSE — one duration is zero
 }

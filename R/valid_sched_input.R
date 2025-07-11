@@ -4,7 +4,8 @@
 #' pair must be either "VI" "VI" or "FR", "FR".
 #'
 #' @param x A list of 2 character vectors, where each vector contains schedule
-#' labels.
+#' labels. See [choice_params()] for additional details about inputting
+#'  schedule types.
 #'
 #' @returns A logical value: `TRUE` if all pairs contain valid and matching
 #' schedule types.

@@ -18,7 +18,8 @@
 #' @param tl_dur1 Duration of the first alternative's TL.
 #' @param tr_p Probability of terminal reinforcement.
 #' @param il_sched1 Schedule type for the initial links. (e.g., `"VI"`
-#'  or `"FR"`).
+#'  or `"FR"`). See [choice_params()] for additional details about inputting
+#'  schedule types.
 #' @param il_sched2 Schedule type for the second alternative's initial link.
 #' @param common_il_dur Logical; if `TRUE`, a common initial link (IL) duration
 #' is computed, but only when both IL schedules are `"VI"`. If `FALSE`, the

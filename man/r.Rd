@@ -21,7 +21,8 @@ r(
 \item{tr_p}{Probability of terminal reinforcement.}
 
 \item{il_sched1}{Schedule type for the initial links. (e.g., \code{"VI"}
-or \code{"FR"}).}
+or \code{"FR"}). See \code{\link[=choice_params]{choice_params()}} for additional details about inputting
+schedule types.}
 
 \item{il_sched2}{Schedule type for the second alternative's initial link.}
 

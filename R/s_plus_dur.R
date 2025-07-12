@@ -1,8 +1,9 @@
-#' Duration of the S+ Terminal Link Stimulus
+#' Duration of the S+ Terminal Link
 #'
-#' Identifies the duration of the \eqn{S^{+}} terminal link stimulus, defined as
-#' the link with the higher reinforcement rate, from two possible terminal
-#' links on an alternative.
+#' Given two terminal link stimuli, identifies the one with
+#' the greater reinforcement probability per unit of time (i.e., higher
+#' \eqn{p/t} ratio), and returns its duration. This is interpreted as the
+#'  \eqn{S^{+}} duration within a signalled alternative.
 #'
 #' @param sig Logical. Indicates whether the terminal link stimuli are assumed
 #' to be discriminable. See [sig_check].
@@ -13,19 +14,17 @@
 #' @param tr_p2 Numeric. Probability of terminal (primary/unconditional)
 #' reinforcement following the second terminal link.
 #'
-#' @returns A numeric value giving the duration of the \eqn{S^{+}} stimulus, or `NA_real_` if `sig` is `FALSE`.
+#' @returns A numeric vector containing the duration of the identified \eqn{S^{+}} terminal link, or `NA` if undefined.
 #'
 #' @details
-#' The function compares reinforcement rates (i.e., probability of
-#' reinforcement per unit of time) between the two terminal links. If the
-#' stimuli are signalled (`sig = TRUE`), the terminal link with the higher
-#' reinforcement rate is assumed to function as \eqn{S^{+}}, and its duration
-#' is returned. If \code{sig = FALSE}, the function returns `NA_real_`, as no
-#' discriminable \eqn{S^{+}} stimulus is assumed to exist.
+#' If both terminal reinforcement probabilities are 0, or if either
+#' terminal link duration is 0, the function returns `NA`. If the choice
+#' alternative is not signalled (`sig == FALSE`), `NA` is also returned.
 #'
 #' @examples
-#' s_plus_dur(TRUE, tl_dur1 = 10, tl_dur2 = 20, tr_p1 = 0.5, tr_p2 = 0.3)
-#' s_plus_dur(FALSE, 10, 20, 0.5, 0.3)
+#' s_plus_dur(TRUE, 10, 20, 0.5, 0.8)
+#' s_plus_dur(TRUE, 10, 20, 0, 0) # Returns NA
+#' s_plus_dur(FALSE, 10, 20, 0.5, 0.8) # Returns NA
 #' @export
 #-------------------------------------------------------------------------------
 s_plus_dur <- function(sig, tl_dur1, tl_dur2, tr_p1, tr_p2) {

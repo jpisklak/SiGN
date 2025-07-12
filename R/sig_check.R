@@ -16,12 +16,6 @@
 #' considered signalled.
 #'
 #' @details
-#' This function is vectorised and applies standard R recycling rules. If
-#' input vectors differ in length, shorter vectors will be recycled to match
-#' the length of the longest. If the longer length is not a clean multiple of
-#' the shorter, a warning may be issued. Users are encouraged to ensure that all
-#' inputs are of equal length to avoid unintended behaviour.
-#'
 #' The durations and probabilities input should correspond to only one choice
 #' alternative.
 #'

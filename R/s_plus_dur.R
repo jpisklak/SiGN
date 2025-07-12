@@ -29,10 +29,11 @@
 #' @export
 #-------------------------------------------------------------------------------
 s_plus_dur <- function(sig, tl_dur1, tl_dur2, tr_p1, tr_p2) {
+  invalid <- (tr_p1 == 0 & tr_p2 == 0) | (tl_dur1 == 0 | tl_dur2 == 0)
   pt1 <- tr_p1 / tl_dur1
   pt2 <- tr_p2 / tl_dur2
 
-  ifelse(sig,
-         ifelse(pt1 > pt2, tl_dur1, tl_dur2),
-         NA_real_)
+  result <- ifelse(pt1 > pt2, tl_dur1, tl_dur2)
+  result[invalid | !sig] <- NA_real_
+  result
 }

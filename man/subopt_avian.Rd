@@ -51,7 +51,4 @@ FE trials for only some subjects.
 
 \emph{Lots of FE:} FE trial following every suboptimal blackout; At least 50\% of all trials were FE.
 }
-\examples{
-data(subopt_avian)
-}
 \keyword{datasets}

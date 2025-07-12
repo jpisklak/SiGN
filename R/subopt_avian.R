@@ -40,7 +40,4 @@
 #' Suboptimal choice: A review and quantification of the signal for good news
 #' (SiGN) model. *Psychological Review*. *131*(1), 58-78.
 #' \url{https://doi.org/10.1037/rev0000416}
-#'
-#' @examples
-#' data(subopt_avian)
 "subopt_avian"

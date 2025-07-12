@@ -1,4 +1,4 @@
-#' Duration of the S⁺ Terminal Link Stimulus
+#' Duration of the S+ Terminal Link Stimulus
 #'
 #' Identifies the duration of the \eqn{S^{+}} terminal link stimulus, defined as
 #' the link with the higher reinforcement rate, from two possible terminal

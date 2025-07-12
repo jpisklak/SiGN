@@ -41,8 +41,6 @@
 #' distinct (such as different colours) and thus are recognisable from the
 #' moment of onset.
 #'
-#' See also [choice_params()].
-#'
 #' @examples
 #' sig_check(10, 10, 0.5, 0.5)  # FALSE — same duration and probability
 #' sig_check(10, 10, 0.5, 0.0)  # TRUE  — same duration, different probability

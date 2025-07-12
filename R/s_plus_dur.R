@@ -6,7 +6,7 @@
 #'  \eqn{S^{+}} duration within a signalled alternative.
 #'
 #' @param sig Logical. Indicates whether the terminal link stimuli are assumed
-#' to be discriminable. See [sig_check].
+#' to be discriminable. See [sig_check()].
 #' @param tl_dur1 Numeric. Duration of the first terminal link.
 #' @param tl_dur2 Numeric. Duration of the second terminal link.
 #' @param tr_p1 Numeric. Probability of terminal (primary/unconditional)
@@ -21,7 +21,7 @@
 #' terminal link duration is 0, the function returns `NA`. If the choice
 #' alternative is not signalled (`sig == FALSE`), `NA` is also returned.
 #'
-#' @seealso [s_delta], [s_plus_tr_p]
+#' @seealso [s_delta()], [s_plus_tr_p()]
 #'
 #' @examples
 #' s_plus_dur(TRUE, 10, 20, 0.5, 0.8)

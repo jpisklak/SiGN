@@ -12,13 +12,13 @@ signalled.}
 
 \item{big_t}{Numeric vector of the overall average programmed time to
 terminal reinforcement from the start of the initial links (excluding
-time spent in a intertrial interval). See \link{SiGN}.}
+time spent in a intertrial interval). See \code{\link[=SiGN]{SiGN()}}.}
 
 \item{s_plus_tr_p}{Numeric vector of terminal reinforcement probabilities
-for an alternative's \eqn{S^{+}} terminal link. See \link{s_plus_tr_p}.}
+for an alternative's \eqn{S^{+}} terminal link. See \code{\link[=s_plus_tr_p]{s_plus_tr_p()}}.}
 
 \item{s_plus_dur}{Numeric vector of durations associated with an
-alternative's \eqn{S^{+}} terminal link. See \link{s_plus_dur}.}
+alternative's \eqn{S^{+}} terminal link. See \code{\link[=s_plus_dur]{s_plus_dur()}}.}
 
 \item{tr_p}{Numeric vector of overall terminal reinforcement probabilities
 for the alternative.}

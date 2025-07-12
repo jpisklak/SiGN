@@ -52,8 +52,6 @@ both have a reinforcement probability of 1, it is assumed that the
 organism can fully discriminate between them—e.g., the TLs may be visually
 distinct (such as different colours) and thus are recognisable from the
 moment of onset.
-
-See also \code{\link[=choice_params]{choice_params()}}.
 }
 \examples{
 sig_check(10, 10, 0.5, 0.5)  # FALSE — same duration and probability

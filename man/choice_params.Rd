@@ -48,10 +48,10 @@ terminal links on alternative B.}
 either \code{"VI"} (variable-interval) or \code{"FR"} (fixed-ratio). Case-insensitive.}
 
 \item{s_delta}{Time required to perceive a stimulus that signals the
-absence of terminal reinforcement. Default is 1. See also \link{s_delta}.}
+absence of terminal reinforcement. Default is 1. See also \code{\link[=s_delta]{s_delta()}}.}
 
 \item{beta_toggle}{Logical defaulting to \code{TRUE}. Permits the model to adjust
-the balance of conditional and primary reinforcement for signalled alternatives according to Equation 6 of Dunn et al. (2024). See also \link{beta}.}
+the balance of conditional and primary reinforcement for signalled alternatives according to Equation 6 of Dunn et al. (2024). See also \code{\link[=beta]{beta()}}.}
 
 \item{display_params}{Logical. If \code{TRUE}, prints the parameter list as a
 data frame.}
@@ -62,7 +62,7 @@ for input into the \code{SiGN()} function.
 }
 \description{
 A helper function that constructs a named list of parameters for behavioural
-choice predictions for the function \link{SiGN}. Users can either select a
+choice predictions for the function \code{\link[=SiGN]{SiGN()}}. Users can either select a
 predefined profile or specify custom values. The function includes built-in
 validation and recycling of arguments when lengths differ.
 }
@@ -95,14 +95,14 @@ used, it may be prudent to adjust \code{s_delta} accordingly.
 
 \emph{Signal Discrimination:}
 
-The \link{SiGN} function assumes that terminal links which consistently lead to
+The \code{\link[=SiGN]{SiGN()}} function assumes that terminal links which consistently lead to
 extinction (i.e., no terminal reinforcement) are fully discriminable by the
 organism. In other words, the model treats terminal links that do and do not
 lead to terminal reinforcement as completely distinct stimuli.
 
 For example, suppose selecting alternative A results in two equally probable
 terminal links, both lasting 10 seconds—one always leads to reinforcement,
-the other never does. The \link{SiGN} function assumes these two links are
+the other never does. The \code{\link[=SiGN]{SiGN()}} function assumes these two links are
 completely discriminable (e.g., by colour or some other cue).
 
 If the organism cannot discriminate between them, this should be reflected
@@ -114,7 +114,7 @@ The SiGN model assumes that the (behavioural) function of terminal link
 stimuli remains fixed across the entire duration of the terminal
 link—that is, the probability of terminal reinforcement does not change
 partway through the terminal link. Procedures that depart from this
-assumption may not be appropriately handled by the model. See \link{sig_check}
+assumption may not be appropriately handled by the model. See \code{\link[=sig_check]{sig_check()}}
 for additional clarification on this point.
 
 \emph{Schedule Selection:}

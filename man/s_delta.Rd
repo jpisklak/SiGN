@@ -44,5 +44,5 @@ s_delta(
   )
 }
 \seealso{
-\link{choice_params}, \link{s_plus_dur}, \link{s_plus_tr_p}
+\code{\link[=choice_params]{choice_params()}}, \code{\link[=s_plus_dur]{s_plus_dur()}}, \code{\link[=s_plus_tr_p]{s_plus_tr_p()}}
 }

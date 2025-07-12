@@ -29,7 +29,8 @@
 #' link duration is computed: \deqn{1 / (1 / d_1 + 1 / d_2)}
 #' Otherwise, the duration of the first initial link is used.
 #'
-#' See [choice_params] for additional details appropriate on schedule selection.
+#' See [choice_params()] for additional details appropriate on
+#' schedule selection.
 #'
 #' @returns
 #' A numeric vector containing the \eqn{β} values.

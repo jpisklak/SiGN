@@ -8,7 +8,7 @@ s_plus_tr_p(sig, tl_dur1, tl_dur2, tr_p1, tr_p2)
 }
 \arguments{
 \item{sig}{Logical. Indicates whether the terminal link stimuli are assumed
-to be discriminable. See \link{sig_check}.}
+to be discriminable. See \code{\link[=sig_check]{sig_check()}}.}
 
 \item{tl_dur1}{Numeric. Duration of the first terminal link.}
 
@@ -42,5 +42,5 @@ s_plus_tr_p(TRUE, 10, 20, 0, 0) # Returns NA
 s_plus_tr_p(FALSE, 10, 20, 0.5, 0.8) # Returns NA
 }
 \seealso{
-\link{s_delta}, \link{s_plus_dur}
+\code{\link[=s_delta]{s_delta()}}, \code{\link[=s_plus_dur]{s_plus_dur()}}
 }

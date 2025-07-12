@@ -1,7 +1,7 @@
 #' Generate SiGN Model Parameter List
 #'
 #' A helper function that constructs a named list of parameters for behavioural
-#' choice predictions for the function [SiGN]. Users can either select a
+#' choice predictions for the function [SiGN()]. Users can either select a
 #' predefined profile or specify custom values. The function includes built-in
 #' validation and recycling of arguments when lengths differ.
 #'
@@ -40,9 +40,9 @@
 #' @param il_sched_a,il_sched_b  Schedule type for each initial link. Must be
 #' either `"VI"` (variable-interval) or `"FR"` (fixed-ratio). Case-insensitive.
 #' @param s_delta Time required to perceive a stimulus that signals the
-#' absence of terminal reinforcement. Default is 1. See also [s_delta].
+#' absence of terminal reinforcement. Default is 1. See also [s_delta()].
 #' @param beta_toggle Logical defaulting to `TRUE`. Permits the model to adjust
-#' the balance of conditional and primary reinforcement for signalled alternatives according to Equation 6 of Dunn et al. (2024). See also [beta].
+#' the balance of conditional and primary reinforcement for signalled alternatives according to Equation 6 of Dunn et al. (2024). See also [beta()].
 #' @param display_params Logical. If `TRUE`, prints the parameter list as a
 #' data frame.
 #'
@@ -75,14 +75,14 @@
 #'
 #' *Signal Discrimination:*
 #'
-#' The [SiGN] function assumes that terminal links which consistently lead to
+#' The [SiGN()] function assumes that terminal links which consistently lead to
 #' extinction (i.e., no terminal reinforcement) are fully discriminable by the
 #' organism. In other words, the model treats terminal links that do and do not
 #' lead to terminal reinforcement as completely distinct stimuli.
 #'
 #' For example, suppose selecting alternative A results in two equally probable
 #' terminal links, both lasting 10 seconds—one always leads to reinforcement,
-#' the other never does. The [SiGN] function assumes these two links are
+#' the other never does. The [SiGN()] function assumes these two links are
 #' completely discriminable (e.g., by colour or some other cue).
 #'
 #' If the organism cannot discriminate between them, this should be reflected
@@ -94,7 +94,7 @@
 #' stimuli remains fixed across the entire duration of the terminal
 #' link—that is, the probability of terminal reinforcement does not change
 #' partway through the terminal link. Procedures that depart from this
-#'  assumption may not be appropriately handled by the model. See [sig_check]
+#'  assumption may not be appropriately handled by the model. See [sig_check()]
 #'  for additional clarification on this point.
 #'
 #' *Schedule Selection:*

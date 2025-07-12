@@ -6,11 +6,11 @@
 #' signalled.
 #' @param big_t Numeric vector of the overall average programmed time to
 #' terminal reinforcement from the start of the initial links (excluding
-#' time spent in a intertrial interval). See [SiGN].
+#' time spent in a intertrial interval). See [SiGN()].
 #' @param s_plus_tr_p Numeric vector of terminal reinforcement probabilities
-#' for an alternative's \eqn{S^{+}} terminal link. See [s_plus_tr_p].
+#' for an alternative's \eqn{S^{+}} terminal link. See [s_plus_tr_p()].
 #' @param s_plus_dur Numeric vector of durations associated with an
-#' alternative's \eqn{S^{+}} terminal link. See [s_plus_dur].
+#' alternative's \eqn{S^{+}} terminal link. See [s_plus_dur()].
 #' @param tr_p Numeric vector of overall terminal reinforcement probabilities
 #' for the alternative.
 #' @param tl_dur Numeric vector of average terminal link durations for the

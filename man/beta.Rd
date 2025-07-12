@@ -46,7 +46,8 @@ If both initial links are variable interval (VI) schedules, a common initial
 link duration is computed: \deqn{1 / (1 / d_1 + 1 / d_2)}
 Otherwise, the duration of the first initial link is used.
 
-See \link{choice_params} for additional details appropriate on schedule selection.
+See \code{\link[=choice_params]{choice_params()}} for additional details appropriate on
+schedule selection.
 }
 \examples{
 beta(

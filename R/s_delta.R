@@ -12,6 +12,19 @@
 #' `s_delta` if the terminal link has a non-zero duration and a
 #' reinforcement probability of zero.
 #'
+#' @details
+#' The function is named `s_delta()` in reference to the operant conditioning
+#' notation \eqn{S^\Delta}, which denotes a stimulus that signals the
+#' unavailability of reinforcement (i.e., extinction). This distinguishes it
+#' from \eqn{S^{-}}, a term more commonly used in respondent (Pavlovian)
+#' conditioning to indicate a stimulus associated with the absence of an
+#' unconditioned stimulus. However, due to theoretical overlap between operant
+#' and respondent frameworks, \eqn{S^{-}} is often (regrettably) used
+#' interchangeably with \eqn{S^\Delta}, despite their distinct origins. A
+#' similar issue arises with the notation \eqn{S^{D}} (used in operant contexts
+#' to denote a discriminative stimulus for reinforcement) and \eqn{S^{+}} (its
+#' respondent counterpart), which are likewise sometimes conflated.
+#'
 #' @seealso [choice_params()]
 #'
 #' @examples

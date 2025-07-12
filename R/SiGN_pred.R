@@ -1,0 +1,45 @@
+#' Compute SiGN Choice Prediction
+#'
+#' A helper function compute the probability of selecting the first alternative
+#' according to the SiGN (Signal for Good News; Dunn et al. 2024) and by
+#' extension DRH (Delay Reduction Hypothesis; Squires & Fantino, 1971).
+#'
+#' @param r1 Numeric vector of terminal reinforcement rates for alternative 1.
+#' @param r2 Numeric vector of terminal reinforcement rates for alternative 2.
+#' @param dr1 Numeric vector of \eqn{\delta} or delay-reduction values for
+#'  alternative 1.
+#' @param dr2 Numeric vector of \eqn{\delta} or delay-reduction values for
+#'  alternative 2.
+#'
+#'  @details
+#'  The underlying calculation is described in Dunn et al. (2024), with
+#'  Equation 7 providing the core formulation.
+#'
+#'
+#' @returns
+#' A numeric vector of predicted choice probabilities for alternative 1.
+#'
+#' @references
+#' Dunn, R. M., Pisklak, J. M., McDevitt, M. A., & Spetch, M. L. (2024).
+#' Suboptimal choice: A review and quantification of the signal for good news
+#' (SiGN) model. *Psychological Review*. *131*(1), 58-78.
+#' \url{https://doi.org/10.1037/rev0000416}
+#'
+#' Squires, N., Fantino, E. (1971). A model for choice in simple concurrent and
+#' concurrent-chains schedules. *Journal of the Experimental Analysis of
+#' Behavior*. *15*(1), 27 - 38. \url{https://doi.org/10.1901/jeab.1971.15-27}
+#'
+#' @examples
+#' SiGN_pred(r1 = 0.05, r2 = 0.05, dr1 = 12, dr2 = 0.6)
+#' SiGN_pred(r1 = 0.05, r2 = 0.01, dr1 = 30, dr2 = -30)  # returns 1 (edge case)
+#' @export
+#-------------------------------------------------------------------------------
+SiGN_pred <- function(r1, r2, dr1, dr2) {
+  pred <- (r1 * dr1) / (r1 * dr1 + r2 * dr2)
+
+  # Set edge cases
+  pred[dr1 > 0 & dr2 < 0] <- 1
+  pred[dr1 < 0 & dr2 > 0] <- 0
+
+  pred
+}

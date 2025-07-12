@@ -34,6 +34,7 @@
 #-------------------------------------------------------------------------------
 dr_bonus <- function(sig, big_t, s_plus_tr_p, s_plus_dur, tr_p, tl_dur) {
   ifelse(sig,
-         big_t * s_plus_tr_p - s_plus_dur - big_t * tr_p + tl_dur,
-         0)
+    big_t * s_plus_tr_p - s_plus_dur - big_t * tr_p + tl_dur,
+    0
+  )
 }

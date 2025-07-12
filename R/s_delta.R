@@ -25,7 +25,7 @@
 #' to denote a discriminative stimulus for reinforcement) and \eqn{S^{+}} (its
 #' respondent counterpart), which are likewise sometimes conflated.
 #'
-#' @seealso [choice_params()]
+#' @seealso [choice_params], [s_plus_dur], [s_plus_tr_p]
 #'
 #' @examples
 #' s_delta(

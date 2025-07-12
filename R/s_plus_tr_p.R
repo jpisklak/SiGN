@@ -24,6 +24,7 @@
 #' terminal link duration is 0, the function returns `NA`. If the choice
 #' alternative is not signalled (`sig == FALSE`), `NA` is also returned.
 #'
+#' @seealso [s_delta], [s_plus_dur]
 #'
 #' @examples
 #' s_plus_tr_p(TRUE, 10, 20, 0.5, 0.8)

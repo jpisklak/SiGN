@@ -39,3 +39,6 @@ s_plus_dur(TRUE, 10, 20, 0.5, 0.8)
 s_plus_dur(TRUE, 10, 20, 0, 0) # Returns NA
 s_plus_dur(FALSE, 10, 20, 0.5, 0.8) # Returns NA
 }
+\seealso{
+\link{s_delta}, \link{s_plus_tr_p}
+}

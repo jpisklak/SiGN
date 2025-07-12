@@ -1,6 +1,6 @@
-#' Subset of Avian Suboptimal Choice Data from Dunn et al. (2023)
+#' Subset of Avian "Suboptimal" Choice Data from Dunn et al. (2023)
 #'
-#' This dataset contains compiled avian suboptimal choice data (pigeons and starlings)
+#' This dataset contains compiled avian "suboptimal" choice data (pigeons and starlings)
 #' from multiple published studies that meet the inclusion criteria outlined in
 #' Dunn et al. (2023). The subset was selected for model evaluation.
 #'

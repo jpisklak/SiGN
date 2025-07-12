@@ -3,7 +3,7 @@
 \docType{data}
 \name{subopt_avian}
 \alias{subopt_avian}
-\title{Subset of Avian Suboptimal Choice Data from Dunn et al. (2023)}
+\title{Subset of Avian "Suboptimal" Choice Data from Dunn et al. (2023)}
 \format{
 A data frame with 128 rows and 31 columns:
 \describe{
@@ -36,7 +36,7 @@ Suboptimal choice: A review and quantification of the signal for good news
 subopt_avian
 }
 \description{
-This dataset contains compiled avian suboptimal choice data (pigeons and starlings)
+This dataset contains compiled avian "suboptimal" choice data (pigeons and starlings)
 from multiple published studies that meet the inclusion criteria outlined in
 Dunn et al. (2023). The subset was selected for model evaluation.
 }

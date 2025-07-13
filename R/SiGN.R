@@ -205,15 +205,6 @@ SiGN <- function(params){
   return(output)
 }
 
-# Custom print
-print.SiGN <- function(x, ...) {
-  cat("Predicted Choice Proportion:\n")
-  print(x$cp)
-
-  cat("\nUse `$details` for additional model terms.\n")
-  invisible(x)
-}
-
 #' @export
 print.SiGN <- function(x, ...) {
   cat("Predicted Choice Proportion:\n")

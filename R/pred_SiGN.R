@@ -1,4 +1,4 @@
-#' Compute SiGN Choice Prediction
+#' Compute SiGN Prediction
 #'
 #' A helper function compute the probability of selecting the first alternative
 #' according to the SiGN (Signal for Good News; Dunn et al. 2024) and by
@@ -30,11 +30,11 @@
 #' Behavior*. *15*(1), 27 - 38. \url{https://doi.org/10.1901/jeab.1971.15-27}
 #'
 #' @examples
-#' SiGN_pred(r1 = 0.05, r2 = 0.05, dr1 = 12, dr2 = 0.6)
-#' SiGN_pred(r1 = 0.05, r2 = 0.01, dr1 = 30, dr2 = -30)  # returns 1 (edge case)
+#' pred_SiGN(r1 = 0.05, r2 = 0.05, dr1 = 12, dr2 = 0.6)
+#' pred_SiGN(r1 = 0.05, r2 = 0.01, dr1 = 30, dr2 = -30)  # returns 1 (edge case)
 #' @export
 #-------------------------------------------------------------------------------
-SiGN_pred <- function(r1, r2, dr1, dr2) {
+pred_SiGN <- function(r1, r2, dr1, dr2) {
   pred <- (r1 * dr1) / (r1 * dr1 + r2 * dr2)
 
   # Set edge cases

@@ -1,6 +1,7 @@
 ---
 title: "Introduction to the SiGN Model R Package"
 output: rmarkdown::html_vignette
+bibliography: bibTeX/refs.bib
 vignette: >
   %\VignetteIndexEntry{SiGN}
   %\VignetteEngine{knitr::rmarkdown}
@@ -17,3 +18,42 @@ knitr::opts_chunk$set(
 ```{r setup, message=FALSE}
 library(SiGN)
 ```
+
+`SiGN` is an R package to streamline the calculations necessary to produce predictions using the Signal for Good News (SiGN) Model.
+
+## Background
+
+Several decades ago, researchers first reported that pigeons (*Columba livia*) sometimes prefer options that yield less food over those that provide more [@Kendall1974]. This behaviour has been described as suboptimal, maladaptive, or paradoxical, as it appears to reduce overall food intake in laboratory settings. The SiGN model accounts for this pattern—and choice behaviour in concurrent-chain schedules more broadly—by proposing that such behaviour is conditionally reinforced when stimuli are associated with a reduction in delay to food.
+
+Detailed information about the model and its calculations can be found in @Dunn2024.
+
+## Assumptions for Using This Package
+
+This package is intended for users with a foundational understanding of operant conditioning, schedules of reinforcement, and concurrent-chain paradigms. If terms like "the Matching Law" or "Delay-Reduction Hypothesis" are unfamiliar, the material and outputs provided by this package may be difficult to interpret.
+
+## Common Abbreviations Used in this Package
+
+- `dur` : duration (in any units)
+- `p` : probability
+- `il` : initial link
+- `tl` : terminal link
+- `tr` : terminal reinforcement.
+
+In this package, *terminal reinforcement* (`tr`) refers to the reinforcer delivered at the end of a chain schedule. While this is often a *primary*/*unconditionally* reinforcing stimulus, the SiGN model places no restriction on the nature of this reinforcer—it could just as easily be a *secondary* (i.e., *conditionally*) reinforcing stimulus. For this reason, the more general term *terminal reinforcement*—referring simply to the stimulus that terminates the chain—is preferred (notably by the author of this R package, though not necessarily by all of his colleagues 😁).
+
+## Generating Model Predictions
+Broadly speaking, there are two steps required to generating predictions from the SiGN model:
+
+1. Use the `choice_params()` function to create a R list of parameters.
+2. Input the R list into the `SiGN()` function.
+
+### Step 1. Using `choice_params()`
+
+The concurrent-chains procedure that is used for suboptimal choice is a relatively involved contingency. Consequently, there are numereous parameters one needs to set to run within an operant conditioning chamber. The SiGN model uses those parameters to generate an a priori prediction of a organism's choice behaviour.
+
+
+
+
+## **References**
+
+<!-- https://bookdown.org/yihui/rmarkdown-cookbook/bibliography.html -->

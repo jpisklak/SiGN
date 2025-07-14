@@ -43,8 +43,10 @@ kendall <- choice_params("kendall")
 # Generate predictions
 kendall_pred <- SiGN(kendall)
 
-# View Results and intermediate calculations
+# View Results
 kendall_pred$cp
+
+# View intermediate calculations
 kendall_pred$details
 ```
 

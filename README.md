@@ -34,9 +34,11 @@ kendall <- choice_params("kendall")
 # Generate predictions
 kendall_pred <- SiGN(kendall)
 
-# View Results and intermediate calculations
+# View Results
 kendall_pred$cp
 #> [1] 0.5083678
+
+# View intermediate calculations
 kendall_pred$details
 #>          cp        r_a    r_b r_a_com r_b_com    Big_T     dr_a     dr_b
 #> 1 0.5083678 0.05555556 0.0625      NA      NA 16.66667 1.938827 1.666667

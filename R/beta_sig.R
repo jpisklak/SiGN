@@ -1,10 +1,10 @@
-#' Compute the \eqn{β} (beta) parameter for the SiGN model
+#' Compute the β (beta) parameter for the SiGN model
 #'
-#' Computes the \eqn{β} adjustment for signalled alternatives, reflecting the
+#' Computes the β adjustment for signalled alternatives, reflecting the
 #' balance between conditional and terminal (i.e., primary/unconditional)
 #' reinforcement, as described in Equation 6 of Dunn et al. (2024).
 #'
-#' @param use_beta Logical vector indicating whether the \eqn{β} parameter
+#' @param use_beta Logical vector indicating whether the β parameter
 #' should be applied.
 #' @param sig Logical vector indicating whether the alternative is signalled.
 #' See [sig_check].
@@ -22,7 +22,7 @@
 #'
 #' @details
 #' Although the initial link durations for both alternatives are provided as
-#' arguments, the function computes \eqn{β} specifically for the first initial
+#' arguments, the function computes β specifically for the first initial
 #' link.
 #'
 #' If both initial links are variable interval (VI) schedules, a common initial
@@ -33,7 +33,7 @@
 #' schedule selection.
 #'
 #' @returns
-#' A numeric vector containing the \eqn{β} values.
+#' A numeric vector containing the β values.
 #'
 #' @references
 #' Dunn, R. M., Pisklak, J. M., McDevitt, M. A., & Spetch, M. L. (2024).

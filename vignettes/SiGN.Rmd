@@ -23,7 +23,7 @@ knitr::opts_chunk$set(
 
 ## Background
 
-Several decades ago, researchers discovered that operant contingencies can be arranged such that pigeons (*Columba livia*) reliably develop a preference for options that yield less food over those that provide more [@Kendall1974]. This behaviour—commonly referred to as "suboptimal" choice—results in a systematic reduction in overall food intake under controlled laboratory conditions.
+Several decades ago, researchers discovered that operant contingencies can be arranged such that pigeons (*Columba livia*) reliably develop a preference for options that yield less food over those that provide more [@Kendall_1974]. This behaviour—commonly referred to as "suboptimal" choice—results in a systematic reduction in overall food intake under controlled laboratory conditions.
 
 The SiGN model explains this puzzling pattern (and other choice behaviours in concurrent-chain procedures) by proposing that choice is conditionally reinforced when stimuli signal a reduction in the delay to food.
 

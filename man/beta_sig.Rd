@@ -2,12 +2,12 @@
 % Please edit documentation in R/beta_sig.R
 \name{beta_sig}
 \alias{beta_sig}
-\title{Compute the \eqn{β} (beta) parameter for the SiGN model}
+\title{Compute the β (beta) parameter for the SiGN model}
 \usage{
 beta_sig(use_beta, sig, sched1, sched2, il_dur1, il_dur2, s_plus_dur)
 }
 \arguments{
-\item{use_beta}{Logical vector indicating whether the \eqn{β} parameter
+\item{use_beta}{Logical vector indicating whether the β parameter
 should be applied.}
 
 \item{sig}{Logical vector indicating whether the alternative is signalled.
@@ -30,16 +30,16 @@ initial link.}
 1's \eqn{S^{+}} stimulus.}
 }
 \value{
-A numeric vector containing the \eqn{β} values.
+A numeric vector containing the β values.
 }
 \description{
-Computes the \eqn{β} adjustment for signalled alternatives, reflecting the
+Computes the β adjustment for signalled alternatives, reflecting the
 balance between conditional and terminal (i.e., primary/unconditional)
 reinforcement, as described in Equation 6 of Dunn et al. (2024).
 }
 \details{
 Although the initial link durations for both alternatives are provided as
-arguments, the function computes \eqn{β} specifically for the first initial
+arguments, the function computes β specifically for the first initial
 link.
 
 If both initial links are variable interval (VI) schedules, a common initial

@@ -17,7 +17,7 @@ knitr::opts_chunk$set(
 # library(tidyverse)
 ```
 
-`SiGN` is an R package designed to streamline and automate the calculations required to generate behavioural predictions from the Signal for Good News (SiGN) model.
+*SiGN* is an R package designed to streamline and automate the calculations required to generate behavioural predictions from the Signal for Good News (SiGN) model.
 
 ## Background
 
@@ -112,7 +112,7 @@ knitr::kable(
       "Reinforcement probabilities for terminal links on B.",
       "Initial link schedule types (\"VI\" or \"FR\").",
       "Time to perceive a signal for no reinforcement. Default = 1.",
-      "Logical toggle to adjust conditional vs. primary reinforcement (Equation 6, Dunn et al., 2024)."
+      "Logical toggle to adjust conditional vs. terminal reinforcement (Equation 6, Dunn et al., 2024)."
     )
   ),
   caption = "Table 1: Arguments for Model Parameters",
@@ -209,4 +209,4 @@ abline(h = 0.5, lwd = 1, lty = 3, col = "grey")
 This approach can be extended to explore the effects of any parameter (or combination of parameters) on predicted choice. Internally, the model will recycle or align vector lengths as needed, but users should verify that vector lengths are consistent or intended for recycling to avoid unexpected behaviour.
 
 
-## **References**
+## References

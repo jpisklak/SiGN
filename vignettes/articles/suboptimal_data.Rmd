@@ -1,0 +1,14 @@
+---
+title: "Reproducing Dunn et al. (2024) Using the SiGN Package"
+bibliography: ../bibTeX/refs.bib
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+
+@Dunn2024

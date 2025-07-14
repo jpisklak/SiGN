@@ -2,7 +2,7 @@
 
 S3method(print,SiGN)
 export(SiGN)
-export(beta)
+export(beta_sig)
 export(choice_params)
 export(dr_bonus)
 export(dur_entry_conflict)

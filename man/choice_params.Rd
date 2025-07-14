@@ -51,7 +51,7 @@ either \code{"VI"} (variable-interval) or \code{"FR"} (fixed-ratio). Case-insens
 absence of terminal reinforcement. Default is 1. See also \code{\link[=s_delta]{s_delta()}}.}
 
 \item{beta_toggle}{Logical defaulting to \code{TRUE}. Permits the model to adjust
-the balance of conditional and primary reinforcement for signalled alternatives according to Equation 6 of Dunn et al. (2024). See also \code{\link[=beta]{beta()}}.}
+the balance of conditional and primary reinforcement for signalled alternatives according to Equation 6 of Dunn et al. (2024). See also \code{\link[=beta_sig]{beta_sig()}}.}
 
 \item{display_params}{Logical. If \code{TRUE}, prints the parameter list as a
 data frame.}

@@ -42,7 +42,7 @@
 #' @param s_delta Time required to perceive a stimulus that signals the
 #' absence of terminal reinforcement. Default is 1. See also [s_delta()].
 #' @param beta_toggle Logical defaulting to `TRUE`. Permits the model to adjust
-#' the balance of conditional and primary reinforcement for signalled alternatives according to Equation 6 of Dunn et al. (2024). See also [beta()].
+#' the balance of conditional and primary reinforcement for signalled alternatives according to Equation 6 of Dunn et al. (2024). See also [beta_sig()].
 #' @param display_params Logical. If `TRUE`, prints the parameter list as a
 #' data frame.
 #'

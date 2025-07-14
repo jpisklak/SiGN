@@ -153,11 +153,11 @@ SiGN <- function(params){
 
   # Beta
   #-------------------------------------------------------------------------------
-  beta_a <- beta(
+  beta_a <- beta_sig(
     beta_toggle, sig_a, il_sched_a, il_sched_b,
     il_dur_a, il_dur_b, sig_dur_a
   )
-  beta_b <- beta(
+  beta_b <- beta_sig(
     beta_toggle, sig_b, il_sched_b, il_sched_a,
     il_dur_b, il_dur_a, sig_dur_b
   )

@@ -43,7 +43,7 @@
 #'
 #'
 #' @examples
-#' beta(
+#' beta_sig(
 #'   use_beta = TRUE,
 #'   sig = TRUE,
 #'   sched1 = "FR",
@@ -54,7 +54,7 @@
 #' )
 #' @export
 #-------------------------------------------------------------------------------
-beta <- function(use_beta, sig,
+beta_sig <- function(use_beta, sig,
                  sched1, sched2,
                  il_dur1, il_dur2,
                  s_plus_dur) {

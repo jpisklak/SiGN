@@ -50,10 +50,14 @@ zentall_pred <- SiGN(zentall)
 
 ## Available Data and Profiles
 
-The package includes: - Built-in parameter profiles (e.g., `"zentall"`,
-`"kendall"`, `"fantino"`) for Stagner and Zentall (2010); Kendall
-(1985); and Fantino (1969) respectively. - Data sets `subopt_avian` and
-`subopt_full`, compiled from Dunn et al. (2024).
+The package includes:
+
+- Built-in parameter profiles (e.g., `"zentall"`, `"kendall"`,
+  `"fantino"`) for Stagner and Zentall (2010); Kendall (1985); and
+  Fantino (1969) respectively.
+
+- Data sets `subopt_avian` and `subopt_full`, compiled from Dunn et al.
+  (2024).
 
 ## References
 

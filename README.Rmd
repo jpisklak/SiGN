@@ -90,7 +90,9 @@ legend("bottomright",
 ## Available Data and Profiles
 
 The package includes:
+
 - Built-in parameter profiles (e.g., `"zentall"`, `"kendall"`, `"fantino"`) for @Stagner_Zentall_2010; @Kendall_1985; and @Fantino_1969 respectively.
+
 - Data sets `subopt_avian` and `subopt_full`, compiled from @Dunn_et_al_2024.
 
 ## References

@@ -39,27 +39,45 @@ This package is intended for users with a foundational understanding of operant 
 - `tl` : terminal link
 - `tr` : terminal reinforcement.
 
-In this package, *terminal reinforcement* (`tr`) refers to the reinforcer delivered at the end of a chain schedule. While this is often a *primary*/*unconditionally* reinforcing stimulus (e.g., food), the SiGN model places no restriction on the nature of this reinforcer—it could just as easily be a *secondary* (i.e., *conditionally*) reinforcing stimulus. For this reason, the more general term *terminal reinforcement*—referring simply to the stimulus that terminates the chain—is preferred (notably by the author of this R package, though not necessarily by all of his colleagues 😁).
+In this package, *terminal reinforcement* (`tr`) refers to the reinforcer delivered at the end of a chain schedule. While this is often a *primary*/*unconditionally* reinforcing stimulus (e.g., food), the SiGN model places no restriction on the nature of this reinforcer—it could just as easily be a *secondary* (i.e., *conditionally*) reinforcing stimulus. For this reason, the more general term *terminal reinforcement*—referring simply to the stimulus that terminates the chain—is preferred.
 
-## Generating Model Predictions
-Broadly speaking, there are two steps required to generating predictions from the SiGN model:
+## Installing the Package
+
+Since the *SiGN* package is currently available only in its development version, the simplest way to install it is via [GitHub](https://github.com/) with ...
+
+```r
+install.packages("pak")
+pak::pak("jpisklak/SiGN")
+```
+
+## Generating A Model Prediction
+There are two steps required to generating predictions from the SiGN model:
 
 1. Use the `choice_params()` function to create a R list of parameters.
 2. Input the R list into the `SiGN()` function.
 
+The SiGN model uses the parameters of a concurrent-chains procedure to generate an a priori prediction of a organism's choice behaviour. Those parameters need to be given to the function `SiGN()` in the form of a list. The list can be created manually; however, the *SiGN* package offers a helper function, `choice_params()` to produce it quickly with numerous validation checks "under the hood" to ensure parameters are selected appropriately.
+
 ### Example: Stagner & Zentall -@StagnerZentall2010
 
-The concurrent-chains procedure that is used for suboptimal choice is a relatively involved contingency. Consequently, there are numereous parameters one needs to set to run within an operant conditioning chamber. The SiGN model uses those parameters to generate an a priori prediction of a organism's choice behaviour.
-
 To illustrate consider the set of contingencies used by Stagner & Zentall -@StagnerZentall2010 diagrammed in Figure 1.
+
+<br>
 
 ```{r, echo=FALSE, out.width='70%', fig.align='center', fig.cap = 'Figure 1. Stagner & Zentall (2010) Contingencies'}
 knitr::include_graphics("images/stag_zen_2010.png")
 ```
 
-### Step 1. Using `choice_params()`
+<br>
 
+Notably, there are 16 values that make up this contingency plus two additional values that need to be specified for the SiGN model specifically, giving a total of 18 seperate arguments that need to be set. To expedite the process of listing parameters, the `choice_params()` function has three default profile sets of parameters that can be used and modified. They are `"zentall"` [@StagnerZentall2010], `"kendall"` [@Kendall1985], and `"fantino"` [@Fantino1969].
 
+The `"zentall"` profile already has the parameters shown in Figure 1. An argument `display_params` can be set to `TRUE` to view the 
+
+```{r}
+library(SiGN)
+params <- choice_params("zentall", display_params = TRUE)
+```
 
 
 

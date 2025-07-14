@@ -170,7 +170,8 @@ choice_params <- function(
     # Option to turn of beta
     beta_toggle = TRUE,
     # Print data frame of parameters
-    display_params = FALSE) {
+    display_params = FALSE
+    ) {
   profile <- tolower(profile)
   profile <- match.arg(profile)
 
@@ -186,8 +187,8 @@ choice_params <- function(
       il_sched_a = "FR",
       il_sched_b = "FR",
       s_delta = 1,
-      beta_toggle = TRUE,
-      display_params = FALSE
+      beta_toggle = TRUE#,
+      #display_params = FALSE
     ),
     kendall = list(
       il_dur_a = 1, il_dur_b = 1,
@@ -200,8 +201,8 @@ choice_params <- function(
       il_sched_a = "FR",
       il_sched_b = "FR",
       s_delta = 1,
-      beta_toggle = TRUE,
-      display_params = FALSE
+      beta_toggle = TRUE#,
+      #display_params = FALSE
     ),
     fantino = list(
       il_dur_a = 90, il_dur_b = 30,
@@ -214,8 +215,8 @@ choice_params <- function(
       il_sched_a = "VI",
       il_sched_b = "VI",
       s_delta = 1,
-      beta_toggle = TRUE,
-      display_params = FALSE
+      beta_toggle = TRUE#,
+      #display_params = FALSE
     )
   )
 

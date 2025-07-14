@@ -1,8 +1,8 @@
 test_that("choice_params outputs a viable list", {
 
   eval1 <- suppressMessages(choice_params("fantino", il_dur_a = 1:90))
-  expect_equal(length(eval1), 19)
-  expect_equal(sum(lengths(eval1) == 90), 19)
+  expect_equal(length(eval1), 18)
+  expect_equal(sum(lengths(eval1) == 90), 18)
   expect_error(choice_params("fantino", il_dur_a = "A"))
   expect_error(choice_params("fantino", il_dur_a = 0))
   expect_error(choice_params("fantino", tl_dur_a1 = -1))

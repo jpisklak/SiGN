@@ -28,50 +28,51 @@ pak::pak("jpisklak/SiGN")
 ``` r
 library(SiGN)
 
-# Load built-in profile and customize parameters
-tl_durs <- seq(1, 100, by = 0.01)
-
-kendall <- choice_params("kendall",
-  tl_dur_a1 = tl_durs, tl_dur_a2 = tl_durs,
-  tl_dur_b1 = tl_durs, tl_dur_b2 = tl_durs
-)
-
-zentall <- choice_params("zentall",
-  tl_dur_a1 = tl_durs, tl_dur_a2 = tl_durs,
-  tl_dur_b1 = tl_durs, tl_dur_b2 = tl_durs
-)
+# Load built-in profile
+kendall <- choice_params("kendall")
 
 # Generate predictions
 kendall_pred <- SiGN(kendall)
-zentall_pred <- SiGN(zentall)
-```
 
-<img src="man/figures/README-unnamed-chunk-3-1.png" width="80%" style="display: block; margin: auto;" />
+# View Results and intermediate calculations
+kendall_pred$cp
+#> [1] 0.5083678
+kendall_pred$details
+#>          cp        r_a    r_b r_a_com r_b_com    Big_T     dr_a     dr_b
+#> 1 0.5083678 0.05555556 0.0625      NA      NA 16.66667 1.938827 1.666667
+#>    dr_avg_a dr_avg_b dr_bonus_a dr_bonus_b  beta_a beta_b sig_a sig_b tr_p_a
+#> 1 0.3333333 1.666667   1.333333          0 1.20412      1  TRUE FALSE    0.5
+#>   tr_p_b s_delta
+#> 1      1       1
+```
 
 ## Available Data and Profiles
 
 The package includes:
 
-- Built-in parameter profiles (e.g., `"zentall"`, `"kendall"`,
-  `"fantino"`) for Stagner and Zentall (2010); Kendall (1985); and
-  Fantino (1969) respectively.
+- Built-in parameter profiles — Predefined setups for well-known
+  procedures from the literature, including:
 
-- Data sets `subopt_avian` and `subopt_full`, compiled from Dunn et al.
-  (2024).
+  - `"zentall"` (Stagner and Zentall 2010)
+
+  - `"kendall"` (Kendall 1985)
+
+  - `"fantino"` (Fantino 1969)
+
+- Fully vectorised parameter input — All model parameters can be
+  customised and passed as vectors, enabling efficient simulation of
+  multiple conditions.
+
+- Built-in datasets — Two curated datasets from Dunn et al. (2024):
+
+  - `subopt_full`: the complete dataset of suboptimal choice studies
+
+  - `subopt_avian`: a filtered subset focused on pigeons and starlings
 
 ## References
 
 <div id="refs" class="references csl-bib-body hanging-indent"
 entry-spacing="0">
-
-<div id="ref-Dunn_et_al_2024" class="csl-entry">
-
-Dunn, R. M., Pisklak, J. M., M. A. McDevitt, and M. L. Spetch. 2024.
-“Suboptimal Choice: A Review and Quantification of the Signal for Good
-News (SiGN) Model.” *Psychological Review* 131 (1): 58–78.
-<https://doi.org/10.1037/rev0000416>.
-
-</div>
 
 <div id="ref-Fantino_1969" class="csl-entry">
 

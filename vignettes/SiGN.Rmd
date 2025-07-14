@@ -9,6 +9,8 @@ vignette: >
 ---
 
 ```{r, include = FALSE}
+options(rmarkdown.html_vignette.check_title = FALSE)
+
 knitr::opts_chunk$set(
   collapse = TRUE,
   comment = "#>"
@@ -21,7 +23,7 @@ knitr::opts_chunk$set(
 
 ## Background
 
-Several decades ago, researchers first reported that pigeons (*Columba livia*) sometimes prefer options that yield less food over those that provide more [@Kendall1974]. This behaviour—often described as suboptimal or paradoxical—reduces overall food intake in controlled settings. 
+Several decades ago, researchers discovered that operant contingencies can be arranged such that pigeons (*Columba livia*) reliably develop a preference for options that yield less food over those that provide more [@Kendall1974]. This behaviour—commonly referred to as "suboptimal" choice—results in a systematic reduction in overall food intake under controlled laboratory conditions.
 
 The SiGN model explains this puzzling pattern (and other choice behaviours in concurrent-chain procedures) by proposing that choice is conditionally reinforced when stimuli signal a reduction in the delay to food.
 
@@ -46,6 +48,7 @@ The following abbreviations are used throughout the package:
 - `il`: initial link
 - `tl`: terminal link
 - `tr`: terminal reinforcement
+- `dr`: delay-reduction
 
 In this context, *terminal reinforcement* refers to the stimulus delivered at the end of a chained schedule. While this is often a *primary* (unconditional) reinforcer such as food, the SiGN model does not require it to be so—it could also be a *secondary* (conditional) reinforcer. For this reason, the more general term *terminal reinforcement* is preferred.
 
@@ -60,7 +63,7 @@ install.packages("pak")
 pak::pak("jpisklak/SiGN")
 ```
 
-## Generating Prediction
+## Generating a Prediction
 
 There are two steps to generating predictions using the SiGN model:
 
@@ -85,7 +88,7 @@ This procedure involves 16 parameters to describe the contingency, plus 2 additi
 
 The `"zentall"` profile matches the setup shown in Figure 1. You can view the full set of parameters by setting `display_params = TRUE`:
 
-```{r, message = FALSE}
+```{r}
 library(SiGN)
 params <- choice_params("zentall", display_params = TRUE)
 ```
@@ -122,6 +125,8 @@ knitr::kable(
 
 <br>
 
+In most cases, `s_delta` and `beta_toggle` do not require user modification.
+
 Once you have your parameter list, you can generate a prediction by passing it to the `SiGN()` function:
 
 ```{r}
@@ -134,8 +139,6 @@ From the output, we can see that alternative A (the "suboptimal" alternative) wi
 mod <- SiGN(params)
 mod$details
 ```
-
-An in-depth discussion of the output in `$details` is beyond the scope of this document and readers interested are directed to @Dunn2024. However, a brief description of each is provided in Table 2.
 
 An in-depth explanation of the `$details` output is beyond the scope of this document. Readers interested in the theoretical rationale behind these terms are referred to @Dunn2024. However, a brief description of each component is provided in Table 2 below.
 
@@ -168,7 +171,7 @@ knitr::kable(
       "$D_\\text{avg}$", "$D_\\text{bonus}$", "$\\beta_x$", " ", " ", " "
     )
   ),
-  caption = "Table 2: Components of the `SiGN()` Model Output (`$details`)",
+  caption = "Table 2: Components of the `SiGN()` Function Output (`$details`)",
   escape = FALSE
 )
 ```

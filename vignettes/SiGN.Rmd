@@ -13,54 +13,65 @@ knitr::opts_chunk$set(
   collapse = TRUE,
   comment = "#>"
 )
+
+# library(tidyverse)
 ```
 
-```{r setup, message=FALSE}
-library(SiGN)
-```
-
-`SiGN` is an R package designed to streamline and automate the computations required to generate behavioural predictions from the Signal for Good News (SiGN) model. 
+`SiGN` is an R package designed to streamline and automate the calculations required to generate behavioural predictions from the Signal for Good News (SiGN) model.
 
 ## Background
 
-Several decades ago, researchers first reported that pigeons (*Columba livia*) sometimes prefer options that yield less food over those that provide more [@Kendall1974]. This behaviour has been described as suboptimal, maladaptive, or paradoxical, as it appears to reduce overall food intake in laboratory settings. The SiGN model accounts for this pattern—and choice behaviour in concurrent-chain schedules more broadly—by proposing that such behaviour is conditionally reinforced when stimuli are associated with a reduction in delay to food.
+Several decades ago, researchers first reported that pigeons (*Columba livia*) sometimes prefer options that yield less food over those that provide more [@Kendall1974]. This behaviour—often described as suboptimal or paradoxical—reduces overall food intake in controlled settings. 
 
-Detailed information about the model and its calculations can be found in @Dunn2024.
+The SiGN model explains this puzzling pattern (and other choice behaviours in concurrent-chain procedures) by proposing that choice is conditionally reinforced when stimuli signal a reduction in the delay to food.
 
-## Assumptions for Using This Package
+For a detailed description of the model and its calculations, see @Dunn2024.
 
-This package is intended for users with a foundational understanding of operant conditioning, schedules of reinforcement, and concurrent-chain paradigms. If terms like "the Matching Law" or "Delay-Reduction Hypothesis" are unfamiliar, the material and outputs provided by this package may be difficult to interpret.
+## Assumptions
 
-## Common Abbreviations Used in this Package
+This package assumes a working knowledge of:
 
-- `dur` : duration (in any units)
-- `p` : probability
-- `il` : initial link
-- `tl` : terminal link
-- `tr` : terminal reinforcement.
+- Operant conditioning
+- Schedules of reinforcement
+- Concurrent-chain procedures
 
-In this package, *terminal reinforcement* (`tr`) refers to the reinforcer delivered at the end of a chain schedule. While this is often a *primary*/*unconditionally* reinforcing stimulus (e.g., food), the SiGN model places no restriction on the nature of this reinforcer—it could just as easily be a *secondary* (i.e., *conditionally*) reinforcing stimulus. For this reason, the more general term *terminal reinforcement*—referring simply to the stimulus that terminates the chain—is preferred.
+If terms like "Matching Law" or "Delay-Reduction Hypothesis" are unfamiliar, the outputs provided by this package may be difficult to interpret.
 
-## Installing the Package
+## Common Abbreviations
 
-Since the *SiGN* package is currently available only in its development version, the simplest way to install it is via [GitHub](https://github.com/) with ...
+The following abbreviations are used throughout the package:
+
+- `dur`: duration (any units)
+- `p`: probability
+- `il`: initial link
+- `tl`: terminal link
+- `tr`: terminal reinforcement
+
+In this context, *terminal reinforcement* refers to the stimulus delivered at the end of a chained schedule. While this is often a *primary* (unconditional) reinforcer such as food, the SiGN model does not require it to be so—it could also be a *secondary* (conditional) reinforcer. For this reason, the more general term *terminal reinforcement* is preferred.
+
+> (Notably, it is preferred by the author of this R package—but not his colleagues 😁)
+
+## Installation
+
+As the SiGN package is currently in development, the easiest way to install it is from [GitHub](https://github.com/) using the `pak` package:
 
 ```r
 install.packages("pak")
 pak::pak("jpisklak/SiGN")
 ```
 
-## Generating A Model Prediction
-There are two steps required to generating predictions from the SiGN model:
+## Generating Prediction
 
-1. Use the `choice_params()` function to create a R list of parameters.
-2. Input the R list into the `SiGN()` function.
+There are two steps to generating predictions using the SiGN model:
 
-The SiGN model uses the parameters of a concurrent-chains procedure to generate an a priori prediction of a organism's choice behaviour. Those parameters need to be given to the function `SiGN()` in the form of a list. The list can be created manually; however, the *SiGN* package offers a helper function, `choice_params()` to produce it quickly with numerous validation checks "under the hood" to ensure parameters are selected appropriately.
+1. Use `choice_params()` to create a list of model parameters.
+2. Pass this list to `SiGN()` to obtain predictions.
+
+The model uses parameters from a concurrent-chains procedure to generate an a priori prediction of choice behaviour. While the required list of arguments can be created manually, the helper function `choice_params()` simplifies this process and includes built-in checks to ensure valid input.
 
 ### Example: Stagner & Zentall -@StagnerZentall2010
 
-To illustrate consider the set of contingencies used by Stagner & Zentall -@StagnerZentall2010 diagrammed in Figure 1.
+To illustrate, consider the experimental setup from Stagner & Zentall -@StagnerZentall2010, shown in Figure 1.
 
 <br>
 
@@ -70,19 +81,132 @@ knitr::include_graphics("images/stag_zen_2010.png")
 
 <br>
 
-Notably, there are 16 values that make up this contingency plus two additional values that need to be specified for the SiGN model specifically, giving a total of 18 seperate arguments that need to be set. To expedite the process of listing parameters, the `choice_params()` function has three default profile sets of parameters that can be used and modified. They are `"zentall"` [@StagnerZentall2010], `"kendall"` [@Kendall1985], and `"fantino"` [@Fantino1969].
+This procedure involves 16 parameters to describe the contingency, plus 2 additional parameters specific to the SiGN model—making a total of 18. To speed up the process of entering these values, the `choice_params()` function includes several pre-defined profiles: `"zentall"` [@StagnerZentall2010], `"kendall"` [@Kendall1985], and `"fantino"` [@Fantino1969].
 
-The `"zentall"` profile already has the parameters shown in Figure 1. An argument `display_params` can be set to `TRUE` to view the 
+The `"zentall"` profile matches the setup shown in Figure 1. You can view the full set of parameters by setting `display_params = TRUE`:
 
-```{r}
+```{r, message = FALSE}
 library(SiGN)
 params <- choice_params("zentall", display_params = TRUE)
 ```
 
+The R documentation `?choice_params` describes each argument, but they are briefly listed in Table 1 below for convenience.
+
+<br>
+
+```{r, echo = FALSE}
+knitr::kable(
+  data.frame(
+    Parameter = c(
+      "`il_dur_a`<br>`il_dur_b`", "`tl_dur_a1`<br>`tl_dur_a2`", "`tl_dur_b1`<br>`tl_dur_b2`",
+      "`tl_p_a1`<br>`tl_p_a2`", "`tl_p_b1`<br>`tl_p_b2`", "`tr_p_a1`<br>`tr_p_a2`", "`tr_p_b1`<br>`tr_p_b2`",
+      "`il_sched_a`<br>`il_sched_b`", "`s_delta`", "`beta_toggle`"
+    ),
+    Description = c(
+      "Initial link durations for alternative A and B.",
+      "Durations for terminal links on A.",
+      "Durations for terminal links on B.",
+      "Entry probabilities for terminal links on A.",
+      "Entry probabilities for terminal links on B.",
+      "Reinforcement probabilities for terminal links on A.",
+      "Reinforcement probabilities for terminal links on B.",
+      "Initial link schedule types (\"VI\" or \"FR\").",
+      "Time to perceive a signal for no reinforcement. Default = 1.",
+      "Logical toggle to adjust conditional vs. primary reinforcement (Equation 6, Dunn et al., 2024)."
+    )
+  ),
+  caption = "Table 1: Arguments for Model Parameters",
+  escape = FALSE
+)
+```
+
+<br>
+
+Once you have your parameter list, you can generate a prediction by passing it to the `SiGN()` function:
+
+```{r}
+SiGN(params)
+```
+
+From the output, we can see that alternative A (the "suboptimal" alternative) will be selected approximately 96% of the time. To extract additional model details:
+
+```{r}
+mod <- SiGN(params)
+mod$details
+```
+
+An in-depth discussion of the output in `$details` is beyond the scope of this document and readers interested are directed to @Dunn2024. However, a brief description of each is provided in Table 2.
+
+An in-depth explanation of the `$details` output is beyond the scope of this document. Readers interested in the theoretical rationale behind these terms are referred to @Dunn2024. However, a brief description of each component is provided in Table 2 below.
 
 
+<br>
+
+```{r, echo = FALSE}
+knitr::kable(
+  data.frame(
+    Name = c(
+      "cp", "r_a<br>r_b", "r_a_com<br>r_b_com", "Big_T", "dr_a<br>dr_b",
+      "dr_avg_a<br>dr_avg_b", "dr_bonus_a<br>dr_bonus_b", "beta_a<br>beta_b",
+      "sig_a<br>sig_b", "tr_p_a<br>tr_p_b", "s_delta"
+    ),
+    Description = c(
+      "Predicted proportion of choices made to alternative A.",
+      "Rate of terminal reinforcement on each alternative.",
+      "Reinforcement rate on each alternative using a common effective initial link duration (when both IL schedules are VI).",
+      "Overall average time to terminal reinforcement from the onset of initial links.",
+      "Total delay reduction for each alternative.",
+      "Average delay reduction on each alternative.",
+      "Bonus delay reduction (when one TL offers a stronger signal).",
+      "Adjustment factor reflecting the balance of conditional vs. terminal reinforcement.",
+      "Logical indicator of whether each alternative is considered signalled (see `?sig_check`).",
+      "Overall terminal reinforcement probability on each alternative.",
+      "The `s_delta` value passed to the `SiGN()` function."
+    ),
+    `Dunn et al.` = c(
+      "$\\frac{R_a}{R_a + R_b}$", "$r_x$", " ", "$T$", "$\\delta_x$ or $D_\\text{total}$",
+      "$D_\\text{avg}$", "$D_\\text{bonus}$", "$\\beta_x$", " ", " ", " "
+    )
+  ),
+  caption = "Table 2: Components of the `SiGN()` Model Output (`$details`)",
+  escape = FALSE
+)
+```
+
+<br>
+
+## Generating Multiple Predictions
+
+The `SiGN()` function supports vectorised input, allowing users to generate multiple predictions simultaneously. This is particularly useful for examining how predicted choice changes as a function of a single parameter while holding others constant.
+
+As an example, suppose we want to evaluate how increasing the duration of the initial links affects choice behaviour. This can be done by supplying a sequence of values to the `il_dur_a` and `il_dur_b` arguments in `choice_params()`. The rest of the parameters remain fixed according to the `"zentall"` profile.
+
+```{r fig.width = 6, fig.height = 4.5, dpi = 300, fig.align = 'center', out.width = '75%'}
+# Generate list of parameters
+il_preds <- choice_params("zentall",
+  il_dur_a = seq(1, 100, by = 0.01),
+  il_dur_b = seq(1, 100, by = 0.01)
+)
+
+# Generate predictions
+mod_il <- SiGN(il_preds)
+
+# Plot predictions
+plot(il_preds$il_dur_a, mod_il$cp,
+  type = "l", lwd = 3.5, lty = 1,
+  las = 1,
+  xlim = c(0, 100), ylim = c(0, 1),
+  xaxt = "n",
+  xlab = "Duration of Initial Links in Seconds",
+  ylab = "Suboptimal Choice Proportion"
+)
+axis(1, at = c(1, seq(10, 100, 10)))
+abline(h = 0.5, lwd = 1, lty = 3, col = "grey")
+```
+
+<br>
+
+This approach can be extended to explore the effects of any parameter (or combination of parameters) on predicted choice. Internally, the model will recycle or align vector lengths as needed, but users should verify that vector lengths are consistent or intended for recycling to avoid unexpected behaviour.
 
 
 ## **References**
-
-<!-- https://bookdown.org/yihui/rmarkdown-cookbook/bibliography.html -->

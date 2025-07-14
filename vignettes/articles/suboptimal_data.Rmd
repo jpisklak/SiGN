@@ -4,11 +4,90 @@ bibliography: ../bibTeX/refs.bib
 ---
 
 ```{r, include = FALSE}
-knitr::opts_chunk$set(
+library(knitr)
+opts_chunk$set(
   collapse = TRUE,
   comment = "#>"
 )
 ```
 
+@Dunn_et_al_2024 compiled what an exhaustive collection of studies examining *suboptimal choice*. This dataset is included in the *SiGN* package.
 
-@Dunn2024
+The full, unfiltered dataset can be accessed via `subopt_full`. For model evaluation, however, Dunn et al. focused on a curated subset: studies involving **pigeons** and **starlings**, as these species had the most robust and consistently replicated findings. This filtered data set is available in the *SiGN* package as `subopt_avian`.
+
+Each row in `subopt_avian` represents a distinct study condition. Many of its columns directly correspond to parameters used by the `choice_params()` function.
+
+```{r}
+library(SiGN)
+
+# Column Names
+names(subopt_avian)
+```
+
+One key column is `$cp`, which reflects the observed choice proportion reported by each study. These values can be directly compared to predictions from the SiGN model.
+
+```{r}
+# Extract relevant parameter columns (cols 9–24 align with choice_params())
+data_cols <- subopt_avian[9:24]
+
+# Construct model input list
+params <- do.call(choice_params, as.list(data_cols))
+
+# Generate model predictions
+preds <- SiGN(params)$details
+```
+
+```{r}
+# Model Assessment:
+
+# Fit a linear model comparing observed vs predicted
+reg <- lm(subopt_avian$cp ~ preds$cp)
+r_sq <- summary(reg)$r.squared
+
+# Root Mean Squared Error (RMSE)
+rmse <- sqrt(mean((subopt_avian$cp - preds$cp)^2))
+
+#Mean Absolute Error (MAE)
+mae <- mean(abs(subopt_avian$cp - preds$cp))
+```
+
+The following plot illustrates the correspondence between observed and predicted choice proportions. The dashed line represents perfect prediction (y = x), while the solid line depicts the best-fitting linear regression. The $R^2$ value quantifies the proportion of variance in the observed data accounted for by the SiGN model's predictions. The RMSE (root mean squared error) and MAE (mean absolute error) both reflect the average discrepancy between predicted and observed values, with RMSE placing greater emphasis on larger errors.
+
+```{r fig.width = 5, fig.height = 5, dpi = 300, fig.align = 'center', out.width = '75%'}
+# Format regression equation and annotations
+reg_eqn <- sprintf(
+  "y = %.2f + %.2f x\n",
+  reg$coefficients[1], reg$coefficients[2]
+)
+r_sq_text <- sprintf("R² = %.2f", r_sq)
+rmse_text <- sprintf("RMSE = %.2f", rmse)
+mae_text <- sprintf("MAE = %.2f", mae)
+
+stats <- paste(r_sq_text, rmse_text, mae_text, sep = "\n")
+
+# Draw Plot
+plot(preds$cp, subopt_avian$cp,
+  type = "n",
+  xlim = c(0, 1), ylim = c(0, 1),
+  xlab = "Predicted",
+  ylab = "Obtained"
+)
+
+# Reference line
+abline(a = 0, b = 1, lwd = 1, lty = 3, col = "grey")
+
+# Points
+points(preds$cp, subopt_avian$cp, las = 1, cex = 1)
+
+# Regression line
+abline(a = reg$coefficients[1], b = reg$coefficients[2], lwd = 2)
+
+# Annotation
+text(x = 0.2, y = 0.85, labels = reg_eqn, cex = 0.85)
+text(x = 0.2, y = 0.75, labels = stats, cex = 0.75)
+```
+
+The RMSE (`r round(rmse, 2)`) and MAE (`r round(mae, 2)`) indicate that the model's predictions deviate from the observed values by approximately 11 to 14 percentage points on average. This reflects a reasonably good fit to the subopt_avian data set and aligns with expectations, given the inherent variability across studies, species, and procedural differences.
+
+## References
+

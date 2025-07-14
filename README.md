@@ -67,9 +67,9 @@ The package includes:
 
 - Built-in datasets — Two curated datasets from Dunn et al. (2024):
 
-  - `subopt_full`: the complete dataset of suboptimal choice studies
+  - `subopt_full`: the complete dataset of suboptimal choice studies.
 
-  - `subopt_avian`: a filtered subset focused on pigeons and starlings
+  - `subopt_avian`: a filtered subset focused on pigeons and starlings.
 
 ## References
 

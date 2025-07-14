@@ -50,38 +50,6 @@ kendall_pred$cp
 kendall_pred$details
 ```
 
-```{r fig.width = 6, fig.height = 4.5, dpi = 300, fig.align = 'center', out.width = '80%', echo = FALSE}
-# # Plot predictions
-# plot(tl_durs, kendall_pred$cp,
-#   type = "n", las = 1,
-#   xlim = c(0, 100), ylim = c(0, 1),
-#   xaxt = "n",
-#   xlab = "Duration of Terminal Links in Seconds (x)",
-#   ylab = "Predicted Choice Proportion"
-# )
-# 
-# axis(1, at = c(1, seq(20, 100, 20)))
-# 
-# abline(h = 0.5, lwd = 1, lty = 3, col = "grey")
-# 
-# lines(tl_durs, kendall_pred$cp,
-#   lwd = 2.5, lty = 1,
-#   col = palette.colors(palette = "Dark 2")[1]
-# )
-# lines(tl_durs, zentall_pred$cp,
-#   lwd = 2.5, lty = 2,
-#   col = palette.colors(palette = "Dark 2")[2]
-# )
-# 
-# legend("bottomright",
-#   legend = c("Kendall (1985)", "Stagner & Zentall (2010)"),
-#   lwd = c(2.5),
-#   lty = c(1, 2),
-#   col = palette.colors(palette = "Dark 2")[1:2],
-#   bty = "n"
-# )
-```
-
 ## Available Data and Profiles
 
 The package includes:
@@ -98,8 +66,8 @@ The package includes:
 
 - Built-in datasets — Two curated datasets from Dunn et al. (2024):
 
-  - `subopt_full`: the complete dataset of suboptimal choice studies
+  - `subopt_full`: the complete dataset of suboptimal choice studies.
 
-  - `subopt_avian`: a filtered subset focused on pigeons and starlings
+  - `subopt_avian`: a filtered subset focused on pigeons and starlings.
 
 ## References

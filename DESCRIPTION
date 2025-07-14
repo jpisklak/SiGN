@@ -1,8 +1,13 @@
 Package: SiGN
 Title: Signals for Good News Model R Package
 Version: 0.0.0.9000
-Authors@R: 
-    person("Jeffrey", "Pisklak", , "pisklak@ualberta.ca", role = c("aut", "cre"))
+Authors@R: c(
+    person("Jeffrey", "Pisklak", , "pisklak@ualberta.ca", role = c("aut", "cre"),
+    comment = c(ORCID = "0000-0002-5465-7978")),
+    person("Roger", "Dunn", role = "aut"),
+    person("Margaret", "McDevitt", role = "aut"),
+    person("Marcia", "Spetch", role = "aut")
+    )
 Description: An R package that implements the Signals for Good News (SiGN) model to compute behavioural predictions in operant choice paradigms.
 License: GPL (>= 3)
 Encoding: UTF-8

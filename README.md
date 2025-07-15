@@ -1,7 +1,7 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# SiGN
+# SiGN <a href="https://jpisklak.github.io/SiGN/"><img src="man/figures/logo.png" align="right" height="139" alt="SiGN website" /></a>
 
 <!-- badges: start -->
 
@@ -9,9 +9,9 @@
 
 ## Overview
 
-SiGN is an R package that implements the Signals for Good News (SiGN)
-model to compute behavioural predictions in common operant choice
-paradigms.
+Designed for researchers in behavioural science, SiGN is an R package
+that applies the Signal for Good News (SiGN) model to predict choice
+behaviour in operant conditioning settings.
 
 ## Installation
 
@@ -25,41 +25,31 @@ pak::pak("jpisklak/SiGN")
 
 ## Usage
 
-``` r
-library(SiGN)
+To get started with the package, begin by reading the [Get
+Started](articles/SiGN.html) article, which introduces the core
+functionality of the SiGN package. Then, explore the following articles
+to see other uses of the package:
 
-# Load built-in profile
-kendall <- choice_params("kendall")
+- [Revisiting Some Classic Studies](articles/squires_fantino.html)
+  - A re-analysis of classic concurrent-chain experiments using SiGN
+    predictions.
+- [Reproducing the Dunn et al. (2024)
+  Analysis](articles/suboptimal_data.html)
+  - A demonstration of how to model suboptimal choice behaviour using
+    published data.
 
-# Generate predictions
-kendall_pred <- SiGN(kendall)
-
-# View Results
-kendall_pred$cp
-#> [1] 0.5083678
-
-# View intermediate calculations
-kendall_pred$details
-#>          cp        r_a    r_b r_a_com r_b_com    Big_T     dr_a     dr_b
-#> 1 0.5083678 0.05555556 0.0625      NA      NA 16.66667 1.938827 1.666667
-#>    dr_avg_a dr_avg_b dr_bonus_a dr_bonus_b  beta_a beta_b sig_a sig_b tr_p_a
-#> 1 0.3333333 1.666667   1.333333          0 1.20412      1  TRUE FALSE    0.5
-#>   tr_p_b s_delta
-#> 1      1       1
-```
-
-## Available Data and Profiles
+## Ready-to-Use Profiles and Suboptimal Choice Data
 
 The package includes:
 
 - Built-in parameter profiles — Predefined setups for well-known
   procedures from the literature, including:
 
-  - `"zentall"` (Stagner and Zentall 2010)
+  - `"zentall"` (Stagner and Zentall, 2010)
 
-  - `"kendall"` (Kendall 1985)
+  - `"kendall"` (Kendall, 1985)
 
-  - `"fantino"` (Fantino 1969)
+  - `"fantino"` (Fantino, 1969)
 
 - Fully vectorised parameter input — All model parameters can be
   customised and passed as vectors, enabling efficient simulation of
@@ -73,31 +63,19 @@ The package includes:
 
 ## References
 
-<div id="refs" class="references csl-bib-body hanging-indent"
-entry-spacing="0">
+Dunn, R. M., Pisklak, J. M., McDevitt, M. A., & Spetch, M. L. (2024).
+Suboptimal choice: A review and quantification of the signal for good
+news (SiGN) model. *Psychological Review*. *131*(1), 58-78.
+<https://doi.org/10.1037/rev0000416>
 
-<div id="ref-Fantino_1969" class="csl-entry">
+Fantino, E. (1969). Choice and rate of reinforcement. *Journal of the
+Experimental Analysis of Behavior*, *12*(5), 723–730.
+<https://doi.org/10.1901/jeab.1969.12-723>
 
-Fantino, E. 1969. “Choice and Rate of Reinforcement.” *Journal of the
-Experimental Analysis of Behavior* 12 (5): 723–30.
-<https://doi.org/10.1901/jeab.1969.12-723>.
+Kendall, S. B. (1985). A further study of choice and percentage
+reinforcement. *Behavioural Processes*, *10*(4), 399–413.
+<https://doi.org/10.1016/0376-6357(85)90040-3>
 
-</div>
-
-<div id="ref-Kendall_1985" class="csl-entry">
-
-Kendall, S. B. 1985. “A Further Study of Choice and Percentage
-Reinforcement.” *Behavioural Processes* 10 (4): 399–413.
-<https://doi.org/10.1016/0376-6357(85)90040-3>.
-
-</div>
-
-<div id="ref-Stagner_Zentall_2010" class="csl-entry">
-
-Stagner, J. P., and T. R. Zentall. 2010. “Suboptimal Choice Behavior by
-Pigeons.” *Psychonomic Bulletin & Review* 17 (3): 412–16.
-<https://doi.org/10.3758/PBR.17.3.412>.
-
-</div>
-
-</div>
+Stagner, J. P., & Zentall, T. R. (2010). Suboptimal choice behavior by
+pigeons. *Psychonomic Bulletin & Review*, *17*(3), 412–416.
+<https://doi.org/10.3758/PBR.17.3.412>

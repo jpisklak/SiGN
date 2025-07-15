@@ -1,5 +1,5 @@
 ---
-title: "Revisiting Fantino (1969) and Squires & Fantino (1971) with the SiGN Model"
+title: "Revisiting Some Classic Studies"
 ---
 
 ```{r, include = FALSE}
@@ -17,7 +17,7 @@ For example, consider the contingency arrangement from Fantino's (1969) seminal 
 
 <br>
 
-```{r, echo=FALSE, out.width='30%', fig.align='center', fig.cap = 'Figure 1. Fantino (1969) Contingencies'}
+```{r, echo=FALSE, out.width='40%', fig.align='center', fig.cap = 'Figure 1. Fantino (1969) Contingencies'}
 knitr::include_graphics("images/fantino_1969.png")
 ```
 
@@ -127,3 +127,9 @@ legend("bottomright",
 ```
 
 The plot shows that the SiGN model reproduces the patterns reported by Squires and Fantino (1971), illustrating how SiGN integrates both delay-reduction and terminal reinforcement rate to account for classic choice behaviour, replicating foundational findings from early concurrent-chain research.
+
+## References
+
+Fantino, E. (1969). Choice and rate of reinforcement. *Journal of the Experimental Analysis of Behavior*, *12*(5), 723–730. https://doi.org/10.1901/jeab.1969.12-723
+
+Squires, N., & Fantino, E. (1971). A model for choice in simple concurrent and concurrent-chains schedules. *Journal of the Experimental Analysis of Behavior*, *15*(1), 27–38. https://doi.org/10.1901/jeab.1971.15-27

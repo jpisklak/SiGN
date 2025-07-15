@@ -1,5 +1,5 @@
 ---
-title: "Reproducing Dunn et al. (2024) Using the SiGN Package"
+title: "Reproducing the Dunn et al. (2024) Analysis"
 ---
 
 ```{r, include = FALSE}
@@ -12,7 +12,7 @@ opts_chunk$set(
 
 Dunn et al. (2024) compiled what an exhaustive collection of studies examining *suboptimal choice*. This dataset is included in the *SiGN* package.
 
-The full, unfiltered dataset can be accessed via `subopt_full`. For model evaluation, however, Dunn et al. focused on a curated subset: studies involving **pigeons** and **starlings**, as these species had the most robust and consistently replicated findings. This filtered data set is available in the *SiGN* package as `subopt_avian`.
+The full, unfiltered dataset can be accessed via `subopt_full`. For model evaluation, however, Dunn et al. (2024) focused on a curated subset: studies involving **pigeons** and **starlings**, as these species had the most robust and consistently replicated findings. This filtered data set is available in the *SiGN* package as `subopt_avian`.
 
 Each row in `subopt_avian` represents a distinct study condition. Many of its columns directly correspond to parameters used by the `choice_params()` function.
 
@@ -52,7 +52,7 @@ mae <- mean(abs(subopt_avian$cp - preds$cp))
 
 The following plot illustrates the correspondence between observed and predicted choice proportions. The dashed line represents perfect prediction (y = x), while the solid line depicts the best-fitting linear regression. The $R^2$ value quantifies the proportion of variance in the observed data accounted for by the SiGN model's predictions. The RMSE (root mean squared error) and MAE (mean absolute error) both reflect the average discrepancy between predicted and observed values, with RMSE placing greater emphasis on larger errors.
 
-```{r fig.width = 5, fig.height = 5, dpi = 300, fig.align = 'center', out.width = '75%'}
+```{r fig.width = 5, fig.height = 5, dpi = 300, fig.align = 'center', out.width = '80%'}
 # Format regression equation and annotations
 reg_eqn <- sprintf(
   "y = %.2f + %.2f x\n",
@@ -89,4 +89,6 @@ text(x = 0.2, y = 0.75, labels = stats, cex = 0.75)
 The RMSE (`r round(rmse, 2)`) and MAE (`r round(mae, 2)`) indicate that the model's predictions deviate from the observed values by approximately 11 to 14 percentage points on average. This reflects a reasonably good fit to the subopt_avian data set and aligns with expectations, given the inherent variability across studies, species, and procedural differences.
 
 ## References
+
+Dunn, R. M., Pisklak, J. M., McDevitt, M. A., & Spetch, M. L. (2024). Suboptimal choice: A review and quantification of the signal for good news (SiGN) model. *Psychological Review*. *131*(1), 58-78. https://doi.org/10.1037/rev0000416
 

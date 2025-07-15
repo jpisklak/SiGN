@@ -3,7 +3,7 @@
 \docType{data}
 \name{subopt_full}
 \alias{subopt_full}
-\title{"Suboptimal" Choice Data from Dunn et al. (2023)}
+\title{Suboptimal Choice Data from Dunn et al. (2024)}
 \format{
 A data frame with 128 rows and 43 columns:
 \describe{
@@ -67,12 +67,12 @@ Framework}. \url{https://doi.org/10.17605/OSF.IO/39QTJ}
 subopt_full
 }
 \description{
-This data set contains "suboptimal" choice data from multiple
-published studies. The data was compiled by Dunn et al. (2023).
+This data set contains suboptimal choice data from multiple
+published studies. The data was compiled by Dunn et al. (2024).
 }
 \details{
 This data set reflects a merged and corrected version of the three
-separate data files originally provided by Dunn et al. (2023) via the
+separate data files originally provided by Dunn et al. (2024) via the
 Open Science Framework (OSF). The original files supplied to the OSF
 contained some numeric values that were inadvertently over-rounded. These
 values have been corrected in this version to restore their intended

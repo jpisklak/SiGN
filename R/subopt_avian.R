@@ -1,8 +1,8 @@
-#' Subset of Avian "Suboptimal" Choice Data from Dunn et al. (2023)
+#' Subset of Avian Suboptimal Choice Data from Dunn et al. (2024)
 #'
-#' This dataset contains compiled avian "suboptimal" choice data (pigeons and starlings)
+#' This dataset contains compiled avian suboptimal choice data (pigeons and starlings)
 #' from multiple published studies that meet the inclusion criteria outlined in
-#' Dunn et al. (2023). The subset was selected for model evaluation.
+#' Dunn et al. (2024). The subset was selected for model evaluation.
 #'
 #' @format A data frame with 128 rows and 31 columns:
 #' \describe{
@@ -36,7 +36,7 @@
 #'
 #' *Lots of FE:* FE trial following every suboptimal blackout; At least 50% of all trials were FE.
 #'
-#' @source Dunn, R. M., Pisklak, J. M., McDevitt, M. A., & Spetch, M. L. (2023).
+#' @source Dunn, R. M., Pisklak, J. M., McDevitt, M. A., & Spetch, M. L. (2024).
 #' Suboptimal choice: A review and quantification of the signal for good news
 #' (SiGN) model. *Psychological Review*. *131*(1), 58-78.
 #' \url{https://doi.org/10.1037/rev0000416}

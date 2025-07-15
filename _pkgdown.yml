@@ -1,4 +1,5 @@
 url: https://jpisklak.github.io/SiGN/
+destination: docs
 template:
   bootstrap: 5
 

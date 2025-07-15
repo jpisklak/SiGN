@@ -1,7 +1,5 @@
 ---
 title: "Reproducing Dunn et al. (2024) Using the SiGN Package"
-resource_paths: ["bibTeX"]
-bibliography: bibTeX/refs.bib
 ---
 
 ```{r, include = FALSE}
@@ -12,7 +10,7 @@ opts_chunk$set(
 )
 ```
 
-@Dunn_et_al_2024 compiled what an exhaustive collection of studies examining *suboptimal choice*. This dataset is included in the *SiGN* package.
+Dunn et al. (2024) compiled what an exhaustive collection of studies examining *suboptimal choice*. This dataset is included in the *SiGN* package.
 
 The full, unfiltered dataset can be accessed via `subopt_full`. For model evaluation, however, Dunn et al. focused on a curated subset: studies involving **pigeons** and **starlings**, as these species had the most robust and consistently replicated findings. This filtered data set is available in the *SiGN* package as `subopt_avian`.
 

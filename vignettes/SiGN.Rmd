@@ -1,8 +1,6 @@
 ---
-title: "Introduction to the SiGN Model R Package"
+title: "SiGN"
 output: rmarkdown::html_vignette
-resource_paths: ["bibTeX"]
-bibliography: bibTeX/refs.bib
 vignette: >
   %\VignetteIndexEntry{SiGN}
   %\VignetteEngine{knitr::rmarkdown}
@@ -10,8 +8,6 @@ vignette: >
 ---
 
 ```{r, include = FALSE}
-options(rmarkdown.html_vignette.check_title = FALSE)
-
 knitr::opts_chunk$set(
   collapse = TRUE,
   comment = "#>"
@@ -24,11 +20,12 @@ knitr::opts_chunk$set(
 
 ## Background
 
-Several decades ago, researchers discovered that operant contingencies can be arranged such that pigeons (*Columba livia*) reliably develop a preference for options that yield less food over those that provide more [@Kendall_1974]. This behaviour—commonly referred to as "suboptimal" choice—results in a systematic reduction in overall food intake under controlled laboratory conditions.
+Several decades ago, researchers discovered that operant contingencies can be arranged such that pigeons (*Columba livia*) reliably develop a preference for options that yield less food over those that provide more 
+(Kendall, 1974). This behaviour—commonly referred to as "suboptimal" choice—results in a systematic reduction in overall food intake under controlled laboratory conditions.
 
 The SiGN model explains this puzzling pattern (and other choice behaviours in concurrent-chain procedures) by proposing that choice is conditionally reinforced when stimuli signal a reduction in the delay to food.
 
-For a detailed description of the model and its calculations, see @Dunn_et_al_2024.
+For a detailed description of the model and its calculations, see Dunn et al. (2024).
 
 ## Assumptions
 
@@ -73,9 +70,9 @@ There are two steps to generating predictions using the SiGN model:
 
 The model uses parameters from a concurrent-chains procedure to generate an a priori prediction of choice behaviour. While the required list of arguments can be created manually, the helper function `choice_params()` simplifies this process and includes built-in checks to ensure valid input.
 
-### Example: Stagner & Zentall -@Stagner_Zentall_2010
+### Example: Stagner & Zentall (2010)
 
-To illustrate, consider the experimental setup from Stagner & Zentall -@Stagner_Zentall_2010, shown in Figure 1.
+To illustrate, consider the experimental setup from Stagner & Zentall (2010), shown in Figure 1.
 
 <br>
 
@@ -85,7 +82,7 @@ knitr::include_graphics("images/stag_zen_2010.png")
 
 <br>
 
-This procedure involves 16 parameters to describe the contingency, plus 2 additional parameters specific to the SiGN model—making a total of 18. To speed up the process of entering these values, the `choice_params()` function includes several pre-defined profiles: `"zentall"` [@Stagner_Zentall_2010], `"kendall"` [@Kendall_1985], and `"fantino"` [@Fantino_1969].
+This procedure involves 16 parameters to describe the contingency, plus 2 additional parameters specific to the SiGN model—making a total of 18. To speed up the process of entering these values, the `choice_params()` function includes several pre-defined profiles: `"zentall"`, `"kendall"`, and `"fantino"`.
 
 The `"zentall"` profile matches the setup shown in Figure 1. You can view the full set of parameters by setting `display_params = TRUE`:
 
@@ -141,7 +138,7 @@ mod <- SiGN(params)
 mod$details
 ```
 
-An in-depth explanation of the `$details` output is beyond the scope of this document. Readers interested in the theoretical rationale behind these terms are referred to @Dunn_et_al_2024. However, a brief description of each component is provided in Table 2 below.
+An in-depth explanation of the `$details` output is beyond the scope of this document. Readers interested in the theoretical rationale behind these terms are referred to Dunn et al. 2024. However, a brief description of each component is provided in Table 2 below.
 
 
 <br>

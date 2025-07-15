@@ -12,9 +12,9 @@ opts_chunk$set(
 
 Dunn et al. (2024) compiled an exhaustive collection of studies examining *suboptimal choice*. This dataset is included in the SiGN package.
 
-The complete, unfiltered data set is available via `subopt_full`. For model evaluation, however, Dunn et al. (2024) focused on a curated subset of studies involving pigeons and starlings—species that, particularly in the case of pigeons, were the most extensively studied and yielded the most robust and consistently replicated findings. This filtered dat aset is provided in the SiGN package as `subopt_avian`.
+The complete, unfiltered data set is available via `subopt_full`. For model evaluation, however, Dunn et al. (2024) focused on a curated subset of studies involving pigeons and starlings—species that, particularly in the case of pigeons, were the most extensively studied and yielded the most robust and consistently replicated findings. This filtered data set is provided in the SiGN package as `subopt_avian`.
 
-Each row in `subopt_avian` represents a distinct study condition. Many of its columns, specifically 9 through 24, directly correspond to parameters used by the `choice_params()` function.
+Each row in `subopt_avian` represents a distinct study condition. Many of its columns, specifically 9 through 24, directly correspond to parameters used by the `choice_params()` function (for specifics, consult the `subopt_avian` R documentation).
 
 ```{r}
 library(SiGN)

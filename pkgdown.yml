@@ -2,10 +2,10 @@ pandoc: 3.1.11
 pkgdown: 2.1.3
 pkgdown_sha: ~
 articles:
-  articles/fantino_ex: fantino_ex.html
   SiGN: SiGN.html
+  articles/squires_fantino: squires_fantino.html
   articles/suboptimal_data: suboptimal_data.html
-last_built: 2025-07-15T04:52Z
+last_built: 2025-07-15T06:23Z
 urls:
   reference: https://jpisklak.github.io/SiGN/reference
   article: https://jpisklak.github.io/SiGN/articles

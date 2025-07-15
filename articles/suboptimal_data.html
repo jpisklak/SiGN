@@ -5,12 +5,17 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<title>Reproducing Dunn et al. (2024) Using the SiGN Package • SiGN</title>
+<title>Reproducing the Dunn et al. (2024) Analysis • SiGN</title>
+<!-- favicons --><link rel="icon" type="image/png" sizes="96x96" href="../favicon-96x96.png">
+<link rel="icon" type="”image/svg+xml”" href="../favicon.svg">
+<link rel="apple-touch-icon" sizes="180x180" href="../apple-touch-icon.png">
+<link rel="icon" sizes="any" href="../favicon.ico">
+<link rel="manifest" href="../site.webmanifest">
 <script src="../deps/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="../deps/bootstrap-5.3.1/bootstrap.min.css" rel="stylesheet">
 <script src="../deps/bootstrap-5.3.1/bootstrap.bundle.min.js"></script><link href="../deps/font-awesome-6.5.2/css/all.min.css" rel="stylesheet">
 <link href="../deps/font-awesome-6.5.2/css/v4-shims.min.css" rel="stylesheet">
-<script src="../deps/headroom-0.11.0/headroom.min.js"></script><script src="../deps/headroom-0.11.0/jQuery.headroom.min.js"></script><script src="../deps/bootstrap-toc-1.0.1/bootstrap-toc.min.js"></script><script src="../deps/clipboard.js-2.0.11/clipboard.min.js"></script><script src="../deps/search-1.0.0/autocomplete.jquery.min.js"></script><script src="../deps/search-1.0.0/fuse.min.js"></script><script src="../deps/search-1.0.0/mark.min.js"></script><!-- pkgdown --><script src="../pkgdown.js"></script><meta property="og:title" content="Reproducing Dunn et al. (2024) Using the SiGN Package">
+<script src="../deps/headroom-0.11.0/headroom.min.js"></script><script src="../deps/headroom-0.11.0/jQuery.headroom.min.js"></script><script src="../deps/bootstrap-toc-1.0.1/bootstrap-toc.min.js"></script><script src="../deps/clipboard.js-2.0.11/clipboard.min.js"></script><script src="../deps/search-1.0.0/autocomplete.jquery.min.js"></script><script src="../deps/search-1.0.0/fuse.min.js"></script><script src="../deps/search-1.0.0/mark.min.js"></script><!-- pkgdown --><script src="../pkgdown.js"></script><meta property="og:title" content="Reproducing the Dunn et al. (2024) Analysis">
 </head>
 <body>
     <a href="#main" class="visually-hidden-focusable">Skip to contents</a>
@@ -34,8 +39,8 @@
 <li class="active nav-item dropdown">
   <button class="nav-link dropdown-toggle" type="button" id="dropdown-articles" data-bs-toggle="dropdown" aria-expanded="false" aria-haspopup="true">Articles</button>
   <ul class="dropdown-menu" aria-labelledby="dropdown-articles">
-<li><a class="dropdown-item" href="../articles/fantino_ex.html">Revisiting Fantino (1969) and Squires &amp; Fantino (1971) with the SiGN Model</a></li>
-    <li><a class="dropdown-item" href="../articles/suboptimal_data.html">Reproducing Dunn et al. (2024) Using the SiGN Package</a></li>
+<li><a class="dropdown-item" href="../articles/squires_fantino.html">Revisiting Some Classic Studies</a></li>
+    <li><a class="dropdown-item" href="../articles/suboptimal_data.html">Reproducing the Dunn et al. (2024) Analysis</a></li>
   </ul>
 </li>
       </ul>
@@ -56,8 +61,7 @@
 
 <div class="row">
   <main id="main" class="col-md-9"><div class="page-header">
-
-      <h1>Reproducing Dunn et al. (2024) Using the SiGN Package</h1>
+      <img src="../logo.png" class="logo" alt=""><h1>Reproducing the Dunn et al. (2024) Analysis</h1>
             
       
       <small class="dont-index">Source: <a href="https://github.com/jpisklak/SiGN/blob/master/vignettes/articles/suboptimal_data.Rmd" class="external-link"><code>vignettes/articles/suboptimal_data.Rmd</code></a></small>
@@ -71,7 +75,7 @@ examining <em>suboptimal choice</em>. This dataset is included in the
 <em>SiGN</em> package.</p>
 <p>The full, unfiltered dataset can be accessed via
 <code>subopt_full</code>. For model evaluation, however, Dunn et
-al. focused on a curated subset: studies involving
+al. (2024) focused on a curated subset: studies involving
 <strong>pigeons</strong> and <strong>starlings</strong>, as these
 species had the most robust and consistently replicated findings. This
 filtered data set is available in the <em>SiGN</em> package as
@@ -158,7 +162,7 @@ greater emphasis on larger errors.</p>
 <span><span class="co"># Annotation</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/graphics/text.html" class="external-link">text</a></span><span class="op">(</span>x <span class="op">=</span> <span class="fl">0.2</span>, y <span class="op">=</span> <span class="fl">0.85</span>, labels <span class="op">=</span> <span class="va">reg_eqn</span>, cex <span class="op">=</span> <span class="fl">0.85</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/graphics/text.html" class="external-link">text</a></span><span class="op">(</span>x <span class="op">=</span> <span class="fl">0.2</span>, y <span class="op">=</span> <span class="fl">0.75</span>, labels <span class="op">=</span> <span class="va">stats</span>, cex <span class="op">=</span> <span class="fl">0.75</span><span class="op">)</span></span></code></pre></div>
-<p><img src="suboptimal_data_files/figure-html/unnamed-chunk-5-1.png" width="75%" style="display: block; margin: auto;"></p>
+<p><img src="suboptimal_data_files/figure-html/unnamed-chunk-5-1.png" width="80%" style="display: block; margin: auto;"></p>
 <p>The RMSE (0.14) and MAE (0.11) indicate that the model’s predictions
 deviate from the observed values by approximately 11 to 14 percentage
 points on average. This reflects a reasonably good fit to the
@@ -167,6 +171,10 @@ variability across studies, species, and procedural differences.</p>
 <div class="section level2">
 <h2 id="references">References<a class="anchor" aria-label="anchor" href="#references"></a>
 </h2>
+<p>Dunn, R. M., Pisklak, J. M., McDevitt, M. A., &amp; Spetch, M. L.
+(2024). Suboptimal choice: A review and quantification of the signal for
+good news (SiGN) model. <em>Psychological Review</em>. <em>131</em>(1),
+58-78. <a href="https://doi.org/10.1037/rev0000416" class="external-link uri">https://doi.org/10.1037/rev0000416</a></p>
 </div>
   </main>
 </div>

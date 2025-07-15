@@ -68,10 +68,13 @@
 #' minutes, hours, etc.). However, units need to be
 #' consistent across all link durations.
 #'
-#' Conventionally, concurrent-chain paradigms have measured time in seconds.
-#' The default value of `s_delta` is chosen on the basis of that convention.
-#' However, given the temporal relatively of the SiGN model, if other units are
-#' used, it may be prudent to adjust `s_delta` accordingly.
+#' *s_delta*
+#'
+#' Conventionally, concurrent-chains paradigms have measured time in seconds
+#' with very easily discriminable stimuli. The default value of `s_delta`
+#' reflects this convention. However, if shorter or longer temporal units are
+#' used, or the stimuli takes considerable time to be discriminated, it may be
+#' prudent to adjust `s_delta` accordingly.
 #'
 #' *Signal Discrimination:*
 #'

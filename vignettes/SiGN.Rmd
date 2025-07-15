@@ -23,7 +23,7 @@ knitr::opts_chunk$set(
 Several decades ago, researchers discovered that operant contingencies can be arranged such that pigeons (*Columba livia*) reliably develop a preference for options that yield less food over those that provide more 
 (Kendall, 1974). This behaviour—commonly referred to as "suboptimal" choice—results in a systematic reduction in overall food intake under controlled laboratory conditions.
 
-The SiGN model explains this puzzling pattern (and other choice behaviours in concurrent-chain procedures) by proposing that choice is conditionally reinforced when stimuli signal a reduction in the delay to food.
+The SiGN model explains this puzzling pattern (and other choice behaviours in concurrent-chains procedures) by proposing that choice is conditionally reinforced when stimuli signal a reduction in the delay to food.
 
 For a detailed description of the model and its calculations, see Dunn et al. (2024).
 
@@ -33,9 +33,11 @@ This package assumes a working knowledge of:
 
 - Operant conditioning
 - Schedules of reinforcement
-- Concurrent-chain procedures
+- Concurrent and concurrent-chains procedures
 
 If terms like "Matching Law" or "Delay-Reduction Hypothesis" are unfamiliar, the outputs provided by this package may be difficult to interpret.
+
+A good understanding of R is also required to follow the examples and make full use of the package's functionality.
 
 ## Common Abbreviations
 
@@ -48,9 +50,7 @@ The following abbreviations are used throughout the package:
 - `tr`: terminal reinforcement
 - `dr`: delay-reduction
 
-In this context, *terminal reinforcement* refers to the stimulus delivered at the end of a chained schedule. While this is often a *primary* (unconditional) reinforcer such as food, the SiGN model does not require it to be so—it could also be a *secondary* (conditional) reinforcer. For this reason, the more general term *terminal reinforcement* is preferred.
-
-> (Notably, it is preferred by the author of this R package—but not his colleagues 😁)
+FYI: In this context, *terminal reinforcement* refers to the stimulus delivered at the end of a chained schedule. While this is often a *primary* (unconditional) reinforcer such as food, the SiGN model does not require it to be so—it could also be a *secondary* (conditional) reinforcer. For this reason, the more general term *terminal reinforcement* is used by the package.
 
 ## Installation
 
@@ -68,11 +68,11 @@ There are two steps to generating predictions using the SiGN model:
 1. Use `choice_params()` to create a list of model parameters.
 2. Pass this list to `SiGN()` to obtain predictions.
 
-The model uses parameters from a concurrent-chains procedure to generate an a priori prediction of choice behaviour. While the required list of arguments can be created manually, the helper function `choice_params()` simplifies this process and includes built-in checks to ensure valid input.
+The SiGN model uses parameters from a concurrent-chains procedure to generate an a priori prediction of choice behaviour. While the required list of arguments can be created manually, the helper function `choice_params()` simplifies this process and includes built-in checks to ensure valid input.
 
 ### Example: Stagner & Zentall (2010)
 
-To illustrate, consider the experimental setup from Stagner & Zentall (2010), shown in Figure 1.
+To illustrate, consider the contingencies described by Stagner and Zentall (2010), illustrated in Figure 1.
 
 <br>
 
@@ -82,7 +82,7 @@ knitr::include_graphics("images/stag_zen_2010.png")
 
 <br>
 
-This procedure involves 16 parameters to describe the contingency, plus 2 additional parameters specific to the SiGN model—making a total of 18. To speed up the process of entering these values, the `choice_params()` function includes several pre-defined profiles: `"zentall"` (Stagner & Zentall, 2010), `"kendall"` (Kendall, 1985), and `"fantino"` (Fantino, 1969).
+This procedure involves 16 distinct parameters, plus 2 additional parameters specific to the SiGN model—making a total of 18 values that need to be input into the `SiGN()` function. To speed up the process of entering these values, the `choice_params()` function includes several pre-defined profiles: `"zentall"` (Stagner & Zentall, 2010), `"kendall"` (Kendall, 1985), and `"fantino"` (Fantino, 1969).
 
 The `"zentall"` profile matches the setup shown in Figure 1. You can view the full set of parameters by setting `display_params = TRUE`:
 
@@ -121,9 +121,7 @@ knitr::kable(
 )
 ```
 
-<br>
-
-In most cases, `s_delta` and `beta_toggle` do not require user modification.
+In most cases, `s_delta` and `beta_toggle` do not require user modification (see `choice_params()` R documentation).
 
 Once you have your parameter list, you can generate a prediction by passing it to the `SiGN()` function:
 
@@ -139,7 +137,6 @@ mod$details
 ```
 
 An in-depth explanation of the `$details` output is beyond the scope of this document. Readers interested in the theoretical rationale behind these terms are referred to Dunn et al. 2024. However, a brief description of each component is provided in Table 2 below.
-
 
 <br>
 
@@ -180,7 +177,7 @@ knitr::kable(
 
 The `SiGN()` function supports vectorised input, allowing users to generate multiple predictions simultaneously. This is particularly useful for examining how predicted choice changes as a function of a single parameter while holding others constant.
 
-As an example, suppose we want to evaluate how increasing the duration of the initial links affects choice behaviour. This can be done by supplying a sequence of values to the `il_dur_a` and `il_dur_b` arguments in `choice_params()`. The rest of the parameters remain fixed according to the `"zentall"` profile.
+As an example, suppose we want to evaluate how increasing the duration of the initial links affects choice behaviour. This can be done by supplying a sequence of values to the `il_dur_a` and `il_dur_b` arguments in `choice_params()`. The rest of the parameters will remain fixed according to the `"zentall"` profile, while these two are overridden.
 
 ```{r fig.width = 6, fig.height = 4.5, dpi = 300, fig.align = 'center', out.width = '75%'}
 # Generate list of parameters
@@ -207,8 +204,7 @@ abline(h = 0.5, lwd = 1, lty = 3, col = "grey")
 
 <br>
 
-This approach can be extended to explore the effects of any parameter (or combination of parameters) on predicted choice. Internally, the model will recycle or align vector lengths as needed, but users should verify that vector lengths are consistent or intended for recycling to avoid unexpected behaviour.
-
+This approach can be extended to explore the effects of any parameter (or combination of parameters) on predicted choice. Internally, the function will recycle or align vector lengths as needed, but users should verify that values are as they intended to avoid any unexpected behaviour (hence why the message about recycling appears in the console).
 
 ## References
 

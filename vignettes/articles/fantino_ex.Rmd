@@ -1,6 +1,6 @@
 ---
 title: "Revisiting Fantino (1969) and Squires & Fantino (1971) with the SiGN Model"
-bibliography: ../bibTeX/refs.bib
+bibliography: bibTeX/refs.bib
 ---
 
 ```{r, include = FALSE}

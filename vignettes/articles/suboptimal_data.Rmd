@@ -1,6 +1,6 @@
 ---
 title: "Reproducing Dunn et al. (2024) Using the SiGN Package"
-bibliography: ../bibTeX/refs.bib
+bibliography: bibTeX/refs.bib
 ---
 
 ```{r, include = FALSE}

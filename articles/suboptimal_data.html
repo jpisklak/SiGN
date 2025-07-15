@@ -70,19 +70,20 @@
 
     
     
-<p>Dunn et al. (2024) compiled what an exhaustive collection of studies
+<p>Dunn et al. (2024) compiled an exhaustive collection of studies
 examining <em>suboptimal choice</em>. This dataset is included in the
-<em>SiGN</em> package.</p>
-<p>The full, unfiltered dataset can be accessed via
+SiGN package.</p>
+<p>The complete, unfiltered data set is available via
 <code>subopt_full</code>. For model evaluation, however, Dunn et
-al. (2024) focused on a curated subset: studies involving
-<strong>pigeons</strong> and <strong>starlings</strong>, as these
-species had the most robust and consistently replicated findings. This
-filtered data set is available in the <em>SiGN</em> package as
-<code>subopt_avian</code>.</p>
+al. (2024) focused on a curated subset of studies involving pigeons and
+starlings—species that, particularly in the case of pigeons, were the
+most extensively studied and yielded the most robust and consistently
+replicated findings. This filtered dat aset is provided in the SiGN
+package as <code>subopt_avian</code>.</p>
 <p>Each row in <code>subopt_avian</code> represents a distinct study
-condition. Many of its columns directly correspond to parameters used by
-the <code><a href="../reference/choice_params.html">choice_params()</a></code> function.</p>
+condition. Many of its columns, specifically 9 through 24, directly
+correspond to parameters used by the <code><a href="../reference/choice_params.html">choice_params()</a></code>
+function.</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/jpisklak/SiGN" class="external-link">SiGN</a></span><span class="op">)</span></span>
 <span></span>
@@ -100,7 +101,9 @@ the <code><a href="../reference/choice_params.html">choice_params()</a></code> f
 choice proportion reported by each study. These values can be directly
 compared to predictions from the SiGN model.</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="co"># Extract relevant parameter columns (cols 9–24 align with choice_params())</span></span>
+<code class="sourceCode R"><span><span class="co"># Model Predictions</span></span>
+<span><span class="co">#-------------------------------------------------------------------------------</span></span>
+<span><span class="co"># Extract relevant parameter columns (cols 9–24 align with choice_params())</span></span>
 <span><span class="va">data_cols</span> <span class="op">&lt;-</span> <span class="va">subopt_avian</span><span class="op">[</span><span class="fl">9</span><span class="op">:</span><span class="fl">24</span><span class="op">]</span></span>
 <span></span>
 <span><span class="co"># Construct model input list</span></span>
@@ -108,9 +111,21 @@ compared to predictions from the SiGN model.</p>
 <span></span>
 <span><span class="co"># Generate model predictions</span></span>
 <span><span class="va">preds</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/SiGN.html">SiGN</a></span><span class="op">(</span><span class="va">params</span><span class="op">)</span><span class="op">$</span><span class="va">details</span></span></code></pre></div>
+<p>Before plotting the comparisons, it will be helpful to first compute
+some additional statistics to aid in model assessment:</p>
+<ol style="list-style-type: decimal">
+<li><p>An
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>R</mi><mn>2</mn></msup><annotation encoding="application/x-tex">R^2</annotation></semantics></math>
+value to quantify the proportion of variance in the observed data
+accounted for by the SiGN model’s predictions.</p></li>
+<li><p>The RMSE (root mean squared error) and MAE (mean absolute error),
+which both reflect the average discrepancy between predicted and
+observed values, with RMSE placing greater emphasis on larger
+errors.</p></li>
+</ol>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="co"># Model Assessment:</span></span>
-<span></span>
+<code class="sourceCode R"><span><span class="co"># Model Assessment</span></span>
+<span><span class="co">#-------------------------------------------------------------------------------</span></span>
 <span><span class="co"># Fit a linear model comparing observed vs predicted</span></span>
 <span><span class="va">reg</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/lm.html" class="external-link">lm</a></span><span class="op">(</span><span class="va">subopt_avian</span><span class="op">$</span><span class="va">cp</span> <span class="op">~</span> <span class="va">preds</span><span class="op">$</span><span class="va">cp</span><span class="op">)</span></span>
 <span><span class="va">r_sq</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/summary.html" class="external-link">summary</a></span><span class="op">(</span><span class="va">reg</span><span class="op">)</span><span class="op">$</span><span class="va">r.squared</span></span>
@@ -122,16 +137,12 @@ compared to predictions from the SiGN model.</p>
 <span><span class="va">mae</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html" class="external-link">mean</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/MathFun.html" class="external-link">abs</a></span><span class="op">(</span><span class="va">subopt_avian</span><span class="op">$</span><span class="va">cp</span> <span class="op">-</span> <span class="va">preds</span><span class="op">$</span><span class="va">cp</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <p>The following plot illustrates the correspondence between observed
 and predicted choice proportions. The dashed line represents perfect
-prediction (y = x), while the solid line depicts the best-fitting linear
-regression. The
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>R</mi><mn>2</mn></msup><annotation encoding="application/x-tex">R^2</annotation></semantics></math>
-value quantifies the proportion of variance in the observed data
-accounted for by the SiGN model’s predictions. The RMSE (root mean
-squared error) and MAE (mean absolute error) both reflect the average
-discrepancy between predicted and observed values, with RMSE placing
-greater emphasis on larger errors.</p>
+prediction (y ~ x), while the solid line depicts the best-fitting linear
+regression.</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="co"># Format regression equation and annotations</span></span>
+<code class="sourceCode R"><span><span class="co"># Plot of Results</span></span>
+<span><span class="co">#-------------------------------------------------------------------------------</span></span>
+<span><span class="co"># Format regression equation and annotations</span></span>
 <span><span class="va">reg_eqn</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/sprintf.html" class="external-link">sprintf</a></span><span class="op">(</span></span>
 <span>  <span class="st">"y = %.2f + %.2f x\n"</span>,</span>
 <span>  <span class="va">reg</span><span class="op">$</span><span class="va">coefficients</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span>, <span class="va">reg</span><span class="op">$</span><span class="va">coefficients</span><span class="op">[</span><span class="fl">2</span><span class="op">]</span></span>
@@ -166,8 +177,9 @@ greater emphasis on larger errors.</p>
 <p>The RMSE (0.14) and MAE (0.11) indicate that the model’s predictions
 deviate from the observed values by approximately 11 to 14 percentage
 points on average. This reflects a reasonably good fit to the
-subopt_avian data set and aligns with expectations, given the inherent
-variability across studies, species, and procedural differences.</p>
+<code>subopt_avian</code> data set and aligns with expectations, given
+the inherent variability across studies, species, and procedural
+differences.</p>
 <div class="section level2">
 <h2 id="references">References<a class="anchor" aria-label="anchor" href="#references"></a>
 </h2>

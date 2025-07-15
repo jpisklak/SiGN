@@ -13,14 +13,12 @@
 
 <td style="vertical-align: middle; padding-left: 15px;">
 
-<h1>
+<!-- <h2>**SiGN**</h2> -->
 
-SiGN
-</h1>
-
+<span style="font-size: 200%; font-weight: bold;">SiGN</span>
 <p>
 
-<em>Signal for Good News Model in R</em>
+<em>The Signal for Good News Model in R</em>
 </p>
 
 </td>

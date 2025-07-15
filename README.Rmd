@@ -13,7 +13,21 @@ knitr::opts_chunk$set(
 )
 ```
 
-# SiGN <a href="https://jpisklak.github.io/SiGN/"><img src="man/figures/logo.png" align="right" height="139" alt="SiGN website" /></a>
+<table>
+  <tr>
+    <td style="vertical-align: middle;">
+      <a href="https://jpisklak.github.io/SiGN/">
+      <img src="man/figures/logo.png" width="120"/>
+      </a>
+    </td>
+    <td style="vertical-align: middle; padding-left: 15px;">
+      <h1>SiGN</h1>
+      <p><em>The Signal for Good News Model in R</em></p>
+    </td>
+  </tr>
+</table>
+
+<!-- # SiGN <a href="https://jpisklak.github.io/SiGN/"><img src="man/figures/logo.png" align="right" height="139" alt="SiGN website" /></a> -->
 
 <!-- badges: start -->
 <!-- badges: end -->
@@ -41,9 +55,15 @@ To get started with the package, begin by reading the [Get Started](articles/SiG
 - [Reproducing the Dunn et al. (2024) Analysis](articles/suboptimal_data.html)
   - A demonstration of how to model suboptimal choice behaviour using published data.
 
-## Ready-to-Use Profiles and Suboptimal Choice Data
+## Ready-to-Use Suboptimal Choice Data and Profiles
 
 The package includes:
+
+- Built-in datasets — Two curated datasets from Dunn et al. (2024):
+
+  - `subopt_full`: the complete dataset of suboptimal choice studies.
+
+  - `subopt_avian`: a filtered subset focused on pigeons and starlings.
 
 - Built-in parameter profiles — Predefined setups for well-known procedures from the literature, including:
 
@@ -54,12 +74,6 @@ The package includes:
   - `"fantino"` (Fantino, 1969)
 
 - Fully vectorised parameter input — All model parameters can be customised and passed as vectors, enabling efficient simulation of multiple conditions.
-
-- Built-in datasets — Two curated datasets from Dunn et al. (2024):
-
-  - `subopt_full`: the complete dataset of suboptimal choice studies.
-
-  - `subopt_avian`: a filtered subset focused on pigeons and starlings.
 
 ## References
 

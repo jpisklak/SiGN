@@ -70,26 +70,21 @@
 
     
     
-<div class="section level2">
-<h2 id="reproducing-predictions-from-fantino-1969">Reproducing Predictions from Fantino (1969)<a class="anchor" aria-label="anchor" href="#reproducing-predictions-from-fantino-1969"></a>
-</h2>
+<figure style="float: left; padding: 10px; width: 40%;"><img src="images/fantino_1969.png" style="width: 100%;"><figcaption style="text-align: center;"><strong>Figure 1.</strong> Fantino (1969) contingencies
+</figcaption></figure><p><br></p>
 <p>A useful feature of the SiGN model is its ability to generate
 predictions for classic concurrent-chain procedures—that is, setups
 involving a single, deterministic terminal link and outcome for each
 alternative. These simpler arrangements were commonly used in early
 demonstrations of the delay-reduction hypothesis and choice behaviour
 more generally.</p>
-<p>For example, consider the contingency arrangement from Fantino’s
-(1969) seminal paper, which was designed to illustrate how delay
-reduction can conditionally reinforce choice behaviour (Fantino,
-1969).</p>
-<p><br></p>
-<div class="figure" style="text-align: center">
-<img src="images/fantino_1969.png" alt="Figure 1. Fantino (1969) Contingencies" width="40%"><p class="caption">
-Figure 1. Fantino (1969) Contingencies
-</p>
-</div>
-<p><br></p>
+<div class="section level2">
+<h2 id="reproducing-predictions-from-fantino-1969">Reproducing Predictions from Fantino (1969)<a class="anchor" aria-label="anchor" href="#reproducing-predictions-from-fantino-1969"></a>
+</h2>
+<p>For example, consider the contingencies used in Fantino’s (1969)
+seminal paper (diagrammed in Figure 1), which were designed to
+illustrate how delay reduction can conditionally reinforce choice
+behaviour (Fantino, 1969).</p>
 <p>In this setup, each initial link leads to a single terminal link, and
 terminal reinforcement is always delivered once the schedule
 requirements are met. The parameters required to model this arrangement
@@ -118,7 +113,6 @@ zero (i.e., <code>tl_dur_a2</code>, <code>tl_dur_b2</code>,
 <p>… we can see that we obtain a choice proportion of 0.9, which is what
 Fantino predicted with his original delay reduction hypothesis (Fantino,
 1969).</p>
-<p><br></p>
 </div>
 <div class="section level2">
 <h2 id="reproducing-predictions-from-squires-and-fantino-1971">Reproducing Predictions from Squires and Fantino (1971)<a class="anchor" aria-label="anchor" href="#reproducing-predictions-from-squires-and-fantino-1971"></a>
@@ -129,13 +123,13 @@ the approach proposed by Squires and Fantino (1971), in which delay
 reduction is multiplied by the rate of terminal reinforcement. In
 classic concurrent-chain arrangements—with a single, deterministic
 terminal link and outcome per alternative—this formulation yields
-predictions that align closely with theirs.</p>
+predictions that align exactly with theirs.</p>
 <p>Using the SiGN package, we can reproduce the model predictions
 presented in Figure 1 of Squires and Fantino’s (1971) paper. These
 predictions illustrate how changes to the initial link (IL) duration
 influence choice behaviour in classic concurrent-chain arrangements.</p>
-<p>In the first example, Squires and Fantino compared chains with
-identical terminal links (TLs) but different fixed IL durations: Chain
+<p>In one example, Squires and Fantino compared chains with identical
+terminal links (TLs) but different fixed IL durations: Chain
 VI<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>x</mi><annotation encoding="application/x-tex">x</annotation></semantics></math>
 VI30 versus Chain
 VI<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>x</mi><annotation encoding="application/x-tex">x</annotation></semantics></math>
@@ -146,25 +140,17 @@ VI90.</p>
 <span>  il_dur_a <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html" class="external-link">seq</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">600</span>, <span class="fl">0.1</span><span class="op">)</span>,</span>
 <span>  il_dur_b <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html" class="external-link">seq</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">600</span>, <span class="fl">0.1</span><span class="op">)</span></span>
 <span><span class="op">)</span></span></code></pre></div>
-<p>In the second example, the comparison is between Chain VI60 VI15 and
+<p>In another example, the comparison is between Chain VI60 VI15 and
 Chain
 VI<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>x</mi><annotation encoding="application/x-tex">x</annotation></semantics></math>
 VI15. Here, the terminal links are held constant (15 s on both sides),
 while only the initial link duration of one alternative is manipulated.
 Critically, a prediction based purely on delay reduction would predict
-indifference (0.5) in this situation - hence the importance of Squires
-and Fantino’s (1971) model.</p>
-<p>In the second example, the comparison is between Chain VI60 VI15 and
-Chain
-VI<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>x</mi><annotation encoding="application/x-tex">x</annotation></semantics></math>
-VI15. In this case, the terminal links are identical—each lasting 15
-seconds—while only the initial link duration of one alternative is
-varied. Importantly, a model based solely on delay reduction would
-predict indifference (i.e., a choice proportion of 0.5) because the two
-terminal links represent the same degree of improvement to terminal
-reinforcement. This highlights the significance of Squires and Fantino’s
-(1971) extension to the delay-reduction model, which incorporates both
-delay-reduction and reinforcement rate to explain preference.</p>
+indifference (0.5) in this situation because the two terminal links
+represent the same degree of improvement to terminal reinforcement. This
+highlights the significance of Squires and Fantino’s (1971) extension to
+the delay-reduction model, which incorporates both delay-reduction and
+reinforcement rate to explain preference.</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Squires and Fantino: VI60 VI15 vs VIx VI15</span></span>
 <span><span class="va">sf_2_params</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/choice_params.html">choice_params</a></span><span class="op">(</span></span>
@@ -223,7 +209,7 @@ delay-reduction and reinforcement rate to explain preference.</p>
 <span>  col <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/grDevices/palette.html" class="external-link">palette.colors</a></span><span class="op">(</span>palette <span class="op">=</span> <span class="st">"Dark 2"</span><span class="op">)</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">2</span><span class="op">]</span>,</span>
 <span>  bty <span class="op">=</span> <span class="st">"n"</span></span>
 <span><span class="op">)</span></span></code></pre></div>
-<p><img src="squires_fantino_files/figure-html/unnamed-chunk-8-1.png" width="75%" style="display: block; margin: auto;"></p>
+<p><img src="squires_fantino_files/figure-html/unnamed-chunk-7-1.png" width="75%" style="display: block; margin: auto;"></p>
 <p>The plot shows that the SiGN model reproduces the patterns reported
 by Squires and Fantino (1971), illustrating how SiGN integrates both
 delay-reduction and terminal reinforcement rate to account for classic

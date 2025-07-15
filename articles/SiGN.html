@@ -83,7 +83,7 @@ those that provide more (Kendall, 1974). This behaviour—commonly
 referred to as “suboptimal” choice—results in a systematic reduction in
 overall food intake under controlled laboratory conditions.</p>
 <p>The SiGN model explains this puzzling pattern (and other choice
-behaviours in concurrent-chain procedures) by proposing that choice is
+behaviours in concurrent-chains procedures) by proposing that choice is
 conditionally reinforced when stimuli signal a reduction in the delay to
 food.</p>
 <p>For a detailed description of the model and its calculations, see
@@ -96,11 +96,13 @@ Dunn et al. (2024).</p>
 <ul>
 <li>Operant conditioning</li>
 <li>Schedules of reinforcement</li>
-<li>Concurrent-chain procedures</li>
+<li>Concurrent and concurrent-chains procedures</li>
 </ul>
 <p>If terms like “Matching Law” or “Delay-Reduction Hypothesis” are
 unfamiliar, the outputs provided by this package may be difficult to
 interpret.</p>
+<p>A good understanding of R is also required to follow the examples and
+make full use of the package’s functionality.</p>
 </div>
 <div class="section level2">
 <h2 id="common-abbreviations">Common Abbreviations<a class="anchor" aria-label="anchor" href="#common-abbreviations"></a>
@@ -120,16 +122,12 @@ interpret.</p>
 <li>
 <code>dr</code>: delay-reduction</li>
 </ul>
-<p>In this context, <em>terminal reinforcement</em> refers to the
+<p>FYI: In this context, <em>terminal reinforcement</em> refers to the
 stimulus delivered at the end of a chained schedule. While this is often
 a <em>primary</em> (unconditional) reinforcer such as food, the SiGN
 model does not require it to be so—it could also be a <em>secondary</em>
 (conditional) reinforcer. For this reason, the more general term
-<em>terminal reinforcement</em> is preferred.</p>
-<blockquote>
-<p>(Notably, it is preferred by the author of this R package—but not his
-colleagues 😁)</p>
-</blockquote>
+<em>terminal reinforcement</em> is used by the package.</p>
 </div>
 <div class="section level2">
 <h2 id="installation">Installation<a class="anchor" aria-label="anchor" href="#installation"></a>
@@ -151,7 +149,7 @@ model:</p>
 parameters.</li>
 <li>Pass this list to <code><a href="../reference/SiGN.html">SiGN()</a></code> to obtain predictions.</li>
 </ol>
-<p>The model uses parameters from a concurrent-chains procedure to
+<p>The SiGN model uses parameters from a concurrent-chains procedure to
 generate an a priori prediction of choice behaviour. While the required
 list of arguments can be created manually, the helper function
 <code><a href="../reference/choice_params.html">choice_params()</a></code> simplifies this process and includes
@@ -159,8 +157,8 @@ built-in checks to ensure valid input.</p>
 <div class="section level3">
 <h3 id="example-stagner-zentall-2010">Example: Stagner &amp; Zentall (2010)<a class="anchor" aria-label="anchor" href="#example-stagner-zentall-2010"></a>
 </h3>
-<p>To illustrate, consider the experimental setup from Stagner &amp;
-Zentall (2010), shown in Figure 1.</p>
+<p>To illustrate, consider the contingencies described by Stagner and
+Zentall (2010), illustrated in Figure 1.</p>
 <p><br></p>
 <div class="figure" style="text-align: center">
 <img src="images/stag_zen_2010.png" alt="Figure 1. Stagner &amp; Zentall (2010) Contingencies" width="70%"><p class="caption">
@@ -168,13 +166,13 @@ Figure 1. Stagner &amp; Zentall (2010) Contingencies
 </p>
 </div>
 <p><br></p>
-<p>This procedure involves 16 parameters to describe the contingency,
-plus 2 additional parameters specific to the SiGN model—making a total
-of 18. To speed up the process of entering these values, the
-<code><a href="../reference/choice_params.html">choice_params()</a></code> function includes several pre-defined
-profiles: <code>"zentall"</code> (Stagner &amp; Zentall, 2010),
-<code>"kendall"</code> (Kendall, 1985), and <code>"fantino"</code>
-(Fantino, 1969).</p>
+<p>This procedure involves 16 distinct parameters, plus 2 additional
+parameters specific to the SiGN model—making a total of 18 values that
+need to be input into the <code><a href="../reference/SiGN.html">SiGN()</a></code> function. To speed up the
+process of entering these values, the <code><a href="../reference/choice_params.html">choice_params()</a></code>
+function includes several pre-defined profiles: <code>"zentall"</code>
+(Stagner &amp; Zentall, 2010), <code>"kendall"</code> (Kendall, 1985),
+and <code>"fantino"</code> (Fantino, 1969).</p>
 <p>The <code>"zentall"</code> profile matches the setup shown in Figure
 1. You can view the full set of parameters by setting
 <code>display_params = TRUE</code>:</p>
@@ -264,9 +262,9 @@ reinforcement (Equation 6, Dunn et al., 2024).</td>
 </tr>
 </tbody>
 </table>
-<p><br></p>
 <p>In most cases, <code>s_delta</code> and <code>beta_toggle</code> do
-not require user modification.</p>
+not require user modification (see <code><a href="../reference/choice_params.html">choice_params()</a></code> R
+documentation).</p>
 <p>Once you have your parameter list, you can generate a prediction by
 passing it to the <code><a href="../reference/SiGN.html">SiGN()</a></code> function:</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
@@ -390,8 +388,8 @@ function of a single parameter while holding others constant.</p>
 duration of the initial links affects choice behaviour. This can be done
 by supplying a sequence of values to the <code>il_dur_a</code> and
 <code>il_dur_b</code> arguments in <code><a href="../reference/choice_params.html">choice_params()</a></code>. The
-rest of the parameters remain fixed according to the
-<code>"zentall"</code> profile.</p>
+rest of the parameters will remain fixed according to the
+<code>"zentall"</code> profile, while these two are overridden.</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Generate list of parameters</span></span>
 <span><span class="va">il_preds</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/choice_params.html">choice_params</a></span><span class="op">(</span><span class="st">"zentall"</span>,</span>
@@ -418,9 +416,10 @@ rest of the parameters remain fixed according to the
 <p><br></p>
 <p>This approach can be extended to explore the effects of any parameter
 (or combination of parameters) on predicted choice. Internally, the
-model will recycle or align vector lengths as needed, but users should
-verify that vector lengths are consistent or intended for recycling to
-avoid unexpected behaviour.</p>
+function will recycle or align vector lengths as needed, but users
+should verify that values are as they intended to avoid any unexpected
+behaviour (hence why the message about recycling appears in the
+console).</p>
 </div>
 <div class="section level2">
 <h2 id="references">References<a class="anchor" aria-label="anchor" href="#references"></a>

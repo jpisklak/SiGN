@@ -154,10 +154,12 @@ with a message.</p>
 terminal link durations to be treated as any unit of time (e.g., seconds,
 minutes, hours, etc.). However, units need to be
 consistent across all link durations.</p>
-<p>Conventionally, concurrent-chain paradigms have measured time in seconds.
-The default value of <code>s_delta</code> is chosen on the basis of that convention.
-However, given the temporal relatively of the SiGN model, if other units are
-used, it may be prudent to adjust <code>s_delta</code> accordingly.</p>
+<p><em>s_delta</em></p>
+<p>Conventionally, concurrent-chains paradigms have measured time in seconds
+with very easily discriminable stimuli. The default value of <code>s_delta</code>
+reflects this convention. However, if shorter or longer temporal units are
+used, or the stimuli takes considerable time to be discriminated, it may be
+prudent to adjust <code>s_delta</code> accordingly.</p>
 <p><em>Signal Discrimination:</em></p>
 <p>The <code><a href="SiGN.html">SiGN()</a></code> function assumes that terminal links which consistently lead to
 extinction (i.e., no terminal reinforcement) are fully discriminable by the

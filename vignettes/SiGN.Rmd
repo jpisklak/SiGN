@@ -76,10 +76,6 @@ To illustrate, consider the contingencies described by Stagner and Zentall (2010
 
 <br>
 
-```{r, echo=FALSE, out.width='70%', fig.align='center', fig.cap = 'Figure 1. Stagner & Zentall (2010) Contingencies'}
-#knitr::include_graphics("images/stag_zen_2010.png")
-```
-
 <figure style="margin: 0 auto; padding: 10px; width: 80%;">
   <img src="images/stag_zen_2010.png" style="width: 100%;" />
   <figcaption style="text-align: center;">
@@ -186,7 +182,7 @@ The `SiGN()` function supports vectorised input, allowing users to generate mult
 
 As an example, suppose we want to evaluate how increasing the duration of the initial links affects choice behaviour. This can be done by supplying a sequence of values to the `il_dur_a` and `il_dur_b` arguments in `choice_params()`. The rest of the parameters will remain fixed according to the `"zentall"` profile, while these two are overridden.
 
-```{r fig.width = 6, fig.height = 4.5, dpi = 300, fig.align = 'center', out.width = '75%'}
+```{r fig.width = 6, fig.height = 4.5, dpi = 300, fig.align = 'center', out.width = '80%'}
 # Generate list of parameters
 il_preds <- choice_params("zentall",
   il_dur_a = seq(1, 100, by = 0.01),

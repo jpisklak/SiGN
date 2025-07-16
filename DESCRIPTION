@@ -1,5 +1,5 @@
 Package: SiGN
-Title: Signals for Good News Model R Package
+Title: Signal for Good News Model R Package
 Version: 0.0.0.9000
 Authors@R: c(
     person("Jeffrey", "Pisklak", , "pisklak@ualberta.ca", role = c("aut", "cre"),
@@ -18,7 +18,7 @@ Suggests:
     rmarkdown,
     testthat (>= 3.0.0)
 Config/testthat/edition: 3
-URL: https://github.com/jpisklak/SiGN, https://jpisklak.github.io/SiGN/
+URL: https://github.com/jpisklak/SiGN, https://jpisklak.github.io/SiGN/, https://doi.org/10.5281/zenodo.15955615
 BugReports: https://github.com/jpisklak/SiGN/issues
 Depends: 
     R (>= 3.5)

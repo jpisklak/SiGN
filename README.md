@@ -31,6 +31,7 @@
 
 <!-- badges: start -->
 
+[![DOI](https://zenodo.org/badge/1016380571.svg)](https://doi.org/10.5281/zenodo.15955615)
 <!-- badges: end -->
 
 ## Overview

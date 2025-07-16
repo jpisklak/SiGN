@@ -1,0 +1,13 @@
+citEntry(
+  entry = "Manual",
+  title = "SiGN: Signal for Good News Model R Package",
+  author = c(person("Jeffrey", "Pisklak", , email = "pisklak@ualberta.ca", role = c("aut", "cre"), comment = c(ORCID = "0000-0002-5465-7978")),
+    person("Roger", "Dunn", role = "aut"),
+    person("Margaret", "McDevitt", role = "aut"),
+    person("Marcia", "Spetch", role = "aut")
+    ),
+  year = 2025,
+  note = "R package version 0.0.0.9",
+  url = "https://jpisklak.github.io/SiGN",
+  doi = "10.5281/zenodo.15955616"
+)

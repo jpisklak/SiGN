@@ -29,13 +29,13 @@
 #' \url{https://doi.org/10.1037/rev0000416}
 #'
 #' @examples
-#' # Standard FR 1 Terminal Links
+#' # Standard FR 1 Initial Links
 #' params <- choice_params(profile = "zentall")
 #' result <- SiGN(params)
 #' result$cp       # predicted choice proportion
 #' result$details  # access intermediate terms
 #'
-#' # Long VI 30 Terminal Links
+#' # Long VI 30 Initial Links
 #' params <- choice_params(profile = "zentall",
 #'   il_dur_a = 30, il_dur_b = 30, il_sched_a = "VI", il_sched_b = "VI")
 #' result <- SiGN(params)

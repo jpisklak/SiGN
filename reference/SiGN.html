@@ -85,7 +85,7 @@ Suboptimal choice: A review and quantification of the signal for good news
 
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="co"># Standard FR 1 Terminal Links</span></span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="co"># Standard FR 1 Initial Links</span></span></span>
 <span class="r-in"><span><span class="va">params</span> <span class="op">&lt;-</span> <span class="fu"><a href="choice_params.html">choice_params</a></span><span class="op">(</span>profile <span class="op">=</span> <span class="st">"zentall"</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="va">result</span> <span class="op">&lt;-</span> <span class="fu">SiGN</span><span class="op">(</span><span class="va">params</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="va">result</span><span class="op">$</span><span class="va">cp</span>       <span class="co"># predicted choice proportion</span></span></span>
@@ -98,7 +98,7 @@ Suboptimal choice: A review and quantification of the signal for good news
 <span class="r-out co"><span class="r-pr">#&gt;</span>   tr_p_b s_delta</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 1    0.5       1</span>
 <span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="co"># Long VI 30 Terminal Links</span></span></span>
+<span class="r-in"><span><span class="co"># Long VI 30 Initial Links</span></span></span>
 <span class="r-in"><span><span class="va">params</span> <span class="op">&lt;-</span> <span class="fu"><a href="choice_params.html">choice_params</a></span><span class="op">(</span>profile <span class="op">=</span> <span class="st">"zentall"</span>,</span></span>
 <span class="r-in"><span>  il_dur_a <span class="op">=</span> <span class="fl">30</span>, il_dur_b <span class="op">=</span> <span class="fl">30</span>, il_sched_a <span class="op">=</span> <span class="st">"VI"</span>, il_sched_b <span class="op">=</span> <span class="st">"VI"</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="va">result</span> <span class="op">&lt;-</span> <span class="fu">SiGN</span><span class="op">(</span><span class="va">params</span><span class="op">)</span></span></span>

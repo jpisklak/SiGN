@@ -80,9 +80,11 @@ To illustrate, consider the contingencies described by Stagner and Zentall (2010
 #knitr::include_graphics("images/stag_zen_2010.png")
 ```
 
-<figure style="float: center; padding: 10px; width: 70%;">
+<figure style="margin: 0 auto; padding: 10px; width: 80%;">
   <img src="images/stag_zen_2010.png" style="width: 100%;" />
-  <figcaption style="text-align: center;"><strong>Figure 1.</strong> Stagner & Zentall (2010) contingencies</figcaption>
+  <figcaption style="text-align: center;">
+    <strong>Figure 1.</strong> Stagner & Zentall (2010) contingencies
+  </figcaption>
 </figure>
 
 <br>

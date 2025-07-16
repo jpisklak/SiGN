@@ -89,7 +89,7 @@ sf_1 <- SiGN(sf_1_params)$details
 sf_2 <- SiGN(sf_2_params)$details
 ```
 
-```{r fig.width = 6, fig.height = 4.5, dpi = 300, fig.align = 'center', out.width = '75%'}
+```{r fig.width = 6, fig.height = 4.5, dpi = 300, fig.align = 'center', out.width = '80%'}
 # Plot Predictions
 plot(sf_1_params$il_dur_a, sf_1$cp,
   type = "n", las = 1,

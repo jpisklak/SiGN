@@ -4,6 +4,12 @@ template:
 
 home:
   strip_header: true
+  sidebar:
+    structure: [links, license, community, citation, doi, authors, dev]
+    components:
+      doi:
+        title: ""
+        text: <a href = "https://doi.org/10.5281/zenodo.15955615"><img src = "https://zenodo.org/badge/1016380571.svg"></a>
 
 navbar:
   structure:

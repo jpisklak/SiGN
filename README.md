@@ -31,9 +31,6 @@
 
 <!-- badges: start -->
 
-[![DOI](https://zenodo.org/badge/1016380571.svg)](https://doi.org/10.5281/zenodo.15955615)
-[![Launch
-Calculator](https://img.shields.io/badge/try%20it-online%20calculator-brightgreen)](https://jpisklak.shinyapps.io/SiGN_Calc/)
 <!-- badges: end -->
 
 ## Overview
@@ -124,3 +121,7 @@ reinforcement. *Behavioural Processes*, *10*(4), 399–413.
 Stagner, J. P., & Zentall, T. R. (2010). Suboptimal choice behavior by
 pigeons. *Psychonomic Bulletin & Review*, *17*(3), 412–416.
 <https://doi.org/10.3758/PBR.17.3.412>
+
+## Citation
+
+[![DOI](https://zenodo.org/badge/1016380571.svg)](https://doi.org/10.5281/zenodo.15955615)

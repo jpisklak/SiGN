@@ -31,16 +31,6 @@ of its two terminal link (TL) durations and reinforcement probabilities.
 The durations and probabilities input should correspond to only one choice
 alternative.
 
-A choice alternative is treated as signalled if both TL durations are
-non-zero and either the durations or the reinforcement probabilities differ
-between the TLs.
-
-Implicit in this is a notion of discriminability between stimuli.
-For instance, if one TL is 10s and the other 20s, and both have terminal
-reinforcement probability of 1, it is assumed that the two stimuli are
-completely discriminable (e.g., different colours) from the moment they
-appear. See also \code{\link[=choice_params]{choice_params()}}
-
 A choice alternative is treated as signalled if both terminal link (TL)
 durations are non-zero and either the durations or the terminal
 reinforcement probabilities differ between the two TLs.
@@ -51,7 +41,7 @@ TL. For example, if one TL lasts 10 seconds and the other 20 seconds, and
 both have a reinforcement probability of 1, it is assumed that the
 organism can fully discriminate between them—e.g., the TLs may be visually
 distinct (such as different colours) and thus are recognisable from the
-moment of onset.
+moment of onset. See also \code{\link[=choice_params]{choice_params()}}
 }
 \examples{
 sig_check(10, 10, 0.5, 0.5)  # FALSE — same duration and probability

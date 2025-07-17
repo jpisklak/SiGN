@@ -162,14 +162,14 @@ SiGN <- function(params){
     il_dur_b, il_dur_a, sig_dur_b
   )
 
-  # Total Delay Reduction
+  # Total Conditional Reinforcement (i.e., total delay-reduction)
   #-------------------------------------------------------------------------------
-  dr_a <- ifelse(!is.na(Big_T), dr_avg_a + dr_bonus_a * beta_a, NA)
-  dr_b <- ifelse(!is.na(Big_T), dr_avg_b + dr_bonus_b * beta_b, NA)
+  cr_a <- ifelse(!is.na(Big_T), dr_avg_a + dr_bonus_a * beta_a, NA)
+  cr_b <- ifelse(!is.na(Big_T), dr_avg_b + dr_bonus_b * beta_b, NA)
 
   # SiGN Prediction
   #-------------------------------------------------------------------------------
-  cp <- pred_SiGN(r_a, r_b, dr_a, dr_b)
+  cp <- pred_SiGN(r_a, r_b, cr_a, cr_b)
   cp
 
   # Model Diagnostics
@@ -180,8 +180,8 @@ SiGN <- function(params){
     r_a_com,
     r_b_com,
     Big_T = Big_T,
-    dr_a = dr_a,
-    dr_b = dr_b,
+    cr_a = cr_a,
+    cr_b = cr_b,
     dr_avg_a = dr_avg_a,
     dr_avg_b = dr_avg_b,
     dr_bonus_a = dr_bonus_a,

@@ -16,7 +16,7 @@ test_that("SiGN returns details as a data frame", {
   params <- choice_params(profile = "zentall")
   result <- SiGN(params)
   expect_s3_class(result$details, "data.frame")
-  expect_true(all(c("cp", "r_a", "r_b", "dr_a", "dr_b") %in% names(result$details)))
+  expect_true(all(c("cp", "r_a", "r_b", "cr_a", "cr_b") %in% names(result$details)))
 })
 
 test_that("SiGN throws error if non-list is passed", {

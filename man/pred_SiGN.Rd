@@ -4,18 +4,16 @@
 \alias{pred_SiGN}
 \title{Compute SiGN Prediction}
 \usage{
-pred_SiGN(r1, r2, dr1, dr2)
+pred_SiGN(r1, r2, cr1, cr2)
 }
 \arguments{
 \item{r1}{Numeric vector of terminal reinforcement rates for alternative 1.}
 
 \item{r2}{Numeric vector of terminal reinforcement rates for alternative 2.}
 
-\item{dr1}{Numeric vector of \eqn{\delta} or delay-reduction values for
-alternative 1.}
+\item{cr1}{Numeric vector of \eqn{\delta} values for alternative 1.}
 
-\item{dr2}{Numeric vector of \eqn{\delta} or delay-reduction values for
-alternative 2.
+\item{cr2}{Numeric vector of \eqn{\delta} values for alternative 2.
 
 @details
 The underlying calculation is described in Dunn et al. (2024), with
@@ -30,8 +28,8 @@ according to the SiGN (Signal for Good News; Dunn et al. 2024) and by
 extension DRH (Delay Reduction Hypothesis; Squires & Fantino, 1971).
 }
 \examples{
-pred_SiGN(r1 = 0.05, r2 = 0.05, dr1 = 12, dr2 = 0.6)
-pred_SiGN(r1 = 0.05, r2 = 0.01, dr1 = 30, dr2 = -30)  # returns 1 (edge case)
+pred_SiGN(r1 = 0.05, r2 = 0.05, cr1 = 12, cr2 = 0.6)
+pred_SiGN(r1 = 0.05, r2 = 0.01, cr1 = 30, cr2 = -30)  # returns 1 (edge case)
 }
 \references{
 Dunn, R. M., Pisklak, J. M., McDevitt, M. A., & Spetch, M. L. (2024).

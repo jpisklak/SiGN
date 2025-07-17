@@ -156,7 +156,7 @@ knitr::kable(
       "Rate of terminal reinforcement on each alternative.",
       "Reinforcement rate on each alternative using a common effective initial link duration (when both IL schedules are VI).",
       "Overall average time to terminal reinforcement from the onset of initial links.",
-      "Total delay reduction for each alternative.",
+      "Conditional reinforcement for each alternative (i.e., total delay-reduction).",
       "Average delay reduction on each alternative.",
       "Bonus delay reduction (when one TL offers a stronger signal).",
       "Adjustment factor reflecting the balance of conditional vs. terminal reinforcement.",

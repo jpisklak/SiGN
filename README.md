@@ -18,7 +18,7 @@
 <span style="font-size: 200%; font-weight: bold;">SiGN</span>
 <p>
 
-<em>The Signal for Good News Model in R</em>
+<em>The Signal for Good News Model R Package</em>
 </p>
 
 </td>

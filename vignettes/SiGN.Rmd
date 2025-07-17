@@ -29,15 +29,19 @@ For a detailed description of the model and its calculations, see Dunn et al. (2
 
 ## Assumptions
 
-This package assumes a working knowledge of:
+This document is intended to illustrate the use of the R package, not explain the SiGN model and all its pre-requisite background information.
+
+To make effective use of this article and package, users are expected to have a foundational understanding of concepts such as ...
 
 - Operant conditioning
 - Schedules of reinforcement
 - Concurrent and concurrent-chains procedures
+- Delay-reduction hypothesis
+- And, of course, .... The SiGN (Signal for Good News) model
 
-If terms like "Matching Law" or "Delay-Reduction Hypothesis" are unfamiliar, the outputs provided by this package may be difficult to interpret.
+If these and other related terms are unfamiliar, the explanations and R outputs provided by this document may be difficult to interpret.
 
-A good understanding of R is also required to follow the examples and make full use of the package's functionality.
+Additionally, a working knowledge of R programming is assumed. The examples provided require comfort with vectorised functions, data manipulation, and interpreting model output.
 
 ## Common Abbreviations
 

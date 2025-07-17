@@ -147,7 +147,7 @@ An in-depth explanation of the `$details` output is beyond the scope of this doc
 knitr::kable(
   data.frame(
     Name = c(
-      "cp", "r_a<br>r_b", "r_a_com<br>r_b_com", "Big_T", "dr_a<br>dr_b",
+      "cp", "r_a<br>r_b", "r_a_com<br>r_b_com", "Big_T", "cr_a<br>cr_b",
       "dr_avg_a<br>dr_avg_b", "dr_bonus_a<br>dr_bonus_b", "beta_a<br>beta_b",
       "sig_a<br>sig_b", "tr_p_a<br>tr_p_b", "s_delta"
     ),

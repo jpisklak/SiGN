@@ -32,6 +32,7 @@ knitr::opts_chunk$set(
 
 <!-- badges: start -->
 [![DOI](https://zenodo.org/badge/1016380571.svg)](https://doi.org/10.5281/zenodo.15955615)
+[![Launch Calculator](https://img.shields.io/badge/try%20it-online%20calculator-brightgreen)](https://jpisklak.shinyapps.io/SiGN_Calc/)
 <!-- badges: end -->
 
 ## Overview
@@ -76,6 +77,16 @@ The package includes:
   - `"fantino"` (Fantino, 1969)
 
 - Fully vectorised parameter input — All model parameters can be customised and passed as vectors, enabling efficient simulation of multiple conditions.
+
+## Try the Package Without Installing R
+
+[![Launch Calculator](https://img.shields.io/badge/try%20it-online%20calculator-brightgreen)](https://jpisklak.shinyapps.io/SiGN_Calc/)
+
+You can generate predictions with the SiGN model in your browser using the free, interactive SiGN Calculator — no installation or coding required.
+
+Set up custom choice scenarios and instantly view predicted preferences and model diagnostics. It’s a great way to explore how delay reduction and reinforcement schedules influence decision-making.
+
+📎 This is ideal for students, collaborators, or researchers who want to explore the model without any writing code.
 
 ## References
 

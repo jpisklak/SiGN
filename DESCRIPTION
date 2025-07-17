@@ -16,7 +16,8 @@ RoxygenNote: 7.3.2
 Suggests: 
     knitr,
     rmarkdown,
-    testthat (>= 3.0.0)
+    testthat (>= 3.0.0),
+    tibble
 Config/testthat/edition: 3
 URL: https://github.com/jpisklak/SiGN, https://jpisklak.github.io/SiGN/, https://doi.org/10.5281/zenodo.15955615
 BugReports: https://github.com/jpisklak/SiGN/issues

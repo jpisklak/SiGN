@@ -13,7 +13,7 @@ knitr::opts_chunk$set(
   comment = "#>"
 )
 
-library(tidyverse)
+library(tibble)
 ```
 
 *SiGN* is an R package designed to streamline and automate the calculations required to generate behavioural predictions from the Signal for Good News (SiGN) model.

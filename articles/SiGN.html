@@ -275,7 +275,7 @@ additional model details:</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">mod</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/SiGN.html">SiGN</a></span><span class="op">(</span><span class="va">params</span><span class="op">)</span></span>
 <span><span class="va">mod</span><span class="op">$</span><span class="va">details</span></span>
-<span><span class="co">#&gt;          cp        r_a        r_b r_a_com r_b_com    Big_T     dr_a      dr_b</span></span>
+<span><span class="co">#&gt;          cp        r_a        r_b r_a_com r_b_com    Big_T     cr_a      cr_b</span></span>
 <span><span class="co">#&gt; 1 0.9590059 0.05263158 0.04545455      NA      NA 21.14286 11.54496 0.5714286</span></span>
 <span><span class="co">#&gt;   dr_avg_a  dr_avg_b dr_bonus_a dr_bonus_b   beta_a beta_b sig_a sig_b tr_p_a</span></span>
 <span><span class="co">#&gt; 1 1.428571 0.5714286   9.714286          0 1.041393      1  TRUE FALSE    0.2</span></span>
@@ -326,7 +326,8 @@ onset of initial links.</td>
 </tr>
 <tr class="odd">
 <td align="left">dr_a<br>dr_b</td>
-<td align="left">Total delay reduction for each alternative.</td>
+<td align="left">Conditional reinforcement for each alternative (i.e.,
+total delay-reduction).</td>
 <td align="left">
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>δ</mi><mi>x</mi></msub><annotation encoding="application/x-tex">\delta_x</annotation></semantics></math>
 or

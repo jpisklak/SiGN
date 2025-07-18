@@ -186,8 +186,8 @@ and <code>"fantino"</code> (Fantino, 1969).</p>
 <span><span class="co">#&gt; 1        1        1        10        10        10        10     0.2     0.8</span></span>
 <span><span class="co">#&gt;   tl_p_b1 tl_p_b2 tr_p_a1 tr_p_a2 tr_p_b1 tr_p_b2 il_sched_a il_sched_b s_delta</span></span>
 <span><span class="co">#&gt; 1     0.2     0.8       1       0     0.5     0.5         FR         FR       1</span></span>
-<span><span class="co">#&gt;   beta_toggle</span></span>
-<span><span class="co">#&gt; 1        TRUE</span></span></code></pre></div>
+<span><span class="co">#&gt;   beta_log beta_toggle</span></span>
+<span><span class="co">#&gt; 1       10        TRUE</span></span></code></pre></div>
 <p>The R documentation <code><a href="../reference/choice_params.html">?choice_params</a></code> describes each
 argument, but they are briefly listed in Table 1 below for
 convenience.</p>
@@ -195,8 +195,8 @@ convenience.</p>
 <table class="table">
 <caption>Table 1: Arguments for Model Parameters</caption>
 <colgroup>
-<col width="23%">
-<col width="76%">
+<col width="27%">
+<col width="72%">
 </colgroup>
 <thead><tr class="header">
 <th align="left">Parameter</th>
@@ -259,15 +259,25 @@ B.</td>
 = 1.</td>
 </tr>
 <tr class="even">
+<td align="left"><code>beta_log</code></td>
+<td align="left">A positive real number specifying the base of the
+logarithm used for
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>β</mi><annotation encoding="application/x-tex">\beta</annotation></semantics></math>.</td>
+</tr>
+<tr class="odd">
 <td align="left"><code>beta_toggle</code></td>
-<td align="left">Logical toggle to adjust conditional vs. terminal
-reinforcement (Equation 6, Dunn et al., 2024).</td>
+<td align="left">Logical toggle to disable
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>β</mi><annotation encoding="application/x-tex">\beta</annotation></semantics></math>.</td>
 </tr>
 </tbody>
 </table>
-<p>In most cases, <code>s_delta</code> and <code>beta_toggle</code> do
-not require user modification (see <code><a href="../reference/choice_params.html">choice_params()</a></code> R
-documentation).</p>
+<p>In most cases, <code>s_delta</code> does not require user
+modification (see the <code><a href="../reference/choice_params.html">choice_params()</a></code> documentation for
+exceptions). The arguments <code>beta_log</code> and
+<code>beta_toggle</code> influence the SiGN model’s
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>β</mi><annotation encoding="application/x-tex">\beta</annotation></semantics></math>
+parameter but are supplied automatically by the function and are not
+intended for direct user manipulation.</p>
 <p>Once you have your parameter list, you can generate a prediction by
 passing it to the <code><a href="../reference/SiGN.html">SiGN()</a></code> function:</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
@@ -286,8 +296,8 @@ additional model details:</p>
 <span><span class="co">#&gt; 1 0.9590059 0.05263158 0.04545455      NA      NA 21.14286 11.54496 0.5714286</span></span>
 <span><span class="co">#&gt;   dr_avg_a  dr_avg_b dr_bonus_a dr_bonus_b   beta_a beta_b sig_a sig_b tr_p_a</span></span>
 <span><span class="co">#&gt; 1 1.428571 0.5714286   9.714286          0 1.041393      1  TRUE FALSE    0.2</span></span>
-<span><span class="co">#&gt;   tr_p_b s_delta</span></span>
-<span><span class="co">#&gt; 1    0.5       1</span></span></code></pre></div>
+<span><span class="co">#&gt;   tr_p_b s_delta beta_log</span></span>
+<span><span class="co">#&gt; 1    0.5       1       10</span></span></code></pre></div>
 <p>An in-depth explanation of the <code>$details</code> output is beyond
 the scope of this document. Readers interested in the theoretical
 rationale behind these terms are referred to Dunn et al. 2024. However,
@@ -374,6 +384,13 @@ alternative.</td>
 <td align="left">s_delta</td>
 <td align="left">The <code>s_delta</code> value passed to the
 <code><a href="../reference/SiGN.html">SiGN()</a></code> function.</td>
+<td align="left"></td>
+</tr>
+<tr class="even">
+<td align="left">beta_log</td>
+<td align="left">The logarithm base for
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>β</mi><annotation encoding="application/x-tex">\beta</annotation></semantics></math>
+passed to the <code><a href="../reference/SiGN.html">SiGN()</a></code> function.</td>
 <td align="left"></td>
 </tr>
 </tbody>

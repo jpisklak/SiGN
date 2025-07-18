@@ -50,7 +50,16 @@ reinforcement, as described in Equation 6 of Dunn et al. (2024).</p>
 
     <div class="section level2">
     <h2 id="ref-usage">Usage<a class="anchor" aria-label="anchor" href="#ref-usage"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">beta_sig</span><span class="op">(</span><span class="va">use_beta</span>, <span class="va">sig</span>, <span class="va">sched1</span>, <span class="va">sched2</span>, <span class="va">il_dur1</span>, <span class="va">il_dur2</span>, <span class="va">s_plus_dur</span><span class="op">)</span></span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">beta_sig</span><span class="op">(</span></span>
+<span>  <span class="va">use_beta</span>,</span>
+<span>  <span class="va">sig</span>,</span>
+<span>  <span class="va">sched1</span>,</span>
+<span>  <span class="va">sched2</span>,</span>
+<span>  <span class="va">il_dur1</span>,</span>
+<span>  <span class="va">il_dur2</span>,</span>
+<span>  <span class="va">s_plus_dur</span>,</span>
+<span>  base <span class="op">=</span> <span class="fl">10</span></span>
+<span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div class="section level2">
@@ -91,6 +100,11 @@ initial link.</p></dd>
 <dt id="arg-s-plus-dur">s_plus_dur<a class="anchor" aria-label="anchor" href="#arg-s-plus-dur"></a></dt>
 <dd><p>Numeric vector of durations associated with alternative
 1's \(S^{+}\) stimulus.</p></dd>
+
+
+<dt id="arg-base">base<a class="anchor" aria-label="anchor" href="#arg-base"></a></dt>
+<dd><p>A positive real number specifying the base of
+the logarithm used for β. Defaults to 10.</p></dd>
 
 </dl></div>
     <div class="section level2">

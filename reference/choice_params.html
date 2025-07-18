@@ -64,6 +64,7 @@ validation and recycling of arguments when lengths differ.</p>
 <span> tr_p_b1 <span class="op">=</span> <span class="cn">NULL</span>, tr_p_b2 <span class="op">=</span> <span class="cn">NULL</span>,</span>
 <span> il_sched_a <span class="op">=</span> <span class="cn">NULL</span>, il_sched_b <span class="op">=</span> <span class="cn">NULL</span>,</span>
 <span> s_delta <span class="op">=</span> <span class="fl">1</span>,</span>
+<span> beta_log <span class="op">=</span> <span class="fl">10</span>,</span>
 <span> beta_toggle <span class="op">=</span> <span class="cn">TRUE</span>,</span>
 <span> display_params <span class="op">=</span> <span class="cn">FALSE</span></span>
 <span> <span class="op">)</span></span></code></pre></div>
@@ -121,6 +122,11 @@ either <code>"VI"</code> (variable-interval) or <code>"FR"</code> (fixed-ratio).
 <dt id="arg-s-delta">s_delta<a class="anchor" aria-label="anchor" href="#arg-s-delta"></a></dt>
 <dd><p>Time required to perceive a stimulus that signals the
 absence of terminal reinforcement. Default is 1. See also <code><a href="s_delta.html">s_delta()</a></code>.</p></dd>
+
+
+<dt id="arg-beta-log">beta_log<a class="anchor" aria-label="anchor" href="#arg-beta-log"></a></dt>
+<dd><p>A positive real number specifying the base of
+the logarithm used for β. Defaults to 10.</p></dd>
 
 
 <dt id="arg-beta-toggle">beta_toggle<a class="anchor" aria-label="anchor" href="#arg-beta-toggle"></a></dt>
@@ -224,8 +230,8 @@ pigeons. <em>Psychonomic Bulletin &amp; Review</em>, <em>17</em>(3), 412–416.
 <span class="r-out co"><span class="r-pr">#&gt;</span> 1        1        1        10        10        10        10     0.2     0.8</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   tl_p_b1 tl_p_b2 tr_p_a1 tr_p_a2 tr_p_b1 tr_p_b2 il_sched_a il_sched_b s_delta</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 1     0.2     0.8       1       0     0.5     0.5         FR         FR       1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   beta_toggle</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1        TRUE</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   beta_log beta_toggle</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1       10        TRUE</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Custom specification with minimal values</span></span></span>
 <span class="r-in"><span><span class="va">k</span> <span class="op">&lt;-</span> <span class="fu">choice_params</span><span class="op">(</span></span></span>
@@ -240,9 +246,9 @@ pigeons. <em>Psychonomic Bulletin &amp; Review</em>, <em>17</em>(3), 412–416.
 <span class="r-out co"><span class="r-pr">#&gt;</span>   tl_p_b1 tl_p_b2 tr_p_a1 tr_p_a2 tr_p_b1 tr_p_b2 il_sched_a il_sched_b s_delta</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 1     0.5     0.5       1       0     1.0     1.0         FR         FR       1</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 2     0.5     0.5       1       0     0.5     0.5         FR         FR       1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   beta_toggle</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1        TRUE</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2        TRUE</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   beta_log beta_toggle</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1       10        TRUE</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2       10        TRUE</span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>

@@ -155,11 +155,11 @@ SiGN <- function(params){
   #-------------------------------------------------------------------------------
   beta_a <- beta_sig(
     beta_toggle, sig_a, il_sched_a, il_sched_b,
-    il_dur_a, il_dur_b, sig_dur_a
+    il_dur_a, il_dur_b, sig_dur_a, beta_log
   )
   beta_b <- beta_sig(
     beta_toggle, sig_b, il_sched_b, il_sched_a,
-    il_dur_b, il_dur_a, sig_dur_b
+    il_dur_b, il_dur_a, sig_dur_b, beta_log
   )
 
   # Total Conditional Reinforcement (i.e., total delay-reduction)
@@ -192,7 +192,8 @@ SiGN <- function(params){
     sig_b = sig_b,
     tr_p_a = tr_p_a,
     tr_p_b = tr_p_b,
-    s_delta = s_delta
+    s_delta = s_delta,
+    beta_log = beta_log
   )
 
   # Return structured output

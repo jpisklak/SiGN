@@ -15,6 +15,7 @@ choice_params(
  tr_p_b1 = NULL, tr_p_b2 = NULL,
  il_sched_a = NULL, il_sched_b = NULL,
  s_delta = 1,
+ beta_log = 10,
  beta_toggle = TRUE,
  display_params = FALSE
  )
@@ -49,6 +50,9 @@ either \code{"VI"} (variable-interval) or \code{"FR"} (fixed-ratio). Case-insens
 
 \item{s_delta}{Time required to perceive a stimulus that signals the
 absence of terminal reinforcement. Default is 1. See also \code{\link[=s_delta]{s_delta()}}.}
+
+\item{beta_log}{A positive real number specifying the base of
+the logarithm used for β. Defaults to 10.}
 
 \item{beta_toggle}{Logical defaulting to \code{TRUE}. Permits the model to adjust
 the balance of conditional and primary reinforcement for signalled alternatives according to Equation 6 of Dunn et al. (2024). See also \code{\link[=beta_sig]{beta_sig()}}.}

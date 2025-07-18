@@ -4,7 +4,16 @@
 \alias{beta_sig}
 \title{Compute the β (beta) parameter for the SiGN model}
 \usage{
-beta_sig(use_beta, sig, sched1, sched2, il_dur1, il_dur2, s_plus_dur)
+beta_sig(
+  use_beta,
+  sig,
+  sched1,
+  sched2,
+  il_dur1,
+  il_dur2,
+  s_plus_dur,
+  base = 10
+)
 }
 \arguments{
 \item{use_beta}{Logical vector indicating whether the β parameter
@@ -28,6 +37,9 @@ initial link.}
 
 \item{s_plus_dur}{Numeric vector of durations associated with alternative
 1's \eqn{S^{+}} stimulus.}
+
+\item{base}{A positive real number specifying the base of
+the logarithm used for β. Defaults to 10.}
 }
 \value{
 A numeric vector containing the β values.

@@ -17,6 +17,7 @@
 #'  tr_p_b1 = NULL, tr_p_b2 = NULL,
 #'  il_sched_a = NULL, il_sched_b = NULL,
 #'  s_delta = 1,
+#'  beta_log = 10,
 #'  beta_toggle = TRUE,
 #'  display_params = FALSE
 #'  )
@@ -41,6 +42,8 @@
 #' either `"VI"` (variable-interval) or `"FR"` (fixed-ratio). Case-insensitive.
 #' @param s_delta Time required to perceive a stimulus that signals the
 #' absence of terminal reinforcement. Default is 1. See also [s_delta()].
+#' @param beta_log A positive real number specifying the base of
+#' the logarithm used for β. Defaults to 10.
 #' @param beta_toggle Logical defaulting to `TRUE`. Permits the model to adjust
 #' the balance of conditional and primary reinforcement for signalled alternatives according to Equation 6 of Dunn et al. (2024). See also [beta_sig()].
 #' @param display_params Logical. If `TRUE`, prints the parameter list as a
@@ -170,6 +173,8 @@ choice_params <- function(
     il_sched_b = NULL,
     # S delta (pure tl signal for no reinforcement) duration
     s_delta = 1,
+    # Base of beta's logarithm
+    beta_log = 10,
     # Option to turn of beta
     beta_toggle = TRUE,
     # Print data frame of parameters
@@ -190,6 +195,7 @@ choice_params <- function(
       il_sched_a = "FR",
       il_sched_b = "FR",
       s_delta = 1,
+      beta_log = 10,
       beta_toggle = TRUE#,
       #display_params = FALSE
     ),
@@ -204,6 +210,7 @@ choice_params <- function(
       il_sched_a = "FR",
       il_sched_b = "FR",
       s_delta = 1,
+      beta_log = 10,
       beta_toggle = TRUE#,
       #display_params = FALSE
     ),
@@ -218,6 +225,7 @@ choice_params <- function(
       il_sched_a = "VI",
       il_sched_b = "VI",
       s_delta = 1,
+      beta_log = 10,
       beta_toggle = TRUE#,
       #display_params = FALSE
     )
@@ -236,6 +244,7 @@ choice_params <- function(
   arg_list$il_sched_a <- toupper(arg_list$il_sched_a)
   arg_list$il_sched_b <- toupper(arg_list$il_sched_b)
   arg_list$s_delta <- s_delta
+  arg_list$beta_log <- beta_log
   arg_list$beta_toggle <- beta_toggle
 
   # Validation
@@ -251,7 +260,7 @@ choice_params <- function(
   }
 
   # Numeric and non-negatives
-  numeric_args <- names(arg_list[c(1:14, 17)])
+  numeric_args <- names(arg_list[c(1:14, 17:18)])
 
   for (arg in numeric_args) {
     value <- arg_list[[arg]]
@@ -270,7 +279,7 @@ choice_params <- function(
   }
 
   # Greater than 0
-  above_0_args <- names(arg_list[1:2])
+  above_0_args <- names(arg_list[c(1:2, 18)])
 
   for (arg in above_0_args) {
     value <- arg_list[[arg]]

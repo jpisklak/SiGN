@@ -19,6 +19,8 @@
 #' initial link.
 #' @param s_plus_dur Numeric vector of durations associated with alternative
 #' 1's \eqn{S^{+}} stimulus.
+#' @param base A positive real number specifying the base of
+#' the logarithm used for β. Defaults to 10.
 #'
 #' @details
 #' Although the initial link durations for both alternatives are provided as
@@ -57,7 +59,8 @@
 beta_sig <- function(use_beta, sig,
                  sched1, sched2,
                  il_dur1, il_dur2,
-                 s_plus_dur) {
+                 s_plus_dur,
+                 base = 10) {
   # Adjust il duration if common VI
   eff_il <- ifelse(sched1 == "VI" & sched2 == "VI",
     1 / (1 / il_dur1 + 1 / il_dur2),
@@ -66,7 +69,7 @@ beta_sig <- function(use_beta, sig,
 
   apply_beta <- sig & use_beta
   ifelse(apply_beta,
-    log10(1 + s_plus_dur / eff_il),
+    log(1 + s_plus_dur / eff_il, base = base),
     1
   )
 }

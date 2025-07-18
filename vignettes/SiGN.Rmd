@@ -106,9 +106,17 @@ The R documentation `?choice_params` describes each argument, but they are brief
 knitr::kable(
   data.frame(
     Parameter = c(
-      "`il_dur_a`<br>`il_dur_b`", "`tl_dur_a1`<br>`tl_dur_a2`", "`tl_dur_b1`<br>`tl_dur_b2`",
-      "`tl_p_a1`<br>`tl_p_a2`", "`tl_p_b1`<br>`tl_p_b2`", "`tr_p_a1`<br>`tr_p_a2`", "`tr_p_b1`<br>`tr_p_b2`",
-      "`il_sched_a`<br>`il_sched_b`", "`s_delta`", "`beta_toggle`"
+      "`il_dur_a`<br>`il_dur_b`",
+      "`tl_dur_a1`<br>`tl_dur_a2`",
+      "`tl_dur_b1`<br>`tl_dur_b2`",
+      "`tl_p_a1`<br>`tl_p_a2`",
+      "`tl_p_b1`<br>`tl_p_b2`",
+      "`tr_p_a1`<br>`tr_p_a2`",
+      "`tr_p_b1`<br>`tr_p_b2`",
+      "`il_sched_a`<br>`il_sched_b`",
+      "`s_delta`",
+      "`beta_log`",
+      "`beta_toggle`"
     ),
     Description = c(
       "Initial link durations for alternative A and B.",
@@ -120,7 +128,8 @@ knitr::kable(
       "Reinforcement probabilities for terminal links on B.",
       "Initial link schedule types (\"VI\" or \"FR\").",
       "Time to perceive a signal for no reinforcement. Default = 1.",
-      "Logical toggle to adjust conditional vs. terminal reinforcement (Equation 6, Dunn et al., 2024)."
+      "A positive real number specifying the base of the logarithm used for $\\beta$.",
+      "Logical toggle to disable $\\beta$."
     )
   ),
   caption = "Table 1: Arguments for Model Parameters",
@@ -128,7 +137,7 @@ knitr::kable(
 )
 ```
 
-In most cases, `s_delta` and `beta_toggle` do not require user modification (see `choice_params()` R documentation).
+In most cases, `s_delta` does not require user modification (see the `choice_params()` documentation for exceptions). The arguments `beta_log` and `beta_toggle` influence the SiGN model's $\beta$ parameter but are supplied automatically by the function and are not intended for direct user manipulation.
 
 Once you have your parameter list, you can generate a prediction by passing it to the `SiGN()` function:
 
@@ -153,7 +162,7 @@ knitr::kable(
     Name = c(
       "cp", "r_a<br>r_b", "r_a_com<br>r_b_com", "Big_T", "cr_a<br>cr_b",
       "dr_avg_a<br>dr_avg_b", "dr_bonus_a<br>dr_bonus_b", "beta_a<br>beta_b",
-      "sig_a<br>sig_b", "tr_p_a<br>tr_p_b", "s_delta"
+      "sig_a<br>sig_b", "tr_p_a<br>tr_p_b", "s_delta", "beta_log"
     ),
     Description = c(
       "Predicted proportion of choices made to alternative A.",
@@ -166,11 +175,12 @@ knitr::kable(
       "Adjustment factor reflecting the balance of conditional vs. terminal reinforcement.",
       "Logical indicator of whether each alternative is considered signalled (see `?sig_check`).",
       "Overall terminal reinforcement probability on each alternative.",
-      "The `s_delta` value passed to the `SiGN()` function."
+      "The `s_delta` value passed to the `SiGN()` function.",
+      "The logarithm base for $\\beta$ passed to the `SiGN()` function."
     ),
     `Dunn et al.` = c(
       "$\\frac{R_a}{R_a + R_b}$", "$r_x$", " ", "$T$", "$\\delta_x$ or $D_\\text{total}$",
-      "$D_\\text{avg}$", "$D_\\text{bonus}$", "$\\beta_x$", " ", " ", " "
+      "$D_\\text{avg}$", "$D_\\text{bonus}$", "$\\beta_x$", " ", " ", " ", " "
     )
   ),
   caption = "Table 2: Components of the `SiGN()` Function Output (`$details`)",

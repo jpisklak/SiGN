@@ -90,6 +90,10 @@ data <- data |>
 table(data$sex, useNA = "always")
 data$sex <- ifelse(data$sex == "Male", "M", data$sex)
 
+# Add versioning
+#-------------------------------------------------------------------------------
+data$data_version <- Sys.Date()
+
 # Save data
 #-------------------------------------------------------------------------------
 write_csv(data, "dev/data_config/gen_data/Dunn_et_al_2024.csv")

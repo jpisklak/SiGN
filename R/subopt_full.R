@@ -49,6 +49,9 @@
 #'   `term_rein`.}
 #'   \item{DOI}{Digital Object Identifier (DOI) for the original study.}
 #'   \item{ref}{Full bibliographic reference for the study.}
+#'   \item{data_version}{A character column specifying the dataset version
+#'   based on the date it was last manually curated or corrected
+#'   (e.g., "2025-07-20"). Used for tracking updates to the compiled data.}
 #' }
 #'
 #' @details

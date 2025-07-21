@@ -81,27 +81,23 @@
 #'
 #' *Signal Discrimination:*
 #'
-#' The [SiGN()] function assumes that terminal links which consistently lead to
-#' extinction (i.e., no terminal reinforcement) are fully discriminable by the
-#' organism. In other words, the model treats terminal links that do and do not
-#' lead to terminal reinforcement as completely distinct stimuli.
+#'  A choice alternative is treated by the [SiGN()] function as signalled if
+#'  both terminal link durations are non-zero and either the durations or
+#'  the reinforcement probabilities differ between the terminal links.
 #'
-#' For example, suppose selecting alternative A results in two equally probable
-#' terminal links, both lasting 10 seconds—one always leads to reinforcement,
-#' the other never does. The [SiGN()] function assumes these two links are
-#' completely discriminable (e.g., by colour or some other cue).
+#'  This definition assumes that differences in duration or reinforcement
+#'  probability imply discriminability between the stimuli associated with
+#'  each terminal link. For example, if one terminal link lasts 10 seconds
+#'  and the other 20 seconds, and both have a reinforcement probability of 1,
+#'  it is assumed that the organism can fully discriminate between them—e.g.,
+#'  the terminal links may be visually distinct (such as different colours)
+#'  and thus are recognisable from the moment of onset.
 #'
-#' If the organism cannot discriminate between them, this should be reflected
-#' in how the parameters are specified. In such a case, rather than setting
-#' `tr_p_a1 = 1` and `tr_p_a2 = 0`, you would model the ambiguity by setting
-#' `tr_p_a1 = 0.5` and `tr_p_a2 = 0.5`.
-#'
-#' The SiGN model assumes that the (behavioural) function of terminal link
-#' stimuli remains fixed across the entire duration of the terminal
-#' link—that is, the probability of terminal reinforcement does not change
-#' partway through the terminal link. Procedures that depart from this
-#'  assumption may not be appropriately handled by the model. See [sig_check()]
-#'  for additional clarification on this point.
+#'  The SiGN model assumes that the (behavioural) function of terminal link
+#'  stimuli remains fixed across the entire duration of the terminal link—that
+#'  is, the probability of terminal reinforcement does not change
+#'  partway through the terminal link. Procedures that depart from this
+#'  assumption may not be appropriately handled by the model.
 #'
 #' *Schedule Selection:*
 #'

@@ -5,7 +5,7 @@
 \alias{subopt_full}
 \title{Suboptimal Choice Data from Dunn et al. (2024)}
 \format{
-A data frame with 128 rows and 43 columns:
+A data frame with 330 rows and 44 columns:
 \describe{
 \item{row}{Row index.}
 \item{study}{Short identifier for the study from which the data and

@@ -3,7 +3,7 @@
 #' This data set contains suboptimal choice data from multiple
 #' published studies. The data was compiled by Dunn et al. (2024).
 #'
-#' @format A data frame with 128 rows and 43 columns:
+#' @format A data frame with 330 rows and 44 columns:
 #' \describe{
 #'   \item{row}{Row index.}
 #'   \item{study}{Short identifier for the study from which the data and

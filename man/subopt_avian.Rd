@@ -5,7 +5,7 @@
 \alias{subopt_avian}
 \title{Subset of Avian Suboptimal Choice Data from Dunn et al. (2024)}
 \format{
-A data frame with 128 rows and 31 columns:
+A data frame with 128 rows and 32 columns:
 \describe{
 \item{row}{Original row index in the full dataset \link{subopt_full}, retained for traceability and reproducibility.}
 \item{study}{Short identifier for the study from which the data and parameters were extracted.}

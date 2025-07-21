@@ -4,7 +4,7 @@
 #' from multiple published studies that meet the inclusion criteria outlined in
 #' Dunn et al. (2024). The subset was selected for model evaluation.
 #'
-#' @format A data frame with 128 rows and 31 columns:
+#' @format A data frame with 128 rows and 32 columns:
 #' \describe{
 #'   \item{row}{Original row index in the full dataset [subopt_full], retained for traceability and reproducibility.}
 #'   \item{study}{Short identifier for the study from which the data and parameters were extracted.}

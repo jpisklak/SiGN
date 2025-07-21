@@ -28,6 +28,7 @@ validation and recycling of arguments when lengths differ."><meta property="og:i
   <ul class="dropdown-menu" aria-labelledby="dropdown-articles"><li><a class="dropdown-item" href="../articles/squires_fantino.html">Revisiting Some Classic Studies</a></li>
     <li><a class="dropdown-item" href="../articles/suboptimal_data.html">Reproducing the Dunn et al. (2024) Analysis</a></li>
   </ul></li>
+<li class="nav-item"><a class="nav-link" href="../news/index.html">Changelog</a></li>
 <li class="nav-item"><a class="external-link nav-link" href="https://jpisklak.shinyapps.io/SiGN_Calc/">Online Calculator</a></li>
       </ul><ul class="navbar-nav"><li class="nav-item"><form class="form-inline" role="search">
  <input class="form-control" type="search" name="search-input" id="search-input" autocomplete="off" aria-label="Search site" placeholder="Search for" data-search-index="../search.json"></form></li>
@@ -168,24 +169,21 @@ reflects this convention. However, if shorter or longer temporal units are
 used, or the stimuli takes considerable time to be discriminated, it may be
 prudent to adjust <code>s_delta</code> accordingly.</p>
 <p><em>Signal Discrimination:</em></p>
-<p>The <code><a href="SiGN.html">SiGN()</a></code> function assumes that terminal links which consistently lead to
-extinction (i.e., no terminal reinforcement) are fully discriminable by the
-organism. In other words, the model treats terminal links that do and do not
-lead to terminal reinforcement as completely distinct stimuli.</p>
-<p>For example, suppose selecting alternative A results in two equally probable
-terminal links, both lasting 10 seconds—one always leads to reinforcement,
-the other never does. The <code><a href="SiGN.html">SiGN()</a></code> function assumes these two links are
-completely discriminable (e.g., by colour or some other cue).</p>
-<p>If the organism cannot discriminate between them, this should be reflected
-in how the parameters are specified. In such a case, rather than setting
-<code>tr_p_a1 = 1</code> and <code>tr_p_a2 = 0</code>, you would model the ambiguity by setting
-<code>tr_p_a1 = 0.5</code> and <code>tr_p_a2 = 0.5</code>.</p>
+<p>A choice alternative is treated by the <code><a href="SiGN.html">SiGN()</a></code> function as signalled if
+both terminal link durations are non-zero and either the durations or
+the reinforcement probabilities differ between the terminal links.</p>
+<p>This definition assumes that differences in duration or reinforcement
+probability imply discriminability between the stimuli associated with
+each terminal link. For example, if one terminal link lasts 10 seconds
+and the other 20 seconds, and both have a reinforcement probability of 1,
+it is assumed that the organism can fully discriminate between them—e.g.,
+the terminal links may be visually distinct (such as different colours)
+and thus are recognisable from the moment of onset.</p>
 <p>The SiGN model assumes that the (behavioural) function of terminal link
-stimuli remains fixed across the entire duration of the terminal
-link—that is, the probability of terminal reinforcement does not change
+stimuli remains fixed across the entire duration of the terminal link—that
+is, the probability of terminal reinforcement does not change
 partway through the terminal link. Procedures that depart from this
-assumption may not be appropriately handled by the model. See <code><a href="sig_check.html">sig_check()</a></code>
-for additional clarification on this point.</p>
+assumption may not be appropriately handled by the model.</p>
 <p><em>Schedule Selection:</em></p>
 <p>Setting the initial link schedules as <code>"FR"</code> is most suitable for cases
 involving an FR 1 schedule or when a single timer is employed in the

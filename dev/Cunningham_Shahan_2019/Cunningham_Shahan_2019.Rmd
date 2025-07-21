@@ -1,0 +1,154 @@
+---
+title: "Rats Are Not Pigeons"
+---
+
+```{r, include = FALSE}
+library(knitr)
+opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+You often here it said that "*pigeons are just rats with wings*," but is that really true? Within the suboptimal choice literature, the humble yet robust pigeon (*Columba livia*) has been, without question the most widely studied organism. Rats (*Rattus norvegicus*), despite having an extensive history withing the study of learning and behaviour have been much less studied in this respect. Cunningham and Shahan (2019) examined $N = 10$ rats on the suboptimal choice procedure largely mirroring the contingencies used in Stagner and Zentall (2010). They evaluated rats behaviour in the context of their excellent *Temporal Information–Theoretic Model* which is rooted in information theory.  However, their data can also be analyzed in terms of the SiGN model's functionalist approach. The data can be found in `cs_2019` with all the necessary parameters.
+
+Prior to drawing predictions from the SiGN model, it is worth examining the individual performance of Cunningham and Shahan's (2019) rats:
+
+```{r, message = FALSE}
+library(SiGN)
+library(tidyverse)
+```
+
+```{r message = FALSE}
+# NOTE TO SELF: REMOVE WHEN DATA IS SUPPLIED
+cs_2019 <- read_csv("Cunningham_Shahan_2019/Cunningham_&_Shahan_2019.csv")
+```
+
+```{r fig.width = 9, fig.height = 5}
+# Plot of Individual Rats
+ggplot(cs_2019, aes(x = tl_dur_a1, y = cp)) +
+  geom_point(size = 2) +
+  geom_line(aes(group = subject)) +
+  facet_wrap(~ subject, nrow = 2) +
+  coord_cartesian(xlim = c(0, 50)) +
+  labs(
+    x = "Terminal Link Duration (s)",
+    y = "Proportion of Suboptimal Choice"
+  )
+```
+
+Notably the degree of suboptimal choice seems to increase with increases in terminal link duration.  This the plot below shows how this trend is a core prediction of the SiGN model.
+
+```{r fig.width = 5, fig.height = 3}
+params <- choice_params("zentall",
+  tl_dur_a1 = seq(0.01, 50, by = 0.01),
+  tl_dur_a2 = seq(0.01, 50, by = 0.01),
+  tl_dur_b1 = seq(0.01, 50, by = 0.01),
+  tl_dur_b2 = seq(0.01, 50, by = 0.01),
+)
+mod <- SiGN(params)$details
+
+ggplot(mapping = aes(x = seq(0.01, 50, by = 0.01), y = mod$cp)) +
+  geom_line(linewidth = 1.5) +
+  labs(
+    x = "Terminal Link Duration",
+    y = "Predicted Suboptimal Choice",
+    title = "Predicted Suboptimal Choice as a Function of Terminal Link Duration
+    Using Stagner & Zentall (2010) Parameters"
+  ) +
+  theme_minimal(base_size = 12) +
+  theme(plot.title = element_text(size = 12))
+```
+
+However, the predicted incline with terminal link duration is considerably more precipitous than what the rats seem to exhibit.  It is important to recognize that the SiGN model has its roots in studies of pigeon behaviour (vis-à-vis delay-reduction and the matching law). Pigeons are also well known to exhibit steep rates of temporal discounting (i.e., they quite impatient), meaning that even short delays have a strong impact on their behaviour. The SiGN model has inherited this characteristic of pigeons. 
+
+The study of learning and behaviour has shown a large correspondence in general learning principles between pigeons, rats, and other species. Consequently, while its not unreasonable to presume that factors such as the rate of terminal reinforcement and conditional reinforcement (vis-à-vis delay-reduction) are likely impact the behaviour both pigeons and rats, it's unlikely that they do so equally between the species. Delays seem much more relevant to pigeons than rats.
+
+As is, the SiGN model has no free parameters to modulate sensitivities and biases towards alternatives the way the something like the generalized matching law does or the Temporal Information–Theoretic Model does (Baum, 1974; Cunningham & Shahan, 2018).
+
+The standard (*a priori*) form of the SiGN model is:
+
+$$
+\begin{aligned}
+\frac{R_a}{R_a + R_b} &= \frac{r_a\delta_a}{r_a\delta_a + r_b\delta_b} && \text{ when } \delta_a > 0, \delta_b > 0 \\
+&= 1 && \text{ when } \delta_a > 0, \delta_b < 0  \\
+&= 0 && \text{ when } \delta_a < 0, \delta_b > 0 
+\end{aligned}
+$$
+
+Bias ($b$) and sensitivity ($k$) parameters can be straightforwardly applied in the following way:
+
+$$
+\begin{aligned}
+\frac{R_a}{R_a + R_b} &= \frac{b (r_a^{k_r}\ \delta_a^{k_d})}{b (r_a^{k_r}\ \delta_a^{k_d}) + (r_b^{k_r}\ \delta_b^{k_d})} && \text{ when } \delta_a > 0, \delta_b > 0 \\
+&= 1 && \text{ when } \delta_a > 0, \delta_b < 0  \\
+&= 0 && \text{ when } \delta_a < 0, \delta_b > 0 
+\end{aligned}
+$$
+
+Here $b$ reflects bias towards alternative A, $k_r$ is the sensitivity to terminal reinforcement rate, and $k_d$ is the sensitivity to conditional reinforcement (i.e., delay reduction).
+
+Notably, the original model defines boundary conditions such that choice is deterministic when one alternative produces a negative $\delta$ (i.e., $\delta  < 0$). However, during conventional nonlinear least-squares parameter estimation (i.e., model fitting), $\delta$ needs to be constrained to be positive (i.e., $\delta \geq 0$) to prevent complex numbers and undefined values from occurring in the fitting process. Thus, in the fitting process the model would never actually encounter $\delta < 0$) making the conditions unnecessary for numerical fitting, but important for theoretical completeness.
+
+That being said, a more computationally friendly way of phrasing the model (so the boundary conditions can be dispensed with altogether) is to transform $\delta$ using the exponential function ($e^{\delta}$) so it is always positive and the boundary conditions can be dispensed with.
+
+Thus, 
+
+$$\delta^{k_d} \rightarrow (e^{\delta})^{k_d} \Rightarrow e^{\delta \cdot k_d}$$
+
+This makes the "free parameter" version of SiGN ...
+
+$$
+\frac{R_a}{R_a + R_b} = \frac{b(r_a^{k_r}\ e^{\delta \cdot k_d})}{b (r_a^{k_r}\ e^{\delta \cdot k_d}) + (r_b^{k_r}\ e^{\delta \cdot k_d})}
+$$
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+```{r echo=FALSE}
+# Model Predictions
+#-------------------------------------------------------------------------------
+# # Extract relevant parameter columns (cols 9–24 align with choice_params())
+# data_cols <- cs_2019[3:18]
+# 
+# # Construct model input list
+# params <- do.call(choice_params, as.list(data_cols))
+# 
+# # Generate model predictions
+# preds <- SiGN(params)$details
+
+
+```
+
+```{r echo=FALSE}
+# Plot of fit
+# ggplot(cs_2019, aes(x = preds$cp, y = cp)) +
+#   geom_abline(intercept = 0, slope = 1, linetype = 3, linewidth = 1) +
+#   geom_point(size = 3) +
+#   facet_wrap(~ subject) +
+#   coord_cartesian(xlim = c(0, 1))
+```
+
+
+## References
+
+Baum, W. M. (1974). On two types of deviation from the matching law: Bias and undermatching. *Journal of the Experimental Analysis of Behavior*, *22*(1), 231–242. https://doi.org/10.1901/jeab.1974.22-231
+
+Cunningham, P. J., & Shahan, T. A. (2019). Rats engage in suboptimal choice when the delay to food is sufficiently long. *Journal of Experimental Psychology. Animal Learning and Cognition*, *45*(3), 301–310. https://doi.org/10.1037/xan0000211
+
+Cunningham, P. J., & Shahan, T. A. (2018). Suboptimal choice, reward-predictive signals, and temporal information. *Journal of Experimental Psychology. Animal Learning and Cognition*, *44*(1), 1–22. https://doi.org/10.1037/xan0000160
+
+Stagner, J. P., & Zentall, T. R. (2010). Suboptimal choice behavior by pigeons. *Psychonomic Bulletin & Review*, *17*(3), 412–416. https://doi.org/10.3758/PBR.17.3.412

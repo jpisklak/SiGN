@@ -18,6 +18,7 @@ navbar:
       - get-started
       - reference
       - articles
+      - news
       - calculator
 
   components:

@@ -71,19 +71,18 @@ The following plot illustrates the correspondence between observed and predicted
 ```{r fig.width = 5, fig.height = 5, dpi = 300, fig.align = 'center', out.width = '80%'}
 # Plot of Results
 #-------------------------------------------------------------------------------
-# Format regression equation and annotations
-reg_eqn <- sprintf(
+# Format annotations for plot
+reg_txt <- sprintf(
   "Linear fit: y = %.2f + %.2f x\n",
   reg$coefficients[1], reg$coefficients[2]
 )
 Rsq_lin_fit_txt <- sprintf("R² (linear fit) = %.2f", Rsq_lin_fit)
 
-
 Rsq_mod_fit_txt <- sprintf("R² (model fit) = %.2f", Rsq_mod_fit)
 rmse_txt <- sprintf("RMSE = %.2f", rmse)
 mae_txt <- sprintf("MAE = %.2f", mae)
 
-stats_lin <- paste(reg_eqn, Rsq_lin_fit_txt)
+stats_lin <- paste(reg_txt, Rsq_lin_fit_txt)
 stats_mod <- paste(Rsq_mod_fit_txt, rmse_txt, mae_txt, sep = "\n")
 
 # Draw Plot

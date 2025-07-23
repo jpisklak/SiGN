@@ -40,7 +40,7 @@ preds <- SiGN(params)$details
 
 Before plotting the comparisons, it will be helpful to first compute some additional statistics to aid in model assessment:
 
-1. A **linear regression model** fitted to the observed vs predicted values, to provide a visual summary of their relationship alongside the 1:1 reference line.
+1. A **linear regression model** fitted to the observed vs predicted values, to provide a visual summary of their linear relationship alongside the 1:1 reference line.
 
 2. An $R^2$ value from the above regression, quantifying how well a straight line fits the relationship between the SiGN model's predictions and the observed data. This is the statistic reported by Dunn et al. (2024, see [note](#residual-r2) at the bottom of this document).
 

@@ -10,7 +10,7 @@ opts_chunk$set(
 )
 ```
 
-You often here it said that "*pigeons are just rats with wings*," but is that really true? Within the suboptimal choice literature, the humble yet robust pigeon (*Columba livia*) has been, without question the most widely studied organism. Rats (*Rattus norvegicus*) by contrast, despite having an extensive history withing the study of learning and behaviour, have been much less studied in this respect. Cunningham and Shahan (2019) examined $N = 10$ rats on the suboptimal choice procedure largely mirroring the contingencies used by Stagner and Zentall (2010) with pigeons. They evaluated rats behaviour in the context of their excellent *Temporal Information–Theoretic Model* which is rooted in information theory.  However, their data can also be analyzed in terms of the SiGN model's functionalist approach. The data can be found in `cs_2019` with all the necessary parameters.
+It is often said that "*pigeons are just rats with wings*," but is that really true? Within the suboptimal choice literature, the humble yet robust pigeon (*Columba livia*) has been, without question, the most widely studied organism. Rats (*Rattus norvegicus*) by contrast, despite their extensive history within the study of learning and behaviour, have received comparatively less attention in this domain. Cunningham and Shahan (2019) examined $N = 10$ rats using a suboptimal choice procedure that closely mirrored the contingencies employed by Stagner and Zentall (2010) in their work with pigeons. They evaluated the rats' behaviour using their excellent *Temporal Information–Theoretic Model*, which is grounded in information theory.  However, their data can also be analysed through the lens of the SiGN model’s functionalist framework, offering an alternative perspective on the observed behaviour. The dataset cs_2019 contains all the necessary parameters for model evaluation.
 
 Prior to drawing predictions from the SiGN model, it is worth examining the individual performance of Cunningham and Shahan's (2019) rats:
 
@@ -37,14 +37,16 @@ ggplot(cs_2019, aes(x = tl_dur_a1, y = cp)) +
   )
 ```
 
-Notably the degree of suboptimal choice seems to increase with increases in terminal link duration. That trend also happens to be a core prediction of the SiGN model, as the plot below shows.
+Notably, the degree of suboptimal choice appears to increase with longer terminal link durations. This trend aligns with a core prediction of the SiGN model, as illustrated in the plot below.
 
 ```{r fig.width = 5, fig.height = 3, fig.align = 'center'}
+x_vals <- seq(0.01, 50, by = 0.01)
+
 params <- choice_params("zentall",
-  tl_dur_a1 = seq(0.01, 50, by = 0.01),
-  tl_dur_a2 = seq(0.01, 50, by = 0.01),
-  tl_dur_b1 = seq(0.01, 50, by = 0.01),
-  tl_dur_b2 = seq(0.01, 50, by = 0.01),
+  tl_dur_a1 = x_vals,
+  tl_dur_a2 = x_vals,
+  tl_dur_b1 = x_vals,
+  tl_dur_b2 = x_vals,
 )
 mod <- SiGN(params)$details
 
@@ -53,16 +55,15 @@ ggplot(mapping = aes(x = seq(0.01, 50, by = 0.01), y = mod$cp)) +
   labs(
     x = "Terminal Link Duration",
     y = "Predicted Suboptimal Choice",
-    title = "Predicted Suboptimal Choice as a Function of Terminal Link Duration
-    Using Stagner & Zentall (2010) Parameters"
+    title = "Predicted Suboptimal Choice as a Function of Terminal Link Duration\nUsing Stagner & Zentall (2010) Parameters"
   ) +
   theme_minimal(base_size = 12) +
   theme(plot.title = element_text(size = 12))
 ```
 
-However, the predicted incline with terminal link duration is considerably more precipitous than what most of the rats seem to exhibit.  It is important to recognize that the SiGN model has its roots in studies of pigeon behaviour (vis-à-vis delay-reduction and the matching law). Pigeons are also well known to exhibit steep rates of temporal discounting (i.e., they are quite impatient), meaning that even short delays have a strong impact on their behaviour. The SiGN model has, for better or worse, inherited this characteristic of pigeons. 
+However, the predicted increase in suboptimal choice with terminal link duration is considerably steeper than what most of the rats actually exhibited. It is important to recognise that the SiGN model has its roots in studies of pigeon behaviour. In particular, it was developed in the context of models such as the delay-reduction hypothesis and the matching law. Pigeons are also well known to exhibit steep rates of temporal discounting (i.e., they are quite impatient), meaning that even short delays have a strong impact on their behaviour. The SiGN model has, for better or worse, inherited this characteristic of pigeons. 
 
-The study of learning and behaviour has shown a large correspondence in general learning principles between pigeons, rats, and other species. Consequently, while its not unreasonable to presume that factors such as the rate of terminal reinforcement and conditional reinforcement (vis-à-vis delay-reduction) are likely impacting the behaviour both pigeons and rats, it's unlikely that they do so equally between the species. Delays seem much more relevant to pigeons than rats.
+Research on learning and behaviour has demonstrated substantial overlap in general learning principles across pigeons, rats, and other species. Consequently, while it’s not unreasonable to presume that factors such as the rate of terminal reinforcement and conditional reinforcement (via delay-reduction) influence the behaviour of both pigeons and rats, it is unlikely that these factors affect the two species equally in all cases. Delays seem much more relevant to pigeons than rats.
 
 ## Generalising the SiGN Model
 
@@ -79,15 +80,13 @@ $$
 \end{equation}
 $$
 
-As is, the SiGN model is a deterministic formulation that assumes behaviour is directly proportional to the product of terminal reinforcement rate ($r$) and conditional reinforcement (i.e., delay-reduction, $\delta$) for each alternative.
+In its current form, the SiGN model is a deterministic formulation in which behaviour is directly proportional to the product of terminal reinforcement rate ($r$) and conditional reinforcement (i.e., delay reduction, $\delta$) for each alternative.
 
-While theoretically elegant, this model lacks flexibility for empirical variation in sensitivity to these components. In particular, it assumes that organisms weight rate and conditional reinforcement linearly and equally across all conditions, and that bias is either absent or fully accounted for by the structure of the task.
+While theoretically elegant, this model lacks flexibility to account for empirical variation in sensitivity to its components. In particular, it assumes that organisms weigh terminal reinforcement rate and conditional reinforcement linearly and equally across all conditions. It also assumes that any response bias is either absent or fully determined by the structure of the task.
 
-To account for individual differences and systematic deviations from the model's strict assumptions, we can adopt a conceptually similar approach to existing models of operant choice behaviour, such as the Generalized Matching Law (Baum, 1974), by introducing free parameters that allow the model to estimate sensitivity to terminal reinforcement rate, sensitivity to conditional reinforcement, and overall response bias favouring one alternative.
+To account for individual differences and systematic deviations from the model's strict assumptions, we can take a conceptually similar approach to that used in other models of operant choice — most notably the Generalized Matching Law (Baum, 1974). Specifically, we can introduce free parameters that allow the model to estimate sensitivity to terminal reinforcement rate, sensitivity to conditional reinforcement, and overall response bias favouring one alternative. These parameters allow us to effectively scale or weigh the respective components of the model.
 
-These parameters will allow us to effectively "scale" or "weight" the respective components.
-
-Thus, a more general form of the SiGN model might be expressed as ...
+Thus, a more general form of the SiGN model can be expressed as:
 
 $$
 \begin{equation}
@@ -104,28 +103,28 @@ $$
 $$
 where:
 
-- $k_r$: sensitivity to terminal reinforcement rate.
-- $k_d$: sensitivity to conditional reinforcement (i.e., delay-reduction).
-- $b$: bias towards alternative A.
-- $\tilde{\delta}_i$ represents lower-bounded $\delta$ values to preserve theoretical boundary behaviour of Equation 1 and ensure numerical stability.
+- $k_r$ is the sensitivity to terminal reinforcement rate.
+- $k_d$ is the sensitivity to conditional reinforcement (i.e., delay reduction).
+- $b$ represents bias towards alternative A.
+- $\tilde{\delta}_i$ is a lower-bounded version of $\delta_i$ used to preserve the theoretical boundary behaviour from Equation 1 and ensure numerical stability during model fitting.
 
-To anyone familiar with the generalized matching law, the inclusion of sensitivity and bias parameters are standard conventions at this point in behavioural science; however, $\tilde{\delta}_i$ deserves some explanation.
+For those familiar with the Generalized Matching Law, the inclusion of sensitivity and bias parameters is by now a standard convention in behavioural science. However, the use of $\tilde{\delta}_i$ warrants additional explanation.
 
-In Equation 1, $\delta$ can potentially be any real number (i.e., it can be positive, negative, or zero in rare cases). In particular, when it is negative or zero, Equation 1 says the decision is simple for the organism: just always choose the option with a positive $\delta$.
+In Equation 1, $\delta$ can potentially be any real number (i.e., it can be positive, negative, or zero). In particular, when it is negative or zero, Equation 1 says the decision is simple for the organism: just always choose the option with a positive $\delta$.
 
-That logic works well in theory, but it creates a problem when we are trying to fit the model to real data using statistical tools. Specifically, most fitting methods cannot handle abrupt cutoffs or negative values very well — they need the model to be smooth and continuous, so they can figure out which parameter values best work with the data. We can fix this by introducing a small tweak to $\delta$.
+While this logic is theoretically sound, it poses a problem when fitting the model to real data using statistical tools. **Specifically, most fitting methods struggle with abrupt cutoffs or discontinuities, and instead require the model to be smooth and continuous to optimise parameters effectively.** We can fix this by introducing a small tweak to $\delta$.
 
-We define a new version, called $\tilde{\delta}$, which is just like the original except that, if the value is calculated to be zero or negative, we replace it with a tiny positive number (like 0.0001). This way we are not, in a practical sense, changing the substance of the model's prediction. This allows the model to stay smooth and stable, so we can estimate the free parameters properly. The conditional boundaries in Equation 1 are really there to prevent the model from exceeding 0 and 1 (which, of course, do not make sense as choice proportions).
+To address this, we define a new version of $\delta$, denoted $\tilde{\delta}$, which behaves identically to the original except when $\delta$ is zero or negative. In such cases, it is replaced with a small positive constant (e.g., 0.0001). This modification does not substantially alter the model's predictions but ensures numerical stability and continuity. The conditional boundaries in Equation 1 primarily serve to constrain the model's output to the [0, 1] interval, which is essential when predicting proportions of choice.
 
-Looking at this, admittedly confusing, portion of the model:
+
+This (admittedly confusing) portion of the model:
 
 $$
 \tilde{\delta}_i = \max(\delta_i, \varepsilon), \quad i \in \{a, b\} \\
 \text{and } \varepsilon > 0
 $$
 
-We are really just saying that, for either alternative A or B, $\tilde\delta$ is equal to the larger of the two values between $\delta$ and $\varepsilon$, where $\varepsilon$ is a (small) value above 0.  The $\max()$ function is just a way of notating that the larger of the two values should be taken. So if $\delta$ happens to be effectively zero or negative, $\varepsilon$ is used.
-
+simply states that for either alternative A or B, $\tilde{\delta}$ is equal to the larger of the two values: $\delta$ or $\varepsilon$, where $\varepsilon$ is a small positive constant. The $\max()$ function is just a notational shorthand indicating that the greater of the two values should be taken. So, if $\delta$ is zero or negative, $\tilde{\delta}$ defaults to $\varepsilon$ instead.
 
 ## Back to the Rats
 
@@ -136,7 +135,9 @@ To fit this generalized version of the SiGN model to the individual rats we will
 params <- do.call(choice_params, as.list(cs_2019[3:18]))
 ```
 
-We can then use the `SiGN()` function to calculate the majority of the model values we need. We can also simultaneously organize the data so that the important information we need to fit the model is contained within a single data frame.
+This selects columns corresponding to the reinforcement and delay-reduction parameters required by choice_params().
+
+**We can then use the `SiGN()` function to calculate the majority of the model values we need. We can also simultaneously organize the data so that the important information we need to fit the model is contained within a single data frame. Along these lines, adding a column of subject names, terminal link durations, and the observed rat choice proportions will be helpful.  There is also no need to keep the a priori predictions the SiGN model generates, since they are all going to be replaced by the predictions of the fitted model.**
 
 ```{r}
 # Apply the SiGN() function to obtain model values
@@ -182,12 +183,13 @@ preds$b <- numeric(N)
 preds$k_r <- numeric(N)
 preds$k_d <- numeric(N)
 
-# For-loop
+# For-loop to fit the generalised model to each rat's data individually
 rat <- unique(cs_2019$subject)
 
 for (i in 1:length(rat)){
-  df <- filter(preds, subject == rat[i])
-  
+  rows <- which(preds$subject == rat[i])
+  df <- preds[rows,]
+
   fit <- nlsLM(
     cp_obs ~ SiGN_gen(b, k_r, k_d, r_a, r_b, cr_a, cr_b),
     data = df,
@@ -197,10 +199,10 @@ for (i in 1:length(rat)){
   )
   
   # Store values
-  preds$cp_fit[1:5 + 5 * (i - 1)] <- predict(fit) # predictions
-       preds$b[1:5 + 5 * (i - 1)] <- summary(fit)$parameters[1, 1]
-     preds$k_r[1:5 + 5 * (i - 1)] <- summary(fit)$parameters[2, 1]
-     preds$k_d[1:5 + 5 * (i - 1)] <- summary(fit)$parameters[3, 1]
+  preds$cp_fit[rows] <- predict(fit) # predictions
+       preds$b[rows] <- summary(fit)$parameters[1, 1]
+     preds$k_r[rows] <- summary(fit)$parameters[2, 1]
+     preds$k_d[rows] <- summary(fit)$parameters[3, 1]
 
 }
 ```
@@ -237,12 +239,29 @@ ggplot(preds_long, aes(x = tl_dur, y = cp)) +
 
 ```
 
+The plot above illustrates the observed and predicted suboptimal choice behaviour for each rat under varying terminal link durations. While the generalised SiGN model captures the overall trend in many cases, the degree of fit varies across individuals — reflecting differences in sensitivity to reinforcement and delay.
+
+We will also create a data frame illustrating the various sensitivity and bias estimates obtained for each rat.
+
+```{r}
+# Summarise parameters by subject
+preds |>
+  group_by(subject) |>
+  summarise(
+    b    = mean(b),
+    k_r  = mean(k_r),
+    k_d  = mean(k_d)
+  )
+```
 
 
+## To sum it all up
 
+In this article, we explored the generalisation of the SiGN model to account for systematic variation in sensitivity to reinforcement rate and delay-reduction — an extension motivated by both theoretical considerations and empirical data from rats. While the original SiGN formulation captures core choice dynamics in pigeons, its strict assumptions about linearity and determinism may limit its fit to other species or contexts.
 
+By introducing free parameters for sensitivity ($k_r$, $k_d$) and bias ($b$), and implementing a numerically stable modification to the delay-reduction term ($\tilde\delta$), we were able to adapt the model for empirical fitting using nonlinear least squares. The fitted model shows a reasonable approximation to the observed suboptimal choice data in rats, though individual differences in parameter estimates highlight the variability in how different animals weigh reinforcement and delay.
 
-
+These results reinforce the idea that while general principles of reinforcement learning may be conserved across species, their expression can differ in important ways. The generalised SiGN model thus provides a flexible framework for capturing such differences, while remaining grounded in functionalist principles.
 
 
 ## References

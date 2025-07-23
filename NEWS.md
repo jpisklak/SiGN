@@ -6,4 +6,4 @@
 - Improved "Signal Discrimination" notes in `choice_params()` documentation.
 
 ## 2025-07-22
-- Updated `choice_params()` to only display recycling info message if 3 or more arguments differ in length.
+- Updated `choice_params()` to only display recycling info message if three or more arguments differ in length.

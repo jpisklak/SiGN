@@ -11,7 +11,13 @@
 <link rel="apple-touch-icon" sizes="180x180" href="../apple-touch-icon.png">
 <link rel="icon" sizes="any" href="../favicon.ico">
 <link rel="manifest" href="../site.webmanifest">
-<script src="../deps/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<!-- mathjax math --><script src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-mml-chtml.js" integrity="sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI=" crossorigin="anonymous"></script><script>
+  window.MathJax = {
+    chtml: {
+      fontURL: "https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/output/chtml/fonts/woff-v2"
+    }
+  };
+</script><script src="../deps/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="../deps/bootstrap-5.3.1/bootstrap.min.css" rel="stylesheet">
 <script src="../deps/bootstrap-5.3.1/bootstrap.bundle.min.js"></script><link href="../deps/font-awesome-6.5.2/css/all.min.css" rel="stylesheet">
 <link href="../deps/font-awesome-6.5.2/css/v4-shims.min.css" rel="stylesheet">
@@ -95,8 +101,7 @@ Dunn et al. (2024).</p>
 <h2 id="assumptions">Assumptions<a class="anchor" aria-label="anchor" href="#assumptions"></a>
 </h2>
 <p>This document is intended to illustrate the use of the R package, not
-explain the SiGN model and all its pre-requisite background
-information.</p>
+explain the SiGN model and all its requisite background information.</p>
 <p>To make effective use of this article and package, users are expected
 to have a foundational understanding of concepts such as …</p>
 <ul>
@@ -146,6 +151,9 @@ install it is from <a href="https://github.com/" class="external-link">GitHub</a
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="st">"pak"</span><span class="op">)</span></span>
 <span><span class="fu">pak</span><span class="fu">::</span><span class="fu"><a href="https://pak.r-lib.org/reference/pak.html" class="external-link">pak</a></span><span class="op">(</span><span class="st">"jpisklak/SiGN"</span><span class="op">)</span></span></code></pre></div>
+<p>Then load the package with:</p>
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/jpisklak/SiGN" class="external-link">SiGN</a></span><span class="op">)</span></span></code></pre></div>
 </div>
 <div class="section level2">
 <h2 id="generating-a-prediction">Generating a Prediction<a class="anchor" aria-label="anchor" href="#generating-a-prediction"></a>
@@ -153,9 +161,10 @@ install it is from <a href="https://github.com/" class="external-link">GitHub</a
 <p>There are two steps to generating predictions using the SiGN
 model:</p>
 <ol style="list-style-type: decimal">
-<li>Use <code><a href="../reference/choice_params.html">choice_params()</a></code> to create a list of model
-parameters.</li>
-<li>Pass this list to <code><a href="../reference/SiGN.html">SiGN()</a></code> to obtain predictions.</li>
+<li>Use the <code><a href="../reference/choice_params.html">choice_params()</a></code> function to create a list of
+model parameters.</li>
+<li>Pass this list to the <code><a href="../reference/SiGN.html">SiGN()</a></code> function to obtain
+predictions.</li>
 </ol>
 <p>The SiGN model uses parameters from a concurrent-chains procedure to
 generate an a priori prediction of choice behaviour. While the required
@@ -178,9 +187,9 @@ function includes several pre-defined profiles: <code>"zentall"</code>
 (Stagner &amp; Zentall, 2010), <code>"kendall"</code> (Kendall, 1985),
 and <code>"fantino"</code> (Fantino, 1969).</p>
 <p>The <code>"zentall"</code> profile matches the setup shown in Figure
-1. You can view the full set of parameters by setting
-<code>display_params = TRUE</code>:</p>
-<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
+1. You can view the full set of parameters by setting the argument
+<code>display_params</code> to be <code>TRUE</code>:</p>
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/jpisklak/SiGN" class="external-link">SiGN</a></span><span class="op">)</span></span>
 <span><span class="va">params</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/choice_params.html">choice_params</a></span><span class="op">(</span><span class="st">"zentall"</span>, display_params <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
 <span><span class="co">#&gt;   il_dur_a il_dur_b tl_dur_a1 tl_dur_a2 tl_dur_b1 tl_dur_b2 tl_p_a1 tl_p_a2</span></span>
@@ -190,7 +199,7 @@ and <code>"fantino"</code> (Fantino, 1969).</p>
 <span><span class="co">#&gt;   beta_log beta_toggle</span></span>
 <span><span class="co">#&gt; 1       10        TRUE</span></span></code></pre></div>
 <p>The R documentation <code><a href="../reference/choice_params.html">?choice_params</a></code> describes each
-argument, but they are briefly listed in Table 1 below for
+parameter needed, but they are briefly listed in Table 1 below for
 convenience.</p>
 <p><br></p>
 <table class="table">
@@ -262,27 +271,25 @@ B.</td>
 <tr class="even">
 <td align="left"><code>beta_log</code></td>
 <td align="left">A positive real number specifying the base of the
-logarithm used for
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>β</mi><annotation encoding="application/x-tex">\beta</annotation></semantics></math>.</td>
+logarithm used for <span class="math inline">\(\beta\)</span>.</td>
 </tr>
 <tr class="odd">
 <td align="left"><code>beta_toggle</code></td>
-<td align="left">Logical toggle to disable
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>β</mi><annotation encoding="application/x-tex">\beta</annotation></semantics></math>.</td>
+<td align="left">Logical toggle to disable <span class="math inline">\(\beta\)</span>.</td>
 </tr>
 </tbody>
 </table>
 <p>In most cases, <code>s_delta</code> does not require user
 modification (see the <code><a href="../reference/choice_params.html">choice_params()</a></code> documentation for
 exceptions). The arguments <code>beta_log</code> and
-<code>beta_toggle</code> influence the SiGN model’s
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>β</mi><annotation encoding="application/x-tex">\beta</annotation></semantics></math>
-parameter but are supplied automatically by the function and are not
-intended for direct user manipulation.</p>
+<code>beta_toggle</code> influence the SiGN model’s <span class="math inline">\(\beta\)</span> parameter but are supplied
+automatically by the function and are not intended for direct user
+manipulation.</p>
 <p>Once you have your parameter list, you can generate a prediction by
 passing it to the <code><a href="../reference/SiGN.html">SiGN()</a></code> function:</p>
-<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="../reference/SiGN.html">SiGN</a></span><span class="op">(</span><span class="va">params</span><span class="op">)</span></span>
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">mod</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/SiGN.html">SiGN</a></span><span class="op">(</span><span class="va">params</span><span class="op">)</span></span>
+<span><span class="va">mod</span></span>
 <span><span class="co">#&gt; Predicted Choice Proportion:</span></span>
 <span><span class="co">#&gt; [1] 0.9590059</span></span>
 <span><span class="co">#&gt; </span></span>
@@ -290,9 +297,8 @@ passing it to the <code><a href="../reference/SiGN.html">SiGN()</a></code> funct
 <p>From the output, we can see that alternative A (the “suboptimal”
 alternative) will be selected approximately 96% of the time. To extract
 additional model details:</p>
-<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">mod</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/SiGN.html">SiGN</a></span><span class="op">(</span><span class="va">params</span><span class="op">)</span></span>
-<span><span class="va">mod</span><span class="op">$</span><span class="va">details</span></span>
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">mod</span><span class="op">$</span><span class="va">details</span></span>
 <span><span class="co">#&gt;          cp        r_a        r_b r_a_com r_b_com    Big_T     cr_a      cr_b</span></span>
 <span><span class="co">#&gt; 1 0.9590059 0.05263158 0.04545455      NA      NA 21.14286 11.54496 0.5714286</span></span>
 <span><span class="co">#&gt;   dr_avg_a  dr_avg_b dr_bonus_a dr_bonus_b   beta_a beta_b sig_a sig_b tr_p_a</span></span>
@@ -322,13 +328,14 @@ a brief description of each component is provided in Table 2 below.</p>
 <td align="left">cp</td>
 <td align="left">Predicted proportion of choices made to alternative
 A.</td>
-<td align="left"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mfrac><msub><mi>R</mi><mi>a</mi></msub><mrow><msub><mi>R</mi><mi>a</mi></msub><mo>+</mo><msub><mi>R</mi><mi>b</mi></msub></mrow></mfrac><annotation encoding="application/x-tex">\frac{R_a}{R_a + R_b}</annotation></semantics></math></td>
+<td align="left"><span class="math inline">\(\frac{R_a}{R_a +
+R_b}\)</span></td>
 </tr>
 <tr class="even">
 <td align="left">r_a<br>r_b</td>
 <td align="left">Rate of terminal reinforcement on each
 alternative.</td>
-<td align="left"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>r</mi><mi>x</mi></msub><annotation encoding="application/x-tex">r_x</annotation></semantics></math></td>
+<td align="left"><span class="math inline">\(r_x\)</span></td>
 </tr>
 <tr class="odd">
 <td align="left">r_a_com<br>r_b_com</td>
@@ -340,34 +347,32 @@ effective initial link duration (when both IL schedules are VI).</td>
 <td align="left">Big_T</td>
 <td align="left">Overall average time to terminal reinforcement from the
 onset of initial links.</td>
-<td align="left"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>T</mi><annotation encoding="application/x-tex">T</annotation></semantics></math></td>
+<td align="left"><span class="math inline">\(T\)</span></td>
 </tr>
 <tr class="odd">
 <td align="left">cr_a<br>cr_b</td>
 <td align="left">Conditional reinforcement for each alternative (i.e.,
 total delay-reduction).</td>
 <td align="left">
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>δ</mi><mi>x</mi></msub><annotation encoding="application/x-tex">\delta_x</annotation></semantics></math>
-or
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>D</mi><mtext mathvariant="normal">total</mtext></msub><annotation encoding="application/x-tex">D_\text{total}</annotation></semantics></math>
+<span class="math inline">\(\delta_x\)</span> or <span class="math inline">\(D_\text{total}\)</span>
 </td>
 </tr>
 <tr class="even">
 <td align="left">dr_avg_a<br>dr_avg_b</td>
 <td align="left">Average delay reduction on each alternative.</td>
-<td align="left"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>D</mi><mtext mathvariant="normal">avg</mtext></msub><annotation encoding="application/x-tex">D_\text{avg}</annotation></semantics></math></td>
+<td align="left"><span class="math inline">\(D_\text{avg}\)</span></td>
 </tr>
 <tr class="odd">
 <td align="left">dr_bonus_a<br>dr_bonus_b</td>
 <td align="left">Bonus delay reduction (when one TL offers a stronger
 signal).</td>
-<td align="left"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>D</mi><mtext mathvariant="normal">bonus</mtext></msub><annotation encoding="application/x-tex">D_\text{bonus}</annotation></semantics></math></td>
+<td align="left"><span class="math inline">\(D_\text{bonus}\)</span></td>
 </tr>
 <tr class="even">
 <td align="left">beta_a<br>beta_b</td>
 <td align="left">Adjustment factor reflecting the balance of conditional
 vs. terminal reinforcement.</td>
-<td align="left"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>β</mi><mi>x</mi></msub><annotation encoding="application/x-tex">\beta_x</annotation></semantics></math></td>
+<td align="left"><span class="math inline">\(\beta_x\)</span></td>
 </tr>
 <tr class="odd">
 <td align="left">sig_a<br>sig_b</td>
@@ -389,9 +394,8 @@ alternative.</td>
 </tr>
 <tr class="even">
 <td align="left">beta_log</td>
-<td align="left">The logarithm base for
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>β</mi><annotation encoding="application/x-tex">\beta</annotation></semantics></math>
-passed to the <code><a href="../reference/SiGN.html">SiGN()</a></code> function.</td>
+<td align="left">The logarithm base for <span class="math inline">\(\beta\)</span> passed to the <code><a href="../reference/SiGN.html">SiGN()</a></code>
+function.</td>
 <td align="left"></td>
 </tr>
 </tbody>
@@ -412,13 +416,12 @@ by supplying a sequence of values to the <code>il_dur_a</code> and
 <code>il_dur_b</code> arguments in <code><a href="../reference/choice_params.html">choice_params()</a></code>. The
 rest of the parameters will remain fixed according to the
 <code>"zentall"</code> profile, while these two are overridden.</p>
-<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Generate list of parameters</span></span>
 <span><span class="va">il_preds</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/choice_params.html">choice_params</a></span><span class="op">(</span><span class="st">"zentall"</span>,</span>
 <span>  il_dur_a <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html" class="external-link">seq</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">100</span>, by <span class="op">=</span> <span class="fl">0.01</span><span class="op">)</span>,</span>
 <span>  il_dur_b <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html" class="external-link">seq</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">100</span>, by <span class="op">=</span> <span class="fl">0.01</span><span class="op">)</span></span>
 <span><span class="op">)</span></span>
-<span><span class="co">#&gt; Arguments differ in length; values will be recycled. Check that this is what you intended.</span></span>
 <span></span>
 <span><span class="co"># Generate predictions</span></span>
 <span><span class="va">mod_il</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/SiGN.html">SiGN</a></span><span class="op">(</span><span class="va">il_preds</span><span class="op">)</span></span>
@@ -440,8 +443,7 @@ rest of the parameters will remain fixed according to the
 (or combination of parameters) on predicted choice. Internally, the
 function will recycle or align vector lengths as needed, but users
 should verify that values are as they intended to avoid any unexpected
-behaviour (hence why the message about recycling appears in the
-console).</p>
+behaviour.</p>
 </div>
 <div class="section level2">
 <h2 id="references">References<a class="anchor" aria-label="anchor" href="#references"></a>

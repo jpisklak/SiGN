@@ -1,6 +1,7 @@
 url: https://jpisklak.github.io/SiGN/
 template:
   bootstrap: 5
+  math-rendering: mathjax
 
 home:
   strip_header: true

@@ -29,7 +29,7 @@ For a detailed description of the model and its calculations, see Dunn et al. (2
 
 ## Assumptions
 
-This document is intended to illustrate the use of the R package, not explain the SiGN model and all its pre-requisite background information.
+This document is intended to illustrate the use of the R package, not explain the SiGN model and all its requisite background information.
 
 To make effective use of this article and package, users are expected to have a foundational understanding of concepts such as ...
 
@@ -65,12 +65,17 @@ install.packages("pak")
 pak::pak("jpisklak/SiGN")
 ```
 
+Then load the package with:
+```r
+library(SiGN)
+```
+
 ## Generating a Prediction
 
 There are two steps to generating predictions using the SiGN model:
 
-1. Use `choice_params()` to create a list of model parameters.
-2. Pass this list to `SiGN()` to obtain predictions.
+1. Use the `choice_params()` function to create a list of model parameters.
+2. Pass this list to the `SiGN()` function to obtain predictions.
 
 The SiGN model uses parameters from a concurrent-chains procedure to generate an a priori prediction of choice behaviour. While the required list of arguments can be created manually, the helper function `choice_params()` simplifies this process and includes built-in checks to ensure valid input.
 
@@ -91,14 +96,14 @@ To illustrate, consider the contingencies described by Stagner and Zentall (2010
 
 This procedure involves 16 distinct parameters, plus 2 additional parameters specific to the SiGN model—making a total of 18 values that need to be input into the `SiGN()` function. To speed up the process of entering these values, the `choice_params()` function includes several pre-defined profiles: `"zentall"` (Stagner & Zentall, 2010), `"kendall"` (Kendall, 1985), and `"fantino"` (Fantino, 1969).
 
-The `"zentall"` profile matches the setup shown in Figure 1. You can view the full set of parameters by setting `display_params = TRUE`:
+The `"zentall"` profile matches the setup shown in Figure 1. You can view the full set of parameters by setting the argument `display_params` to be `TRUE`:
 
 ```{r}
 library(SiGN)
 params <- choice_params("zentall", display_params = TRUE)
 ```
 
-The R documentation `?choice_params` describes each argument, but they are briefly listed in Table 1 below for convenience.
+The R documentation `?choice_params` describes each parameter needed, but they are briefly listed in Table 1 below for convenience.
 
 <br>
 
@@ -142,13 +147,13 @@ In most cases, `s_delta` does not require user modification (see the `choice_par
 Once you have your parameter list, you can generate a prediction by passing it to the `SiGN()` function:
 
 ```{r}
-SiGN(params)
+mod <- SiGN(params)
+mod
 ```
 
 From the output, we can see that alternative A (the "suboptimal" alternative) will be selected approximately 96% of the time. To extract additional model details:
 
 ```{r}
-mod <- SiGN(params)
 mod$details
 ```
 
@@ -221,7 +226,7 @@ abline(h = 0.5, lwd = 1, lty = 3, col = "grey")
 
 <br>
 
-This approach can be extended to explore the effects of any parameter (or combination of parameters) on predicted choice. Internally, the function will recycle or align vector lengths as needed, but users should verify that values are as they intended to avoid any unexpected behaviour (hence why the message about recycling appears in the console).
+This approach can be extended to explore the effects of any parameter (or combination of parameters) on predicted choice. Internally, the function will recycle or align vector lengths as needed, but users should verify that values are as they intended to avoid any unexpected behaviour.
 
 ## References
 

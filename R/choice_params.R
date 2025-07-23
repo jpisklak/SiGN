@@ -250,9 +250,19 @@ choice_params <- function(
   # Equal number of arguments
   eq_arg <- eq_arg_n(arg_list[1:16])
 
+  # if (eq_arg == FALSE) {
+  #   arg_list <- recycle_list(arg_list)
+  #   message("Arguments differ in length; values will be recycled. Check that this is what you intended.")
+  # }
+
   if (eq_arg == FALSE) {
+
+    # Add warning if 3 or more lengths are different
+    if (length(unique(lengths(arg_list[1:16]))) > 2) {
+      message("\u2139 Arguments differ in length; values will be recycled. Check that this is what you intended.")
+    }
+
     arg_list <- recycle_list(arg_list)
-    message("Arguments differ in length; values will be recycled. Check that this is what you intended.")
   }
 
   # Numeric and non-negatives

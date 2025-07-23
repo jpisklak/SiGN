@@ -41,12 +41,18 @@ behaviour in operant conditioning settings.
 
 ## Installation
 
-You can install the development version of SiGN from
+You can install SiGN’s development version from
 [GitHub](https://github.com/) with:
 
 ``` r
-# install.packages("pak")
+install.packages("pak")
 pak::pak("jpisklak/SiGN")
+```
+
+Then load the package with:
+
+``` r
+library(SiGN)
 ```
 
 ## Usage

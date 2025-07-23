@@ -123,20 +123,32 @@ compared to predictions from the SiGN model.</p>
 <p>Before plotting the comparisons, it will be helpful to first compute
 some additional statistics to aid in model assessment:</p>
 <ol style="list-style-type: decimal">
-<li><p>An <span class="math inline">\(R^2\)</span> value to quantify the
-proportion of variance in the observed data accounted for by the SiGN
-model’s predictions.</p></li>
-<li><p>The RMSE (root mean squared error) and MAE (mean absolute error),
-which both reflect the average discrepancy between predicted and
-observed values, with RMSE placing greater emphasis on larger
-errors.</p></li>
+<li><p>A <strong>linear regression model</strong> fitted to the observed
+vs predicted values, to provide a visual summary of their relationship
+alongside the 1:1 reference line.</p></li>
+<li><p>An <span class="math inline">\(R^2\)</span> value from the above
+regression, quantifying how well a straight line fits the relationship
+between the SiGN model’s predictions and the observed data. This is the
+statistic reported by Dunn et al. (2024, see <a href="#residual-r2">note</a> at the bottom of this document).</p></li>
+<li><p>An additional <span class="math inline">\(R^2\)</span> value,
+computed directly from the residuals of the SiGN model, which reflects
+the true proportion of variance in the observed data explained by the
+model.</p></li>
+<li><p>The <strong>RMSE (root mean squared error)</strong> and
+<strong>MAE (mean absolute error)</strong>, which both capture the
+average prediction error — with RMSE giving greater weight to larger
+deviations.</p></li>
 </ol>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Model Assessment</span></span>
 <span><span class="co">#-------------------------------------------------------------------------------</span></span>
 <span><span class="co"># Fit a linear model comparing observed vs predicted</span></span>
 <span><span class="va">reg</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/lm.html" class="external-link">lm</a></span><span class="op">(</span><span class="va">subopt_avian</span><span class="op">$</span><span class="va">cp</span> <span class="op">~</span> <span class="va">preds</span><span class="op">$</span><span class="va">cp</span><span class="op">)</span></span>
-<span><span class="va">r_sq</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/summary.html" class="external-link">summary</a></span><span class="op">(</span><span class="va">reg</span><span class="op">)</span><span class="op">$</span><span class="va">r.squared</span></span>
+<span><span class="va">Rsq_lin_fit</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/summary.html" class="external-link">summary</a></span><span class="op">(</span><span class="va">reg</span><span class="op">)</span><span class="op">$</span><span class="va">r.squared</span></span>
+<span></span>
+<span><span class="co"># Residual-based R2</span></span>
+<span><span class="va">Rsq_mod_fit</span> <span class="op">&lt;-</span> <span class="fl">1</span> <span class="op">-</span> <span class="fu"><a href="https://rdrr.io/r/base/sum.html" class="external-link">sum</a></span><span class="op">(</span><span class="op">(</span><span class="va">subopt_avian</span><span class="op">$</span><span class="va">cp</span> <span class="op">-</span> <span class="va">preds</span><span class="op">$</span><span class="va">cp</span><span class="op">)</span><span class="op">^</span><span class="fl">2</span><span class="op">)</span> <span class="op">/</span> </span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/base/sum.html" class="external-link">sum</a></span><span class="op">(</span><span class="op">(</span><span class="va">subopt_avian</span><span class="op">$</span><span class="va">cp</span> <span class="op">-</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html" class="external-link">mean</a></span><span class="op">(</span><span class="va">subopt_avian</span><span class="op">$</span><span class="va">cp</span><span class="op">)</span><span class="op">)</span><span class="op">^</span><span class="fl">2</span><span class="op">)</span></span>
 <span></span>
 <span><span class="co"># Root Mean Squared Error (RMSE)</span></span>
 <span><span class="va">rmse</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/MathFun.html" class="external-link">sqrt</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/mean.html" class="external-link">mean</a></span><span class="op">(</span><span class="op">(</span><span class="va">subopt_avian</span><span class="op">$</span><span class="va">cp</span> <span class="op">-</span> <span class="va">preds</span><span class="op">$</span><span class="va">cp</span><span class="op">)</span><span class="op">^</span><span class="fl">2</span><span class="op">)</span><span class="op">)</span></span>
@@ -152,14 +164,18 @@ regression.</p>
 <span><span class="co">#-------------------------------------------------------------------------------</span></span>
 <span><span class="co"># Format regression equation and annotations</span></span>
 <span><span class="va">reg_eqn</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/sprintf.html" class="external-link">sprintf</a></span><span class="op">(</span></span>
-<span>  <span class="st">"y = %.2f + %.2f x\n"</span>,</span>
+<span>  <span class="st">"Linear fit: y = %.2f + %.2f x\n"</span>,</span>
 <span>  <span class="va">reg</span><span class="op">$</span><span class="va">coefficients</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span>, <span class="va">reg</span><span class="op">$</span><span class="va">coefficients</span><span class="op">[</span><span class="fl">2</span><span class="op">]</span></span>
 <span><span class="op">)</span></span>
-<span><span class="va">r_sq_text</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/sprintf.html" class="external-link">sprintf</a></span><span class="op">(</span><span class="st">"R² = %.2f"</span>, <span class="va">r_sq</span><span class="op">)</span></span>
-<span><span class="va">rmse_text</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/sprintf.html" class="external-link">sprintf</a></span><span class="op">(</span><span class="st">"RMSE = %.2f"</span>, <span class="va">rmse</span><span class="op">)</span></span>
-<span><span class="va">mae_text</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/sprintf.html" class="external-link">sprintf</a></span><span class="op">(</span><span class="st">"MAE = %.2f"</span>, <span class="va">mae</span><span class="op">)</span></span>
+<span><span class="va">Rsq_lin_fit_txt</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/sprintf.html" class="external-link">sprintf</a></span><span class="op">(</span><span class="st">"R² (linear fit) = %.2f"</span>, <span class="va">Rsq_lin_fit</span><span class="op">)</span></span>
 <span></span>
-<span><span class="va">stats</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste</a></span><span class="op">(</span><span class="va">r_sq_text</span>, <span class="va">rmse_text</span>, <span class="va">mae_text</span>, sep <span class="op">=</span> <span class="st">"\n"</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">Rsq_mod_fit_txt</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/sprintf.html" class="external-link">sprintf</a></span><span class="op">(</span><span class="st">"R² (model fit) = %.2f"</span>, <span class="va">Rsq_mod_fit</span><span class="op">)</span></span>
+<span><span class="va">rmse_txt</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/sprintf.html" class="external-link">sprintf</a></span><span class="op">(</span><span class="st">"RMSE = %.2f"</span>, <span class="va">rmse</span><span class="op">)</span></span>
+<span><span class="va">mae_txt</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/sprintf.html" class="external-link">sprintf</a></span><span class="op">(</span><span class="st">"MAE = %.2f"</span>, <span class="va">mae</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">stats_lin</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste</a></span><span class="op">(</span><span class="va">reg_eqn</span>, <span class="va">Rsq_lin_fit_txt</span><span class="op">)</span></span>
+<span><span class="va">stats_mod</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste</a></span><span class="op">(</span><span class="va">Rsq_mod_fit_txt</span>, <span class="va">rmse_txt</span>, <span class="va">mae_txt</span>, sep <span class="op">=</span> <span class="st">"\n"</span><span class="op">)</span></span>
 <span></span>
 <span><span class="co"># Draw Plot</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">preds</span><span class="op">$</span><span class="va">cp</span>, <span class="va">subopt_avian</span><span class="op">$</span><span class="va">cp</span>,</span>
@@ -179,8 +195,8 @@ regression.</p>
 <span><span class="fu"><a href="https://rdrr.io/r/graphics/abline.html" class="external-link">abline</a></span><span class="op">(</span>a <span class="op">=</span> <span class="va">reg</span><span class="op">$</span><span class="va">coefficients</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span>, b <span class="op">=</span> <span class="va">reg</span><span class="op">$</span><span class="va">coefficients</span><span class="op">[</span><span class="fl">2</span><span class="op">]</span>, lwd <span class="op">=</span> <span class="fl">2</span><span class="op">)</span></span>
 <span></span>
 <span><span class="co"># Annotation</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/graphics/text.html" class="external-link">text</a></span><span class="op">(</span>x <span class="op">=</span> <span class="fl">0.2</span>, y <span class="op">=</span> <span class="fl">0.85</span>, labels <span class="op">=</span> <span class="va">reg_eqn</span>, cex <span class="op">=</span> <span class="fl">0.85</span><span class="op">)</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/graphics/text.html" class="external-link">text</a></span><span class="op">(</span>x <span class="op">=</span> <span class="fl">0.2</span>, y <span class="op">=</span> <span class="fl">0.75</span>, labels <span class="op">=</span> <span class="va">stats</span>, cex <span class="op">=</span> <span class="fl">0.75</span><span class="op">)</span></span></code></pre></div>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/text.html" class="external-link">text</a></span><span class="op">(</span>x <span class="op">=</span> <span class="fl">0.25</span>, y <span class="op">=</span> <span class="fl">0.95</span>, labels <span class="op">=</span> <span class="va">stats_lin</span>, cex <span class="op">=</span> <span class="fl">0.75</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/text.html" class="external-link">text</a></span><span class="op">(</span>x <span class="op">=</span> <span class="fl">0.25</span>, y <span class="op">=</span> <span class="fl">0.75</span>, labels <span class="op">=</span> <span class="va">stats_mod</span>, cex <span class="op">=</span> <span class="fl">0.75</span><span class="op">)</span></span></code></pre></div>
 <p><img src="suboptimal_data_files/figure-html/unnamed-chunk-5-1.png" width="80%" style="display: block; margin: auto;"></p>
 <p>The RMSE (0.14) and MAE (0.11) indicate that the model’s predictions
 deviate from the observed values by approximately 11 to 14 percentage
@@ -188,6 +204,20 @@ points on average. This reflects a reasonably good fit to the
 <code>subopt_avian</code> data set and aligns with expectations, given
 the inherent variability across studies, species, and procedural
 differences.</p>
+<blockquote>
+<p><strong>Note:</strong><span id="residual-r2"></span> In Dunn et
+al. (2024), we reported an <span class="math inline">\(R^2\)</span>
+value derived from a linear regression of observed outcomes on the
+model’s predicted values. While this is a common practice in applied
+modelling, it does not directly quantify how much variance the model
+itself explains in the data. Had we more fully appreciated this
+distinction at the time, we would have opted for a residual-based <span class="math inline">\(R^2\)</span> instead. In this vignette, we include
+both the regression-based and residual-based <span class="math inline">\(R^2\)</span> values: the former to reproduce the
+original analysis, and the latter to provide a more appropriate measure
+of model fit. This reflects our commitment to a transparent, evolving
+methodology and hopefully encourages best practices for evaluating
+predictive models.</p>
+</blockquote>
 <div class="section level2">
 <h2 id="references">References<a class="anchor" aria-label="anchor" href="#references"></a>
 </h2>

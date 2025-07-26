@@ -7,7 +7,7 @@
 
 <td style="vertical-align: middle;">
 
-<a href="https://jpisklak.github.io/SiGN/">
+<a href="https://sign-r.github.io/SiGN/">
 <img src="man/figures/logo.svg" width="120"/> </a>
 </td>
 

@@ -46,7 +46,7 @@ You can install SiGN’s development version from
 
 ``` r
 install.packages("pak")
-pak::pak("jpisklak/SiGN")
+pak::pak("https://github.com/SiGN-R/SiGN")
 ```
 
 Then load the package with:

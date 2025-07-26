@@ -62,7 +62,7 @@ As the SiGN package is currently in development, the easiest way to install it i
 
 ```r
 install.packages("pak")
-pak::pak("jpisklak/SiGN")
+pak::pak("https://github.com/SiGN-R/SiGN")
 ```
 
 Then load the package with:

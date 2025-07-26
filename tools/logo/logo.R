@@ -1,5 +1,7 @@
+library(magick)
 library(hexSticker)
 library(showtext)
+
 
 img <- "tools/logo/pigeon_sign.png"
 
@@ -13,10 +15,10 @@ sticker(
   h_fill = "#e0e6ed",
   h_color = "#2E3A59",
   url = "https://sign-r.github.io/SiGN/",
-  u_x = .25,
+  u_x = .225,
   u_y = .55,
   u_angle = -30,
-  u_size = 6,
+  u_size = 7,
   dpi = 400,
   filename = "tools/logo/hex_sticker.png"
 )
@@ -39,6 +41,11 @@ sticker(
   filename = "tools/logo/hex_sticker.svg"
 )
 
+# use_logo("tools/logo/hex_sticker.svg")
 
 
-use_logo("tools/logo/hex_sticker.svg")
+# GitHub Org Logo
+#img <- image_read("tools/logo/hex_sticker.png")
+#img <- image_resize(img, "150x")
+#image_write(img, "tools/logo/hex_sticker_200x200.png")
+

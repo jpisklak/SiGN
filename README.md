@@ -8,7 +8,7 @@
 <td style="vertical-align: middle;">
 
 <a href="https://jpisklak.github.io/SiGN/">
-<img src="man/figures/logo.png" width="120"/> </a>
+<img src="man/figures/logo.svg" width="120"/> </a>
 </td>
 
 <td style="vertical-align: middle; padding-left: 15px;">

@@ -10,3 +10,5 @@
 
 ## 2025-07-26
 - Added function for Lin's Concordance Correlation Coefficient.
+- Added function SiGN eval (incomplete)
+  - To Do: Add $\phi$, log-likelihood, AIC, and BIC, for Beta Distribution error model. Throw warning at low N.

@@ -7,3 +7,6 @@
 
 ## 2025-07-22
 - Updated `choice_params()` to only display recycling info message if three or more arguments differ in length.
+
+## 2025-07-26
+- Added function for Lin's Concordance Correlation Coefficient.

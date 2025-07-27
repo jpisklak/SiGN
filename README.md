@@ -109,6 +109,29 @@ and reinforcement schedules influence decision-making.
 📎 This is ideal for students, collaborators, or researchers who want to
 explore the model without any writing code.
 
+## Planned Features
+
+The SiGN package is currently under active development. Future updates
+will include functionality for model evaluation and comparison,
+including:
+
+- Descriptive error metrics (e.g., RMSE, MAE, residual-based $R^2$)
+
+- Log-likelihood computation using a Beta-distributed error model
+  tailored to choice proportion data
+
+- Model comparison tools:
+
+  - Akaike Information Criterion (AIC)
+
+  - Bayesian Information Criterion (BIC)
+
+These additions will allow users to assess model fit in a more
+principled and quantitative manner, especially when comparing models
+with and without free parameters.
+
+Stay tuned for updates, and feel free to suggest features or contribute!
+
 ## References
 
 Dunn, R. M., Pisklak, J. M., McDevitt, M. A., & Spetch, M. L. (2024).

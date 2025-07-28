@@ -48,6 +48,14 @@ as:
 where \eqn{y_i} are the observed values, \eqn{\hat{y}_i} are the predicted
 values, and \eqn{\bar{y}} is the mean of the observed values.
 
+While this form of \eqn{R^2} is widely used as a descriptive measure of
+fit, it should be interpreted with caution in the context of nonlinear models.
+Unlike in linear regression, \eqn{R^2} does not have a clear interpretation
+in terms of explained variance, nor is it guaranteed to fall between 0 and 1.
+In particular, it can take on negative values when the model fits worse than
+the mean. As such, it is best used here as a rough, supplementary indicator
+of model performance, rather than a definitive measure of fit.
+
 For likelihood-based metrics, the function assumes a beta-distributed
 error model:
 \deqn{y_i \sim \text{Beta}(\alpha_i, \beta_i)}

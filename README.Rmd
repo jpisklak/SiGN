@@ -57,9 +57,10 @@ To get started with the package, begin by reading the [Get Started](articles/SiG
 
 - [Revisiting Some Classic Studies](articles/squires_fantino.html)
   - A re-analysis of classic concurrent-chain experiments using SiGN predictions.
+  - Illustrates how to compute model predictions across a range of parameter values.
 
-- [Reproducing the Dunn et al. (2024) Analysis](articles/suboptimal_data.html)
-  - A demonstration of how to model suboptimal choice behaviour using published data.
+- [Generating SiGN Model Predictions from a Data Frame](articles/batch-predict.html)
+  - Demonstrates how to generate multiple SiGN model predictions from a data frame of parameters.
 
 ## Ready-to-Use Suboptimal Choice Data and Profiles
 

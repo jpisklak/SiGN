@@ -15,18 +15,32 @@
 #' log-likelihood.
 #' @param epsilon A small numeric value used to constrain `observed` and
 #' `predicted` away from 0 and 1, ensuring numerical stability (default
-#' is `1e-4`).
+#' is `1e-3`). See Details.
 #'
 #' @returns A single numeric value: the negative log-likelihood or
 #' log-likelihood of the data under the Beta error model.
 #'
 #' @details
-#' This function is useful for evaluating model fit when prediction errors are
-#' assumed to follow a Beta distribution, which is appropriate for bounded
-#' continuous data such as proportions. The function computes the
-#' log-likelihood by treating each observed value as a draw from a Beta
-#' distribution with mean equal to the model's prediction and concentration
-#' controlled by `phi`.
+#' This function calculates the (log) likelihood of observed choice proportions under a
+#' Beta-distributed error model. Since the Beta distribution is only defined on the open interval
+#' (0, 1), a small continuity correction (`epsilon`) is applied to both the `observed`
+#' and `predicted` values to avoid zero or one values that would result in undefined or infinite
+#' log-likelihoods.
+#'
+#' The choice of `epsilon` can substantially affect the resulting log-likelihood, particularly
+#' when any values are near 0 or 1. This is due to the steep curvature of the Beta distribution near
+#' the boundaries, especially when the shape parameters are less than 1. Smaller values of
+#' `epsilon` reduce the size of the correction, but can introduce large penalties to the
+#' likelihood if the data approach the boundaries.
+#'
+#' For this reason, it is important to choose an `epsilon` value that balances numerical
+#' stability and minimal distortion of the data. A default of `epsilon = 0.001` is typically
+#' sufficient for behavioural data, but users are encouraged to check the sensitivity of their results when values are
+#' close to 0 or 1.
+#'
+#' @note
+#' If the observed data include values near 0 or 1, the log-likelihood may
+#' be highly sensitive to the choice of `epsilon`. See Details.
 #'
 #' @examples
 #' # Scalar phi
@@ -40,7 +54,7 @@
 #'
 #' @export
 #-------------------------------------------------------------------------------
-loglik_err <- function(observed, predicted, phi, neg = TRUE, epsilon = 1e-4) {
+loglik_err <- function(observed, predicted, phi, neg = TRUE, epsilon = 1e-3) {
   # Check lengths
   n <- length(observed)
 
@@ -50,6 +64,10 @@ loglik_err <- function(observed, predicted, phi, neg = TRUE, epsilon = 1e-4) {
 
   if (anyNA(c(observed, predicted, phi))) {
     stop("Inputs must not contain NA values.")
+  }
+
+  if (any(observed < epsilon | observed > 1 - epsilon)) {
+    warning("Some observed values are near 0 or 1; log-likelihood is sensitive to 'epsilon'.")
   }
 
   # Continuity correction

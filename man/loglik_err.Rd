@@ -4,7 +4,7 @@
 \alias{loglik_err}
 \title{Compute (Negative) Log-Likelihood for Beta Error Model}
 \usage{
-loglik_err(observed, predicted, phi, neg = TRUE, epsilon = 1e-04)
+loglik_err(observed, predicted, phi, neg = TRUE, epsilon = 0.001)
 }
 \arguments{
 \item{observed}{A numeric vector of observed values (e.g., proportions),
@@ -23,7 +23,7 @@ log-likelihood.}
 
 \item{epsilon}{A small numeric value used to constrain \code{observed} and
 \code{predicted} away from 0 and 1, ensuring numerical stability (default
-is \code{1e-4}).}
+is \code{1e-3}). See Details.}
 }
 \value{
 A single numeric value: the negative log-likelihood or
@@ -34,12 +34,26 @@ Calculates the log-likelihood (or negative log-likelihood) of a set of
 observed values under a Beta-distributed error model.
 }
 \details{
-This function is useful for evaluating model fit when prediction errors are
-assumed to follow a Beta distribution, which is appropriate for bounded
-continuous data such as proportions. The function computes the
-log-likelihood by treating each observed value as a draw from a Beta
-distribution with mean equal to the model's prediction and concentration
-controlled by \code{phi}.
+This function calculates the (log) likelihood of observed choice proportions under a
+Beta-distributed error model. Since the Beta distribution is only defined on the open interval
+(0, 1), a small continuity correction (\code{epsilon}) is applied to both the \code{observed}
+and \code{predicted} values to avoid zero or one values that would result in undefined or infinite
+log-likelihoods.
+
+The choice of \code{epsilon} can substantially affect the resulting log-likelihood, particularly
+when any values are near 0 or 1. This is due to the steep curvature of the Beta distribution near
+the boundaries, especially when the shape parameters are less than 1. Smaller values of
+\code{epsilon} reduce the size of the correction, but can introduce large penalties to the
+likelihood if the data approach the boundaries.
+
+For this reason, it is important to choose an \code{epsilon} value that balances numerical
+stability and minimal distortion of the data. A default of \code{epsilon = 0.001} is typically
+sufficient for behavioural data, but users are encouraged to check the sensitivity of their results when values are
+close to 0 or 1.
+}
+\note{
+If the observed data include values near 0 or 1, the log-likelihood may
+be highly sensitive to the choice of \code{epsilon}. See Details.
 }
 \examples{
 # Scalar phi

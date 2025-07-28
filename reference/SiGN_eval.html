@@ -112,6 +112,13 @@ as:
 $$R^2 = 1 - \frac{\sum_i (y_i - \hat{y}_i)^2}{\sum_i (y_i - \bar{y})^2}$$
 where \(y_i\) are the observed values, \(\hat{y}_i\) are the predicted
 values, and \(\bar{y}\) is the mean of the observed values.</p>
+<p>While this form of \(R^2\) is widely used as a descriptive measure of
+fit, it should be interpreted with caution in the context of nonlinear models.
+Unlike in linear regression, \(R^2\) does not have a clear interpretation
+in terms of explained variance, nor is it guaranteed to fall between 0 and 1.
+In particular, it can take on negative values when the model fits worse than
+the mean. As such, it is best used here as a rough, supplementary indicator
+of model performance, rather than a definitive measure of fit.</p>
 <p>For likelihood-based metrics, the function assumes a beta-distributed
 error model:
 $$y_i \sim \text{Beta}(\alpha_i, \beta_i)$$

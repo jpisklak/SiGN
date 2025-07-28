@@ -66,9 +66,9 @@ loglik_err <- function(observed, predicted, phi, neg = TRUE, epsilon = 1e-3) {
     stop("Inputs must not contain NA values.")
   }
 
-  if (any(observed < epsilon | observed > 1 - epsilon)) {
-    warning("Some observed values are near 0 or 1; log-likelihood is sensitive to 'epsilon'.")
-  }
+  # if (any(observed < epsilon | observed > 1 - epsilon)) {
+  #  warning("Some observed values are near 0 or 1; log-likelihood is sensitive to 'epsilon'.")
+  #}
 
   # Continuity correction
   y <- pmin(pmax(observed, epsilon), 1 - epsilon)

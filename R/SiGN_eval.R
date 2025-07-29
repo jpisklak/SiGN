@@ -44,7 +44,8 @@
 #' in terms of explained variance, nor is it guaranteed to fall between 0 and 1.
 #' In particular, it can take on negative values when the model fits worse than
 #' the mean. As such, it is best used here as a rough, supplementary indicator
-#' of model performance, rather than a definitive measure of fit.
+#' of model performance rather than a definitive measure of fit—effectively,
+#' a "pseudo-\eqn{R^2}."
 #'
 #' For likelihood-based metrics, the function assumes a beta-distributed
 #' error model:

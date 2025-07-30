@@ -4,7 +4,7 @@
 \alias{SiGN_eval}
 \title{Evaluate Model Fit with Descriptive and Likelihood-Based Metrics}
 \usage{
-SiGN_eval(observed, predicted, epsilon = 0.001)
+SiGN_eval(observed, predicted, epsilon = 0.001, ...)
 }
 \arguments{
 \item{observed}{A numeric vector of observed values (e.g., choice
@@ -16,6 +16,8 @@ assumes a beta-distributed error model, which is not defined at 0 or 1.}
 \item{epsilon}{A small continuity correction used to constrain values
 strictly within the open interval (0, 1). Defaults to \code{0.001}. This is
 necessary for the beta error model, which is undefined at 0 and 1.}
+
+\item{...}{Additional arguments passed to internal functions.}
 }
 \value{
 An object of class \code{"SiGN_eval"} containing:

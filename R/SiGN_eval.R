@@ -17,6 +17,7 @@
 #' @param epsilon A small continuity correction used to constrain values
 #' strictly within the open interval (0, 1). Defaults to `0.001`. This is
 #' necessary for the beta error model, which is undefined at 0 and 1.
+#' @param ... Additional arguments passed to internal functions.
 #'
 #' @returns An object of class \code{"SiGN_eval"} containing:
 #' \describe{
@@ -84,7 +85,7 @@
 #' @importFrom stats median optimize dbeta
 #' @export
 #-------------------------------------------------------------------------------
-SiGN_eval <- function(observed, predicted, epsilon = 0.001) {
+SiGN_eval <- function(observed, predicted, epsilon = 0.001, ...) {
   # Throw error if obs is incorrect length
   if (length(observed) != length(predicted)) {
     stop(sprintf(
@@ -92,7 +93,6 @@ SiGN_eval <- function(observed, predicted, epsilon = 0.001) {
       length(observed), length(predicted)
     ))
   }
-
 
   residuals <- observed - predicted
   ss_res_fit <- sum(residuals^2)
@@ -110,7 +110,7 @@ SiGN_eval <- function(observed, predicted, epsilon = 0.001) {
   rmse <- sqrt(mean(residuals^2))
   mean_ae <- mean(abs(residuals))
   med_ae <- median(abs(residuals))
-  ccc_val <- ccc(predicted, observed)
+  ccc_val <- ccc(predicted, observed, ...)
 
   # Fancy Stats
   # Estimate phi

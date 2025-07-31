@@ -5,8 +5,8 @@ test_that("SiGN_eval returns correct structure", {
   result <- SiGN_eval(obs, pred)
 
   expect_s3_class(result, "SiGN_eval")
-  expect_named(result, c("summary", "info_criteria", "residuals"))
-  expect_true(is.data.frame(result$summary))
+  expect_named(result, c("desc_stats", "info_criteria", "residuals"))
+  expect_true(is.data.frame(result$desc_stats))
   expect_true(is.data.frame(result$info_criteria))
   expect_true(is.numeric(result$residuals))
 })
@@ -16,7 +16,7 @@ test_that("summary contains expected columns", {
   pred <- c(0.25, 0.28, 0.48, 0.72)
 
   result <- SiGN_eval(obs, pred)
-  expect_true(all(c("n", "r_squared", "mean_bias", "rmse", "mae", "median_ae", "ccc") %in% names(result$summary)))
+  expect_true(all(c("n", "r_squared", "mean_bias", "rmse", "mae", "median_ae", "ccc") %in% names(result$desc_stats)))
 })
 
 test_that("info_criteria contains phi, logLik, AIC, BIC", {
@@ -24,7 +24,8 @@ test_that("info_criteria contains phi, logLik, AIC, BIC", {
   pred <- c(0.25, 0.28, 0.48, 0.72)
 
   result <- SiGN_eval(obs, pred)
-  expect_true(all(c("phi", "logLik", "AIC", "BIC") %in% names(result$info_criteria)))
+  expect_true(all(c("n_parameters","phi", "logLik", "AIC", "BIC") %in%
+                    names(result$info_criteria)))
 })
 
 test_that("residuals are calculated correctly", {

@@ -22,11 +22,11 @@ necessary for the beta error model, which is undefined at 0 and 1.}
 \value{
 An object of class \code{"SiGN_eval"} containing:
 \describe{
-\item{\code{summary}}{A data frame of descriptive fit statistics: sample
+\item{\code{desc_stats}}{A data frame of descriptive fit statistics: sample
 size, R-squared, mean bias, RMSE, MAE, median absolute error, and the
 concordance correlation coefficient.}
-\item{\code{info_criteria}}{A data frame with the estimated \eqn{\phi}
-parameter (precision of the beta distribution),
+\item{\code{info_criteria}}{A data frame listing the parameter amount,
+estimated \eqn{\phi} parameter value (precision of the beta distribution),
 log-likelihood, AIC, and BIC.}
 \item{\code{residuals}}{A numeric vector of residuals (observed -
 predicted), not printed by default.}
@@ -60,7 +60,9 @@ of model performance rather than a definitive measure of fit—effectively,
 a "pseudo-\eqn{R^2}."
 
 For likelihood-based metrics, the function assumes a beta-distributed
-error model:
+error model. That is, each observed value \eqn{y_i} is drawn independently
+from a Beta distribution with a mean equal to the SiGN model's prediction
+\eqn{\mu_i} and a precision parameter \eqn{\phi}:
 \deqn{y_i \sim \text{Beta}(\alpha_i, \beta_i)}
 with:
 \deqn{\alpha_i = \mu_i \cdot \phi,\quad \beta_i = (1 - \mu_i) \cdot \phi}

@@ -16,3 +16,6 @@
 ## 2025-07-28
 - Added function to compute (negative) log-Likelihood for a Beta error model
 - Finished `SiGN_eval()` function to evaluate model fit with descriptive and likelihood-based metrics
+
+## 2025-07-31
+- Added `SiGN_gen_eval()`, a function for applying free parameters to the SiGN model and returning model evaluation metrics.

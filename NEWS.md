@@ -1,5 +1,8 @@
 # SiGN (development version)
 
+## 2025-08-01
+- Added the more general `choice_mod_eval()` to replace `SiGN_eval()`, allowing other pre-fit models to be compared directly against the SiGN model.
+
 ## 2025-07-31
 - Added `SiGN_gen_eval()`, a function for applying free parameters to the SiGN model and returning model evaluation metrics.
 

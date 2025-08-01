@@ -89,36 +89,62 @@ sf_1 <- SiGN(sf_1_params)$details
 sf_2 <- SiGN(sf_2_params)$details
 ```
 
-```{r fig.width = 6, fig.height = 4.5, dpi = 300, fig.align = 'center', out.width = '80%'}
-# Plot Predictions
-plot(sf_1_params$il_dur_a, sf_1$cp,
-  type = "n", las = 1,
-  xlim = c(0, 600), ylim = c(0, 1),
-  xaxt = "n",
-  xlab = "Duration of Initial Links in Seconds (x)",
-  ylab = "Predicted Choice Proportion"
+```{r}
+# Data frame for plot
+plot_data <- data.frame(
+  cp = c(sf_1$cp, sf_2$cp),
+  il_durs = rep(seq(1, 600, 0.1), 2),
+  Contingency = c(
+    rep("VIx VI30 vs VIx VI90", nrow(sf_1)),
+    rep("VI60 VI15 vs VIx VI15", nrow(sf_2))
+  )
 )
+```
 
-axis(1, at = c(1, seq(100, 600, 100)))
+```{r fig.width = 4.5, fig.height = 3, dpi = 300, fig.align = 'center', out.width = '80%'}
+# Plot
+library(ggplot2)
 
-abline(h = 0.5, lwd = 1, lty = 3, col = "grey")
-
-lines(sf_1_params$il_dur_a, sf_1$cp,
-  lwd = 2.5, lty = 1,
-  col = palette.colors(palette = "Dark 2")[1]
-)
-lines(sf_2_params$il_dur_b, sf_2$cp,
-  lwd = 2.5, lty = 2,
-  col = palette.colors(palette = "Dark 2")[2]
-)
-
-legend("bottomright",
-  legend = c("VIx VI 30 vs VIx VI 90", "VI60 VI 15 vs VIx VI 15"),
-  lwd = c(2.5),
-  lty = c(1, 2),
-  col = palette.colors(palette = "Dark 2")[1:2],
-  bty = "n"
-)
+ggplot(
+  plot_data,
+  aes(
+    x = il_durs, 
+    y = cp,
+    colour = Contingency, 
+    linetype = Contingency
+  )
+) +
+  # Add horizontal reference line at 0.5 (chance level)
+  geom_hline(yintercept = 0.5, linetype = 3) +
+  
+  # Plot predicted lines
+  geom_line(linewidth = 1) +
+  
+  # Custom colour palette
+  scale_colour_manual(values = palette.colors(palette = "Dark 2")) +
+  
+  # Restrict y-axis to [0, 1]
+  coord_cartesian(ylim = c(0, 1)) +
+  
+  # Axis labels
+  labs(
+    x = "Duration of Initial Links in Seconds (x)",
+    y = "Predicted Choice Proportion"
+  ) +
+  
+  # Base theme
+  theme_bw(base_size = 12) +
+  
+  # Additional styling and legend placement
+  theme(
+    axis.text = element_text(colour = "black"),
+    legend.position = "inside",
+    legend.position.inside = c(0.75, 0.2),
+    legend.background = element_rect(fill = "transparent"),
+    legend.key = element_rect(fill = "transparent"),
+    legend.text = element_text(size = 8),
+    legend.title = element_text(size = 10)
+  )
 ```
 
 The plot shows that the SiGN model reproduces the patterns reported by Squires and Fantino (1971), illustrating how SiGN integrates both delay-reduction and terminal reinforcement rate to account for classic choice behaviour, replicating foundational findings from early concurrent-chain research.

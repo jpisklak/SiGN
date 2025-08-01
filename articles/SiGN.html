@@ -296,7 +296,8 @@ passing it to the <code><a href="../reference/SiGN.html">SiGN()</a></code> funct
 <span><span class="co">#&gt; Use `$details` for additional model terms.</span></span></code></pre></div>
 <p>From the output, we can see that alternative A (the “suboptimal”
 alternative) will be selected approximately 96% of the time. To extract
-additional model details:</p>
+additional model details we can call the output’s <code>$details</code>
+component:</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">mod</span><span class="op">$</span><span class="va">details</span></span>
 <span><span class="co">#&gt;          cp        r_a        r_b r_a_com r_b_com    Big_T     cr_a      cr_b</span></span>
@@ -306,9 +307,10 @@ additional model details:</p>
 <span><span class="co">#&gt;   tr_p_b s_delta beta_log</span></span>
 <span><span class="co">#&gt; 1    0.5       1       10</span></span></code></pre></div>
 <p>An in-depth explanation of the <code>$details</code> output is beyond
-the scope of this document. Readers interested in the theoretical
-rationale behind these terms are referred to Dunn et al. 2024. However,
-a brief description of each component is provided in Table 2 below.</p>
+the scope of this document. However, a brief description of each
+component is provided in Table 2 below. Readers interested in the
+theoretical rationale behind these terms are referred to Dunn et
+al. 2024.</p>
 <p><br></p>
 <table class="table">
 <caption>Table 2: Components of the <code><a href="../reference/SiGN.html">SiGN()</a></code> Function Output

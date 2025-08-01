@@ -151,13 +151,13 @@ mod <- SiGN(params)
 mod
 ```
 
-From the output, we can see that alternative A (the "suboptimal" alternative) will be selected approximately 96% of the time. To extract additional model details:
+From the output, we can see that alternative A (the "suboptimal" alternative) will be selected approximately 96% of the time. To extract additional model details we can call the output's `$details` component:
 
 ```{r}
 mod$details
 ```
 
-An in-depth explanation of the `$details` output is beyond the scope of this document. Readers interested in the theoretical rationale behind these terms are referred to Dunn et al. 2024. However, a brief description of each component is provided in Table 2 below.
+An in-depth explanation of the `$details` output is beyond the scope of this document. However, a brief description of each component is provided in Table 2 below. Readers interested in the theoretical rationale behind these terms are referred to Dunn et al. 2024.
 
 <br>
 

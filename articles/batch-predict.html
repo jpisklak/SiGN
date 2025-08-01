@@ -70,8 +70,6 @@
 <div class="row">
   <main id="main" class="col-md-9"><div class="page-header">
       <img src="../logo.svg" class="logo" alt=""><h1>Generating SiGN Model Predictions from a Data Frame</h1>
-            <h3 data-toc-skip class="subtitle">Batch-generating SiGN
-model outputs using structured data</h3>
             
       
       <small class="dont-index">Source: <a href="https://github.com/SiGN-R/SiGN/blob/master/vignettes/articles/batch-predict.Rmd" class="external-link"><code>vignettes/articles/batch-predict.Rmd</code></a></small>
@@ -92,7 +90,7 @@ multiple predictions quickly.</p>
 <code>subopt_avian</code> data set as an example.</p>
 </div>
 <div class="section level2">
-<h2 id="the-subopt_avian-data-set">The subopt_avian Data Set<a class="anchor" aria-label="anchor" href="#the-subopt_avian-data-set"></a>
+<h2 id="the-subopt_avian-data-set">The <code>subopt_avian</code> Data Set<a class="anchor" aria-label="anchor" href="#the-subopt_avian-data-set"></a>
 </h2>
 <p>Dunn et al. (2024) compiled the results of an extensive collection of
 studies investigating <em>suboptimal choice</em> behaviour. This dataset
@@ -180,7 +178,7 @@ interested in the predicted choice proportions.</p>
 <span><span class="va">preds</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/SiGN.html">SiGN</a></span><span class="op">(</span><span class="va">params</span><span class="op">)</span></span></code></pre></div>
 <p>The SiGN model’s predicted choice proportion, for each row of
 <code>subopt_avian[9:24]</code>, can be called with
-<code>preds$cp</code>. These can now be compared directly to the
+<code>preds$cp</code>. These values can be compared directly to the
 observed choice proportions stored in <code>subopt_avian$cp</code>. For
 more information about the <code><a href="../reference/SiGN.html">SiGN()</a></code> function and its outputs,
 see the <a href="articles/SiGN.html">Get Started</a> article.</p>
@@ -188,10 +186,10 @@ see the <a href="articles/SiGN.html">Get Started</a> article.</p>
 <div class="section level2">
 <h2 id="visualising-the-predictions">Visualising the Predictions<a class="anchor" aria-label="anchor" href="#visualising-the-predictions"></a>
 </h2>
-<p>To help visualise the model’s performance, we’ll fit a simple linear
-regression to the observed versus predicted choice proportions. This
-provides a clear visual summary of their relationship and allows us to
-overlay both a fitted regression line and a 1:1 reference line. The
+<p>To help visualise the model’s performance, we shall fit a simple
+linear regression to the observed versus predicted choice proportions.
+This provides a clear visual summary of their relationship and allows us
+to overlay both a fitted regression line and a 1:1 reference line. The
 closer the data points fall to the 1:1 line, the more closely the
 model’s predictions match the observed values—offering a quick and
 intuitive check on model accuracy.</p>

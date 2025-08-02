@@ -78,8 +78,7 @@ The total log-likelihood is computed as:
 
 The AIC and BIC are then computed as:
 \deqn{\text{AIC} = 2k - 2\log L,\quad \text{BIC} = \log(n) \cdot k - 2\log L}
-where \eqn{k = 1} is the number of estimated parameters (here, only
-\eqn{\phi}) and \eqn{n} is the number of observations.
+where \eqn{k = 1} is the number of estimated parameters and \eqn{n} is the number of observations.
 
 Observed and predicted values are assumed to lie strictly within the unit
 interval (0, 1). Values near 0 or 1 are adjusted using the \code{epsilon}
@@ -99,4 +98,10 @@ pred <- c(0.25, 0.35, 0.65, 0.75)
 result <- choice_mod_eval(obs, pred)
 result
 result$residuals  # Access residuals directly
+}
+\seealso{
+Comprehensive guidance on interpreting the outputs and applying this
+function is provided in the following companion vignettes:
+\code{vignette("eval_descriptive", package = "SiGN")}
+\code{vignette("eval_info-theoretic", package = "SiGN")}
 }

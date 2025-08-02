@@ -30,3 +30,17 @@ navbar:
     calculator:
       text: "Online Calculator"
       href: "https://jpisklak.shinyapps.io/SiGN_Calc/"
+
+articles:
+  - title: Basics
+    navbar: Basics
+    contents:
+      - squires_fantino
+      - batch-predict
+
+  - title: Model Evaluation
+    navbar: Model Evaluation
+    contents:
+      - eval_descriptive
+      - eval_info-theoretic
+

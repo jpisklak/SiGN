@@ -1,2 +1,4 @@
-- Add ggplot to article visualisations
-- Update SiGN_eval to work with any fitted values (rename model_eval)
+- Ensure vignettes install
+- Add generalised SiGN
+- Add rats vignette.
+- Proof read documentation.

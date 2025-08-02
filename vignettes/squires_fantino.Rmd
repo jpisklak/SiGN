@@ -1,5 +1,10 @@
 ---
-title: "Revisiting Some Classic Studies"
+title: "Classic Concurrent-Chains"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Classic Concurrent-Chains}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
 ---
 
 ```{r, include = FALSE}
@@ -103,7 +108,7 @@ plot_data <- data.frame(
 
 ```{r fig.width = 4.5, fig.height = 3, dpi = 300, fig.align = 'center', out.width = '80%'}
 # Plot
-library(ggplot2)
+library(tidyverse)
 
 ggplot(
   plot_data,

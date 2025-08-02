@@ -61,7 +61,7 @@ and follows a beta distribution centred around the predicted value from the
 generalised SiGN model. A single precision parameter (\code{phi}) is estimated
 per model fit. AIC and BIC are based on four free parameters (three from the
 model, one from the error distribution). Residual checks are recommended.
-For additional details regarding the Beta error model, see \link{SiGN_eval}.
+For additional details regarding the Beta error model, see \link{choice_mod_eval}.
 }
 \examples{
 params <- do.call(choice_params, as.list(subopt_avian[9:24]))
@@ -69,6 +69,6 @@ result <- SiGN_gen_eval(params, subopt_avian$cp, b = 1, k_r = 1, k_d = 1)
 print(result)
 }
 \seealso{
-\code{\link[minpack.lm]{nlsLM}}, \link{SiGN_eval}, \link{SiGN},
+\code{\link[minpack.lm]{nlsLM}}, \link{choice_mod_eval}, \link{SiGN},
 \link{choice_params}, \link{loglik_err}
 }

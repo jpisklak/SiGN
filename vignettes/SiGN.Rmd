@@ -13,7 +13,7 @@ knitr::opts_chunk$set(
   comment = "#>"
 )
 
-library(tibble)
+library(tidyverse)
 ```
 
 *SiGN* is an R package designed to streamline and automate the calculations required to generate behavioural predictions from the Signal for Good News (SiGN) model.
@@ -216,7 +216,7 @@ mod_il <- SiGN(il_preds)
 
 ```{r fig.width = 4.5, fig.height = 3, dpi = 300, fig.align = 'center', out.width = '80%'}
 # Plot predictions
-library(ggplot2)
+library(tidyverse)
 
 ggplot(mapping = aes(x = il_preds$il_dur_a, y = mod_il$cp)) +
   

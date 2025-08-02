@@ -59,18 +59,30 @@ library(SiGN)
 
 To get started with the package, begin by reading the [Get
 Started](articles/SiGN.html) article, which introduces the core
-functionality of the SiGN package. Then, explore the following articles
-to see other uses of the package:
+functionality of the SiGN package.
 
-- [Revisiting Some Classic Studies](articles/squires_fantino.html)
-  - A re-analysis of classic concurrent-chain experiments using SiGN
-    predictions.
-  - Illustrates how to compute model predictions across a range of
+Then, explore the following articles to see other uses of the package:
+
+- [Classic Concurrent-Chains](articles/squires_fantino.html)
+  - Re-analyzes classic concurrent-chain experiments using SiGN
+    predictions, and shows how to generate predictions across a range of
     parameter values.
-- [Generating SiGN Model Predictions from a Data
-  Frame](articles/batch-predict.html)
-  - Demonstrates how to generate multiple SiGN model predictions from a
-    data frame of parameters.
+- [Predictions From Data Frames](articles/batch-predict.html)
+  - Demonstrates how to generate model predictions in batch from a data
+    frame of input parameters.
+
+For a more advanced use case involving model evaluation, see the
+following:
+
+- [Model Evaluation: Descriptive
+  Statistics](articles/eval_descriptive.html)
+  - Introduces metrics such as RMSE, MAE, and Lin’s Concordance
+    Coefficient for assessing model performance.
+- [Model Evaluation: Information-Theoretic
+  Statistics](articles/eval_info-theoretic.html)
+  - Describes how to compare choice models generally (not just the SiGN
+    model) using likelihood-based metrics such as AIC, BIC, and Bayes
+    Factors.
 
 ## Ready-to-Use Suboptimal Choice Data and Profiles
 
@@ -113,24 +125,13 @@ explore the model without any writing code.
 
 ## Planned Features
 
-The SiGN package is currently under active development. Future updates
-will include functionality for model evaluation and comparison,
-including:
+The SiGN package is under active development. Upcoming updates will
+expand its capabilities to support a generalised version of the SiGN
+model that incorporates free parameters for model fitting and
+comparison.
 
-- Descriptive error metrics (e.g., RMSE, MAE, residual-based $R^2$)
-
-- Log-likelihood computation using a Beta-distributed error model
-  tailored to choice proportion data
-
-- Model comparison tools:
-
-  - Akaike Information Criterion (AIC)
-
-  - Bayesian Information Criterion (BIC)
-
-These additions will allow users to assess model fit in a more
-principled and quantitative manner, especially when comparing models
-with and without free parameters.
+Additional tools for model evaluation, simulation, and visualisation are
+also being considered.
 
 Stay tuned for updates, and feel free to suggest features or contribute!
 

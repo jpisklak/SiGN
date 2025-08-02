@@ -80,6 +80,12 @@
 #' that information criteria may be unstable or overly sensitive in
 #' small-sample settings.
 #'
+#' @seealso
+#' Comprehensive guidance on interpreting the outputs and applying this
+#' function is provided in the following companion vignettes:
+#' `vignette("eval_descriptive", package = "SiGN")`
+#' `vignette("eval_info-theoretic", package = "SiGN")`
+#'
 #' @examples
 #' obs <- c(0.2, 0.4, 0.6, 0.8)
 #' pred <- c(0.25, 0.35, 0.65, 0.75)

@@ -1,5 +1,10 @@
 # SiGN (development version)
 
+## 2025-08-02
+- Two new vignettes (i.e., "articles") have been added to illustrate model evaluation with the package:
+  - [Model Evaluation: Descriptive Statistics](../articles/eval_descriptive.html)
+  - [Model Evaluation: Information-Theoretic Statistics](../articles/eval_info-theoretic.html)
+
 ## 2025-08-01
 - Added the more general `choice_mod_eval()` to replace `SiGN_eval()`, allowing other pre-fit models to be compared directly against the SiGN model.
 

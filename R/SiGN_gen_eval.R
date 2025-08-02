@@ -46,9 +46,9 @@
 #' generalised SiGN model. A single precision parameter (\code{phi}) is estimated
 #' per model fit. AIC and BIC are based on four free parameters (three from the
 #' model, one from the error distribution). Residual checks are recommended.
-#' For additional details regarding the Beta error model, see [SiGN_eval].
+#' For additional details regarding the Beta error model, see [choice_mod_eval].
 #'
-#' @seealso \code{\link[minpack.lm]{nlsLM}}, [SiGN_eval], [SiGN],
+#' @seealso \code{\link[minpack.lm]{nlsLM}}, [choice_mod_eval], [SiGN],
 #' [choice_params], [loglik_err]
 #'
 #' @examples

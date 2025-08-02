@@ -1,5 +1,10 @@
 ---
-title: "Generating SiGN Model Predictions from a Data Frame"
+title: "Predictions From Data Frames"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Predictions From Data Frames}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
 ---
 
 ```{r, include = FALSE}
@@ -83,7 +88,7 @@ reg_txt <- sprintf(
 ```
 
 ```{r fig.width = 4, fig.height = 3, dpi = 300, fig.align = 'center', out.width = '75%', message = FALSE}
-library(ggplot2)
+library(tidyverse)
 
 ggplot(mapping = aes(x = preds$cp, y = subopt_avian$cp)) +
 

@@ -214,7 +214,7 @@ il_preds <- choice_params("zentall",
 mod_il <- SiGN(il_preds)
 ```
 
-```{r fig.width = 4.5, fig.height = 3, dpi = 300, fig.align = 'center', out.width = '80%'}
+```{r fig.width = 4.5, fig.height = 3, dpi = 300, fig.align = 'center', out.width = '80%', message = FALSE}
 # Plot predictions
 library(tidyverse)
 

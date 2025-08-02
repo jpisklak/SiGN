@@ -106,7 +106,7 @@ plot_data <- data.frame(
 )
 ```
 
-```{r fig.width = 4.5, fig.height = 3, dpi = 300, fig.align = 'center', out.width = '80%'}
+```{r fig.width = 4.5, fig.height = 3, dpi = 300, fig.align = 'center', out.width = '80%', message = FALSE}
 # Plot
 library(tidyverse)
 

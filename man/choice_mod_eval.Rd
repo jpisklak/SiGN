@@ -74,7 +74,7 @@ where \eqn{\mu_i} is the predicted value and \eqn{\phi} is the precision
 parameter.
 
 The total log-likelihood is computed as:
-\deqn{\log L = \sum_i \log \left[ \text{Beta}(y_i; \alpha_i, \beta_i) \right]}
+\deqn{\log L = \sum_i \log \left[ \text{Beta}(y_i | \alpha_i, \beta_i) \right]}
 
 The AIC and BIC are then computed as:
 \deqn{\text{AIC} = 2k - 2\log L,\quad \text{BIC} = \log(n) \cdot k - 2\log L}

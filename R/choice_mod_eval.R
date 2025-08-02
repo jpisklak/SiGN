@@ -66,8 +66,7 @@
 #'
 #' The AIC and BIC are then computed as:
 #' \deqn{\text{AIC} = 2k - 2\log L,\quad \text{BIC} = \log(n) \cdot k - 2\log L}
-#' where \eqn{k = 1} is the number of estimated parameters (here, only
-#' \eqn{\phi}) and \eqn{n} is the number of observations.
+#' where \eqn{k = 1} is the number of estimated parameters and \eqn{n} is the number of observations.
 #'
 #' Observed and predicted values are assumed to lie strictly within the unit
 #' interval (0, 1). Values near 0 or 1 are adjusted using the `epsilon`

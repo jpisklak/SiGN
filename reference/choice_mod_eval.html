@@ -140,7 +140,7 @@ $$\alpha_i = \mu_i \cdot \phi,\quad \beta_i = (1 - \mu_i) \cdot \phi$$
 where \(\mu_i\) is the predicted value and \(\phi\) is the precision
 parameter.</p>
 <p>The total log-likelihood is computed as:
-$$\log L = \sum_i \log \left[ \text{Beta}(y_i; \alpha_i, \beta_i) \right]$$</p>
+$$\log L = \sum_i \log \left[ \text{Beta}(y_i | \alpha_i, \beta_i) \right]$$</p>
 <p>The AIC and BIC are then computed as:
 $$\text{AIC} = 2k - 2\log L,\quad \text{BIC} = \log(n) \cdot k - 2\log L$$
 where \(k = 1\) is the number of estimated parameters (here, only

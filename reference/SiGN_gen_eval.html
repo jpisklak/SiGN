@@ -37,8 +37,14 @@ sensitivity to delay reduction (k_d)."><meta property="og:image" content="https:
 <li class="active nav-item"><a class="nav-link" href="../reference/index.html">Reference</a></li>
 <li class="nav-item dropdown">
   <button class="nav-link dropdown-toggle" type="button" id="dropdown-articles" data-bs-toggle="dropdown" aria-expanded="false" aria-haspopup="true">Articles</button>
-  <ul class="dropdown-menu" aria-labelledby="dropdown-articles"><li><a class="dropdown-item" href="../articles/batch-predict.html">Generating SiGN Model Predictions from a Data Frame</a></li>
-    <li><a class="dropdown-item" href="../articles/squires_fantino.html">Revisiting Some Classic Studies</a></li>
+  <ul class="dropdown-menu" aria-labelledby="dropdown-articles"><li><hr class="dropdown-divider"></li>
+    <li><h6 class="dropdown-header" data-toc-skip>Basics</h6></li>
+    <li><a class="dropdown-item" href="../articles/squires_fantino.html">Classic Concurrent-Chains</a></li>
+    <li><a class="dropdown-item" href="../articles/batch-predict.html">Predictions From Data Frames</a></li>
+    <li><hr class="dropdown-divider"></li>
+    <li><h6 class="dropdown-header" data-toc-skip>Model Evaluation</h6></li>
+    <li><a class="dropdown-item" href="../articles/eval_descriptive.html">Descriptive Statistics</a></li>
+    <li><a class="dropdown-item" href="../articles/eval_info-theoretic.html">Information-Theoretic Statistics</a></li>
   </ul></li>
 <li class="nav-item"><a class="nav-link" href="../news/index.html">Changelog</a></li>
 <li class="nav-item"><a class="external-link nav-link" href="https://jpisklak.shinyapps.io/SiGN_Calc/">Online Calculator</a></li>
@@ -149,11 +155,11 @@ and follows a beta distribution centred around the predicted value from the
 generalised SiGN model. A single precision parameter (<code>phi</code>) is estimated
 per model fit. AIC and BIC are based on four free parameters (three from the
 model, one from the error distribution). Residual checks are recommended.
-For additional details regarding the Beta error model, see <a href="SiGN_eval.html">SiGN_eval</a>.</p>
+For additional details regarding the Beta error model, see <a href="choice_mod_eval.html">choice_mod_eval</a>.</p>
     </div>
     <div class="section level2">
     <h2 id="see-also">See also<a class="anchor" aria-label="anchor" href="#see-also"></a></h2>
-    <div class="dont-index"><p><code><a href="https://rdrr.io/pkg/minpack.lm/man/nlsLM.html" class="external-link">nlsLM</a></code>, <a href="SiGN_eval.html">SiGN_eval</a>, <a href="SiGN.html">SiGN</a>,
+    <div class="dont-index"><p><code><a href="https://rdrr.io/pkg/minpack.lm/man/nlsLM.html" class="external-link">nlsLM</a></code>, <a href="choice_mod_eval.html">choice_mod_eval</a>, <a href="SiGN.html">SiGN</a>,
 <a href="choice_params.html">choice_params</a>, <a href="loglik_err.html">loglik_err</a></p></div>
     </div>
 

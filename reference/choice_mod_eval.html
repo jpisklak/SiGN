@@ -31,8 +31,14 @@ criteria (AIC, BIC) based on a beta-distributed error model."><meta property="og
 <li class="active nav-item"><a class="nav-link" href="../reference/index.html">Reference</a></li>
 <li class="nav-item dropdown">
   <button class="nav-link dropdown-toggle" type="button" id="dropdown-articles" data-bs-toggle="dropdown" aria-expanded="false" aria-haspopup="true">Articles</button>
-  <ul class="dropdown-menu" aria-labelledby="dropdown-articles"><li><a class="dropdown-item" href="../articles/batch-predict.html">Generating SiGN Model Predictions from a Data Frame</a></li>
-    <li><a class="dropdown-item" href="../articles/squires_fantino.html">Revisiting Some Classic Studies</a></li>
+  <ul class="dropdown-menu" aria-labelledby="dropdown-articles"><li><hr class="dropdown-divider"></li>
+    <li><h6 class="dropdown-header" data-toc-skip>Basics</h6></li>
+    <li><a class="dropdown-item" href="../articles/squires_fantino.html">Classic Concurrent-Chains</a></li>
+    <li><a class="dropdown-item" href="../articles/batch-predict.html">Predictions From Data Frames</a></li>
+    <li><hr class="dropdown-divider"></li>
+    <li><h6 class="dropdown-header" data-toc-skip>Model Evaluation</h6></li>
+    <li><a class="dropdown-item" href="../articles/eval_descriptive.html">Descriptive Statistics</a></li>
+    <li><a class="dropdown-item" href="../articles/eval_info-theoretic.html">Information-Theoretic Statistics</a></li>
   </ul></li>
 <li class="nav-item"><a class="nav-link" href="../news/index.html">Changelog</a></li>
 <li class="nav-item"><a class="external-link nav-link" href="https://jpisklak.shinyapps.io/SiGN_Calc/">Online Calculator</a></li>
@@ -143,8 +149,7 @@ parameter.</p>
 $$\log L = \sum_i \log \left[ \text{Beta}(y_i | \alpha_i, \beta_i) \right]$$</p>
 <p>The AIC and BIC are then computed as:
 $$\text{AIC} = 2k - 2\log L,\quad \text{BIC} = \log(n) \cdot k - 2\log L$$
-where \(k = 1\) is the number of estimated parameters (here, only
-\(\phi\)) and \(n\) is the number of observations.</p>
+where \(k = 1\) is the number of estimated parameters and \(n\) is the number of observations.</p>
 <p>Observed and predicted values are assumed to lie strictly within the unit
 interval (0, 1). Values near 0 or 1 are adjusted using the <code>epsilon</code>
 parameter to avoid undefined behaviour under the beta distribution.</p>
@@ -154,6 +159,13 @@ sensitivity of the output to this value if model selection is a focus.</p>
 <p>When the sample size is less than 30, a message is printed to remind users
 that information criteria may be unstable or overly sensitive in
 small-sample settings.</p>
+    </div>
+    <div class="section level2">
+    <h2 id="see-also">See also<a class="anchor" aria-label="anchor" href="#see-also"></a></h2>
+    <div class="dont-index"><p>Comprehensive guidance on interpreting the outputs and applying this
+function is provided in the following companion vignettes:
+<code><a href="../articles/eval_descriptive.html">vignette("eval_descriptive", package = "SiGN")</a></code>
+<code><a href="../articles/eval_info-theoretic.html">vignette("eval_info-theoretic", package = "SiGN")</a></code></p></div>
     </div>
 
     <div class="section level2">

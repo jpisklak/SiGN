@@ -45,8 +45,14 @@
 <li class="nav-item dropdown">
   <button class="nav-link dropdown-toggle" type="button" id="dropdown-articles" data-bs-toggle="dropdown" aria-expanded="false" aria-haspopup="true">Articles</button>
   <ul class="dropdown-menu" aria-labelledby="dropdown-articles">
-<li><a class="dropdown-item" href="../articles/batch-predict.html">Generating SiGN Model Predictions from a Data Frame</a></li>
-    <li><a class="dropdown-item" href="../articles/squires_fantino.html">Revisiting Some Classic Studies</a></li>
+<li><hr class="dropdown-divider"></li>
+    <li><h6 class="dropdown-header" data-toc-skip>Basics</h6></li>
+    <li><a class="dropdown-item" href="../articles/squires_fantino.html">Classic Concurrent-Chains</a></li>
+    <li><a class="dropdown-item" href="../articles/batch-predict.html">Predictions From Data Frames</a></li>
+    <li><hr class="dropdown-divider"></li>
+    <li><h6 class="dropdown-header" data-toc-skip>Model Evaluation</h6></li>
+    <li><a class="dropdown-item" href="../articles/eval_descriptive.html">Descriptive Statistics</a></li>
+    <li><a class="dropdown-item" href="../articles/eval_info-theoretic.html">Information-Theoretic Statistics</a></li>
   </ul>
 </li>
 <li class="nav-item"><a class="nav-link" href="../news/index.html">Changelog</a></li>
@@ -429,7 +435,7 @@ rest of the parameters will remain fixed according to the
 <span><span class="va">mod_il</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/SiGN.html">SiGN</a></span><span class="op">(</span><span class="va">il_preds</span><span class="op">)</span></span></code></pre></div>
 <div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Plot predictions</span></span>
-<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://ggplot2.tidyverse.org" class="external-link">ggplot2</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyverse.tidyverse.org" class="external-link">tidyverse</a></span><span class="op">)</span></span>
 <span></span>
 <span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html" class="external-link">ggplot</a></span><span class="op">(</span>mapping <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html" class="external-link">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">il_preds</span><span class="op">$</span><span class="va">il_dur_a</span>, y <span class="op">=</span> <span class="va">mod_il</span><span class="op">$</span><span class="va">cp</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  </span>

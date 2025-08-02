@@ -48,8 +48,14 @@
 <li class="nav-item dropdown">
   <button class="nav-link dropdown-toggle" type="button" id="dropdown-articles" data-bs-toggle="dropdown" aria-expanded="false" aria-haspopup="true">Articles</button>
   <ul class="dropdown-menu" aria-labelledby="dropdown-articles">
-<li><a class="dropdown-item" href="articles/batch-predict.html">Generating SiGN Model Predictions from a Data Frame</a></li>
-    <li><a class="dropdown-item" href="articles/squires_fantino.html">Revisiting Some Classic Studies</a></li>
+<li><hr class="dropdown-divider"></li>
+    <li><h6 class="dropdown-header" data-toc-skip>Basics</h6></li>
+    <li><a class="dropdown-item" href="articles/squires_fantino.html">Classic Concurrent-Chains</a></li>
+    <li><a class="dropdown-item" href="articles/batch-predict.html">Predictions From Data Frames</a></li>
+    <li><hr class="dropdown-divider"></li>
+    <li><h6 class="dropdown-header" data-toc-skip>Model Evaluation</h6></li>
+    <li><a class="dropdown-item" href="articles/eval_descriptive.html">Descriptive Statistics</a></li>
+    <li><a class="dropdown-item" href="articles/eval_info-theoretic.html">Information-Theoretic Statistics</a></li>
   </ul>
 </li>
 <li class="nav-item"><a class="nav-link" href="news/index.html">Changelog</a></li>
@@ -98,19 +104,34 @@
 <div class="section level2">
 <h2 id="usage">Usage<a class="anchor" aria-label="anchor" href="#usage"></a>
 </h2>
-<p>To get started with the package, begin by reading the <a href="articles/SiGN.html">Get Started</a> article, which introduces the core functionality of the SiGN package. Then, explore the following articles to see other uses of the package:</p>
+<p>To get started with the package, begin by reading the <a href="articles/SiGN.html">Get Started</a> article, which introduces the core functionality of the SiGN package.</p>
+<p>Then, explore the following articles to see other uses of the package:</p>
 <ul>
 <li>
-<a href="articles/squires_fantino.html">Revisiting Some Classic Studies</a>
+<a href="articles/squires_fantino.html">Classic Concurrent-Chains</a>
 <ul>
-<li>A re-analysis of classic concurrent-chain experiments using SiGN predictions.</li>
-<li>Illustrates how to compute model predictions across a range of parameter values.</li>
+<li>Re-analyzes classic concurrent-chain experiments using SiGN predictions, and shows how to generate predictions across a range of parameter values.</li>
 </ul>
 </li>
 <li>
-<a href="articles/batch-predict.html">Generating SiGN Model Predictions from a Data Frame</a>
+<a href="articles/batch-predict.html">Predictions From Data Frames</a>
 <ul>
-<li>Demonstrates how to generate multiple SiGN model predictions from a data frame of parameters.</li>
+<li>Demonstrates how to generate model predictions in batch from a data frame of input parameters.</li>
+</ul>
+</li>
+</ul>
+<p>For a more advanced use case involving model evaluation, see the following:</p>
+<ul>
+<li>
+<a href="articles/eval_descriptive.html">Model Evaluation: Descriptive Statistics</a>
+<ul>
+<li>Introduces metrics such as RMSE, MAE, and Lin’s Concordance Coefficient for assessing model performance.</li>
+</ul>
+</li>
+<li>
+<a href="articles/eval_info-theoretic.html">Model Evaluation: Information-Theoretic Statistics</a>
+<ul>
+<li>Describes how to compare choice models generally (not just the SiGN model) using likelihood-based metrics such as AIC, BIC, and Bayes Factors.</li>
 </ul>
 </li>
 </ul>
@@ -149,19 +170,8 @@
 <div class="section level2">
 <h2 id="planned-features">Planned Features<a class="anchor" aria-label="anchor" href="#planned-features"></a>
 </h2>
-<p>The SiGN package is currently under active development. Future updates will include functionality for model evaluation and comparison, including:</p>
-<ul>
-<li><p>Descriptive error metrics (e.g., RMSE, MAE, residual-based <span class="math inline">\(R^2\)</span>)</p></li>
-<li><p>Log-likelihood computation using a Beta-distributed error model tailored to choice proportion data</p></li>
-<li>
-<p>Model comparison tools:</p>
-<ul>
-<li><p>Akaike Information Criterion (AIC)</p></li>
-<li><p>Bayesian Information Criterion (BIC)</p></li>
-</ul>
-</li>
-</ul>
-<p>These additions will allow users to assess model fit in a more principled and quantitative manner, especially when comparing models with and without free parameters.</p>
+<p>The SiGN package is under active development. Upcoming updates will expand its capabilities to support a generalised version of the SiGN model that incorporates free parameters for model fitting and comparison.</p>
+<p>Additional tools for model evaluation, simulation, and visualisation are also being considered.</p>
 <p>Stay tuned for updates, and feel free to suggest features or contribute!</p>
 </div>
 <div class="section level2">
